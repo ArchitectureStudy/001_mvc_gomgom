@@ -40,7 +40,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Hk5-kM-11d">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="5wp-33-wUQ">
                                     <size key="itemSize" width="375" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -55,10 +55,24 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3F-sV-HFK">
-                                                    <rect key="frame" x="8" y="8" width="359" height="84"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="issue title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3F-sV-HFK">
+                                                    <rect key="frame" x="8" y="8" width="359" height="55"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="84" id="avf-n0-81U"/>
+                                                        <constraint firstAttribute="height" constant="55" id="6H1-xN-Q5E"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Ic-K7-Rr5" userLabel="line">
+                                                    <rect key="frame" x="0.0" y="99" width="375" height="1"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="issue number" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KoM-2c-Vvz">
+                                                    <rect key="frame" x="8" y="66" width="359" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="C8t-Bu-GRX"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -66,16 +80,19 @@
                                                 </label>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="1" green="0.9858823323" blue="0.39773442889999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="D3F-sV-HFK" firstAttribute="trailing" secondItem="rRv-ND-00U" secondAttribute="trailingMargin" id="6G7-na-0P6"/>
-                                            <constraint firstItem="D3F-sV-HFK" firstAttribute="top" secondItem="rRv-ND-00U" secondAttribute="topMargin" id="eqg-sF-yT1"/>
-                                            <constraint firstItem="D3F-sV-HFK" firstAttribute="leading" secondItem="rRv-ND-00U" secondAttribute="leading" constant="8" id="qgs-Qr-yuM"/>
-                                            <constraint firstItem="D3F-sV-HFK" firstAttribute="bottom" secondItem="rRv-ND-00U" secondAttribute="bottomMargin" id="xQn-bc-0hV"/>
+                                            <constraint firstItem="D3F-sV-HFK" firstAttribute="trailing" secondItem="rRv-ND-00U" secondAttribute="trailingMargin" id="72F-4B-TWr"/>
+                                            <constraint firstItem="KoM-2c-Vvz" firstAttribute="leading" secondItem="rRv-ND-00U" secondAttribute="leadingMargin" id="8PT-Tm-yhN"/>
+                                            <constraint firstItem="D3F-sV-HFK" firstAttribute="leading" secondItem="rRv-ND-00U" secondAttribute="leadingMargin" id="Bfi-MQ-ko1"/>
+                                            <constraint firstItem="KoM-2c-Vvz" firstAttribute="trailing" secondItem="rRv-ND-00U" secondAttribute="trailingMargin" id="MJB-Li-NHg"/>
+                                            <constraint firstItem="D3F-sV-HFK" firstAttribute="top" secondItem="rRv-ND-00U" secondAttribute="topMargin" id="VZx-Dd-Dya"/>
+                                            <constraint firstItem="KoM-2c-Vvz" firstAttribute="top" secondItem="D3F-sV-HFK" secondAttribute="bottom" constant="3" id="sFl-FW-HVw"/>
                                         </constraints>
                                         <size key="customSize" width="375" height="100"/>
                                         <connections>
                                             <outlet property="issueLabel" destination="D3F-sV-HFK" id="97A-tT-JN7"/>
+                                            <outlet property="issueNumber" destination="KoM-2c-Vvz" id="nqL-t0-ZD7"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

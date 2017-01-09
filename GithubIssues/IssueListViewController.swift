@@ -16,7 +16,7 @@ class IssueListViewController: UIViewController {
     
     let model = IssueModel(user: "FreeCodeCamp", repo: "FreeCodeCamp")
     
-    var datasource: Variable<[SectionModel<Int,String>]> = Variable([SectionModel(model: 1, items:["이슈를 읽어오고 있습니다."])])
+    var datasource: Variable<[SectionModel<Int,IssueItem>]> = Variable([SectionModel(model: 1, items:[])])
     let disposeBag = DisposeBag()
 
     @IBOutlet weak var issueCollectionView: UICollectionView!
@@ -25,7 +25,7 @@ class IssueListViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        NotificationCenter.default.addObserver(self, selector: #selector(onIssueRequestCompletedNotification(_:)), name: IssueRequestCompletedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onIssueRequestCompletedNotification(_:)), name: .IssueRequestCompletedNotification, object: nil)
         
         // api request
         model.request()
@@ -83,12 +83,13 @@ extension IssueListViewController {
         datasource.asObservable().bindTo( issueCollectionView.rx.items(dataSource: createDatasource())).addDisposableTo(disposeBag)
     }
     
-    func createDatasource() -> RxCollectionViewSectionedReloadDataSource<SectionModel<Int,String>> {
-        let datasource = RxCollectionViewSectionedReloadDataSource<SectionModel<Int,String>>()
+    func createDatasource() -> RxCollectionViewSectionedReloadDataSource<SectionModel<Int,IssueItem>> {
+        let datasource = RxCollectionViewSectionedReloadDataSource<SectionModel<Int,IssueItem>>()
         
         datasource.configureCell = { datasource, collectionView, indexPath, item in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueCollectionViewCell", for: indexPath) as? IssueCollectionViewCell else { return IssueCollectionViewCell() }
-            cell.issueLabel.text = "\(item)"
+            cell.issueLabel.text = "\(item.title)"
+            cell.issueNumber.text = "#\(item.number)"
             return cell
         }
         return datasource

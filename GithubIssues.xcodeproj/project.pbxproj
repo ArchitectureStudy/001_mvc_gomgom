@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1892FFB6D3751F8DD9367CFE /* Pods_GithubIssuesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0462E1FD6D35FAA661AA8F4 /* Pods_GithubIssuesUITests.framework */; };
 		4BF8BCBB8D1CAD9B8BC5D721 /* Pods_GithubIssues.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C6111AC1E228E0F7952A9F /* Pods_GithubIssues.framework */; };
+		5612FA9C1E237B4C001C1BA2 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612FA9B1E237B4C001C1BA2 /* NotificationExtension.swift */; };
+		5612FA9E1E238020001C1BA2 /* IssueItemUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612FA9D1E238020001C1BA2 /* IssueItemUser.swift */; };
+		5612FAA01E23803E001C1BA2 /* IssueItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612FA9F1E23803E001C1BA2 /* IssueItem.swift */; };
 		561C7E121E1FA89E00ED279D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C7E111E1FA89E00ED279D /* AppDelegate.swift */; };
 		561C7E171E1FA89E00ED279D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 561C7E151E1FA89E00ED279D /* Main.storyboard */; };
 		561C7E191E1FA89E00ED279D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 561C7E181E1FA89E00ED279D /* Assets.xcassets */; };
@@ -39,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5612FA9B1E237B4C001C1BA2 /* NotificationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationExtension.swift; path = Extensions/NotificationExtension.swift; sourceTree = "<group>"; };
+		5612FA9D1E238020001C1BA2 /* IssueItemUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueItemUser.swift; path = Models/IssueItemUser.swift; sourceTree = "<group>"; };
+		5612FA9F1E23803E001C1BA2 /* IssueItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueItem.swift; path = Models/IssueItem.swift; sourceTree = "<group>"; };
 		561C7E0E1E1FA89E00ED279D /* GithubIssues.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubIssues.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		561C7E111E1FA89E00ED279D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		561C7E161E1FA89E00ED279D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,6 +99,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5612FA9A1E2376E7001C1BA2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5612FA9B1E237B4C001C1BA2 /* NotificationExtension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		561C7E051E1FA89E00ED279D = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +136,7 @@
 				561C7E411E1FA9DC00ED279D /* IssueListViewController.swift */,
 				561C7E491E1FB50E00ED279D /* Cells */,
 				561C7E431E1FAE1800ED279D /* Models */,
+				5612FA9A1E2376E7001C1BA2 /* Extensions */,
 				561C7E151E1FA89E00ED279D /* Main.storyboard */,
 				561C7E181E1FA89E00ED279D /* Assets.xcassets */,
 				561C7E1A1E1FA89E00ED279D /* LaunchScreen.storyboard */,
@@ -151,8 +166,9 @@
 		561C7E431E1FAE1800ED279D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				56DBDA701E23368900DCE264 /* Data */,
 				561C7E451E1FAEDF00ED279D /* IssueModel.swift */,
+				5612FA9F1E23803E001C1BA2 /* IssueItem.swift */,
+				5612FA9D1E238020001C1BA2 /* IssueItemUser.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -163,13 +179,6 @@
 				561C7E471E1FB50800ED279D /* IssueCollectionViewCell.swift */,
 			);
 			name = Cells;
-			sourceTree = "<group>";
-		};
-		56DBDA701E23368900DCE264 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Data;
 			sourceTree = "<group>";
 		};
 		B2D173F767BAB8B36FEC2E1F /* Pods */ = {
@@ -466,7 +475,10 @@
 				561C7E481E1FB50800ED279D /* IssueCollectionViewCell.swift in Sources */,
 				561C7E461E1FAEDF00ED279D /* IssueModel.swift in Sources */,
 				561C7E421E1FA9DC00ED279D /* IssueListViewController.swift in Sources */,
+				5612FA9C1E237B4C001C1BA2 /* NotificationExtension.swift in Sources */,
+				5612FA9E1E238020001C1BA2 /* IssueItemUser.swift in Sources */,
 				561C7E121E1FA89E00ED279D /* AppDelegate.swift in Sources */,
+				5612FAA01E23803E001C1BA2 /* IssueItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

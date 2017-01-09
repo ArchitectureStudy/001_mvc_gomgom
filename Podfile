@@ -9,6 +9,7 @@ target 'GithubIssues' do
   
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'ObjectMapper'
   
   pod 'RxSwift'
   pod 'RxCocoa'

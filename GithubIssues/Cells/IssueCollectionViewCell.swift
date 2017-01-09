@@ -10,5 +10,8 @@ import UIKit
 
 class IssueCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var issueNumber: UILabel!
     @IBOutlet weak var issueLabel: UILabel!
+    
+    
 }
