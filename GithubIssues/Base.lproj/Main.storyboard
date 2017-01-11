@@ -91,8 +91,8 @@
                                         </constraints>
                                         <size key="customSize" width="375" height="100"/>
                                         <connections>
-                                            <outlet property="issueLabel" destination="D3F-sV-HFK" id="97A-tT-JN7"/>
-                                            <outlet property="issueNumber" destination="KoM-2c-Vvz" id="nqL-t0-ZD7"/>
+                                            <outlet property="issueNumberLabel" destination="KoM-2c-Vvz" id="zWJ-fQ-oTb"/>
+                                            <outlet property="issueTitleLabel" destination="D3F-sV-HFK" id="4ml-Mp-kcK"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

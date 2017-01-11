@@ -10,8 +10,20 @@ import UIKit
 
 class IssueCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var issueNumber: UILabel!
-    @IBOutlet weak var issueLabel: UILabel!
+    @IBOutlet weak var issueNumberLabel: UILabel!
+    @IBOutlet weak var issueTitleLabel: UILabel!
     
+    var issueNumber: String? {
+        didSet {
+            issueNumberLabel.text = issueNumber
+        }
+    }
+    
+    var issueTitle: String? {
+        didSet {
+            issueTitleLabel.text = issueTitle
+        }
+    }
+
     
 }

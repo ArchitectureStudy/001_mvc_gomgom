@@ -14,7 +14,7 @@ import RxDataSources
 
 class IssueListViewController: UIViewController {
     
-    let model = IssueModel(user: "FreeCodeCamp", repo: "FreeCodeCamp")
+    var presenter: IssueListPresenter!
     
     var datasource: Variable<[SectionModel<Int,IssueItem>]> = Variable([SectionModel(model: 1, items:[])])
     let disposeBag = DisposeBag()
@@ -23,13 +23,10 @@ class IssueListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        presenter = IssueListPresenter(view: self)
+        presenter.issuesRequest()
 
-        // Do any additional setup after loading the view.
-        NotificationCenter.default.addObserver(self, selector: #selector(onIssueRequestCompletedNotification(_:)), name: .IssueRequestCompletedNotification, object: nil)
-        
-        // api request
-        model.request()
-        
         // collectionView bind Data
         self.bindDataSource()
         self.rxAction()
@@ -51,13 +48,6 @@ class IssueListViewController: UIViewController {
     }
     */
     
-    
-    func onIssueRequestCompletedNotification(_ notification: Notification) {
-        print("onIssueRequestCompletedNotification IN")
-        let newSectionModel = SectionModel(model: 1, items: model.issues)
-        self.datasource.value = [newSectionModel]
-    }
-
 }
 
 
@@ -65,18 +55,18 @@ class IssueListViewController: UIViewController {
 extension IssueListViewController {
     
     func rxAction() {
-        issueCollectionView.rx.observe(CGSize.self, "contentSize")
-            .filter{ size -> Bool in
-                size?.height != 0
-            }
-            .distinctUntilChanged{ (old,new) -> Bool in
-                return (old?.width == new?.width && old?.height == new?.height)
-            }
-            .skip(1)
-            .subscribe(onNext: { [weak self] size in
-                let newOffSet =  CGPoint(x: 0, y: (size?.height ?? 0) - (self?.issueCollectionView.frame.height ?? 0))
-                self?.issueCollectionView.setContentOffset(newOffSet, animated: true)
-            }).addDisposableTo(disposeBag)
+//        issueCollectionView.rx.observe(CGSize.self, "contentSize")
+//            .filter{ size -> Bool in
+//                size?.height != 0
+//            }
+//            .distinctUntilChanged{ (old,new) -> Bool in
+//                return (old?.width == new?.width && old?.height == new?.height)
+//            }
+//            .skip(1)
+//            .subscribe(onNext: { [weak self] size in
+//                let newOffSet =  CGPoint(x: 0, y: (size?.height ?? 0) - (self?.issueCollectionView.frame.height ?? 0))
+//                self?.issueCollectionView.setContentOffset(newOffSet, animated: true)
+//            }).addDisposableTo(disposeBag)
     }
     
     func bindDataSource() {
@@ -88,8 +78,8 @@ extension IssueListViewController {
         
         datasource.configureCell = { datasource, collectionView, indexPath, item in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueCollectionViewCell", for: indexPath) as? IssueCollectionViewCell else { return IssueCollectionViewCell() }
-            cell.issueLabel.text = "\(item.title)"
-            cell.issueNumber.text = "#\(item.number)"
+            cell.issueNumber = "#\(item.number)"
+            cell.issueTitle = "\(item.title)"
             return cell
         }
         return datasource
@@ -99,4 +89,12 @@ extension IssueListViewController {
         
     }
 }
+
+extension IssueListViewController:IssueListPresenterProtocol {
+    func displayIssues(issueItems: [IssueItem]) {
+        let newSectionModel = SectionModel(model: 1, items: issueItems)
+        self.datasource.value = [newSectionModel]
+    }
+}
+
 
