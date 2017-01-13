@@ -21,6 +21,8 @@
 		561C7E421E1FA9DC00ED279D /* IssueListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C7E411E1FA9DC00ED279D /* IssueListViewController.swift */; };
 		561C7E461E1FAEDF00ED279D /* IssueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C7E451E1FAEDF00ED279D /* IssueModel.swift */; };
 		561C7E481E1FB50800ED279D /* IssueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C7E471E1FB50800ED279D /* IssueCollectionViewCell.swift */; };
+		569E0BC51E274CB500FB7170 /* IssueWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E0BC41E274CB500FB7170 /* IssueWriteViewController.swift */; };
+		569E0BC71E27784F00FB7170 /* IssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E0BC61E27784F00FB7170 /* IssueDetailViewController.swift */; };
 		56BEBA0A1E25CA1300619AE8 /* IssueListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEBA091E25CA1300619AE8 /* IssueListPresenter.swift */; };
 		E4D525BE9CEE6FFB65A4C6D5 /* Pods_GithubIssuesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E7820116DCEDFAE1354FD8C /* Pods_GithubIssuesTests.framework */; };
 /* End PBXBuildFile section */
@@ -61,6 +63,8 @@
 		561C7E411E1FA9DC00ED279D /* IssueListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueListViewController.swift; sourceTree = "<group>"; };
 		561C7E451E1FAEDF00ED279D /* IssueModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueModel.swift; path = Models/IssueModel.swift; sourceTree = "<group>"; };
 		561C7E471E1FB50800ED279D /* IssueCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueCollectionViewCell.swift; path = Cells/IssueCollectionViewCell.swift; sourceTree = "<group>"; };
+		569E0BC41E274CB500FB7170 /* IssueWriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueWriteViewController.swift; sourceTree = "<group>"; };
+		569E0BC61E27784F00FB7170 /* IssueDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailViewController.swift; path = Cells/IssueDetailViewController.swift; sourceTree = "<group>"; };
 		56BEBA091E25CA1300619AE8 /* IssueListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueListPresenter.swift; path = Presenter/IssueListPresenter.swift; sourceTree = "<group>"; };
 		587C3FAB1CF5CC2CA72378FF /* Pods-GithubIssues.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubIssues.release.xcconfig"; path = "Pods/Target Support Files/Pods-GithubIssues/Pods-GithubIssues.release.xcconfig"; sourceTree = "<group>"; };
 		695CCC328FF7CA3A35EE5B39 /* Pods-GithubIssuesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubIssuesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GithubIssuesTests/Pods-GithubIssuesTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +184,8 @@
 			children = (
 				561C7E411E1FA9DC00ED279D /* IssueListViewController.swift */,
 				561C7E471E1FB50800ED279D /* IssueCollectionViewCell.swift */,
+				569E0BC41E274CB500FB7170 /* IssueWriteViewController.swift */,
+				569E0BC61E27784F00FB7170 /* IssueDetailViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -488,7 +494,9 @@
 				561C7E461E1FAEDF00ED279D /* IssueModel.swift in Sources */,
 				561C7E421E1FA9DC00ED279D /* IssueListViewController.swift in Sources */,
 				5612FA9C1E237B4C001C1BA2 /* NotificationExtension.swift in Sources */,
+				569E0BC71E27784F00FB7170 /* IssueDetailViewController.swift in Sources */,
 				5612FA9E1E238020001C1BA2 /* IssueItemUser.swift in Sources */,
+				569E0BC51E274CB500FB7170 /* IssueWriteViewController.swift in Sources */,
 				561C7E121E1FA89E00ED279D /* AppDelegate.swift in Sources */,
 				5612FAA01E23803E001C1BA2 /* IssueItem.swift in Sources */,
 			);

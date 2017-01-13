@@ -61,7 +61,7 @@
                                                         <constraint firstAttribute="height" constant="55" id="6H1-xN-Q5E"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Ic-K7-Rr5" userLabel="line">
@@ -75,12 +75,12 @@
                                                         <constraint firstAttribute="height" constant="25" id="C8t-Bu-GRX"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="D3F-sV-HFK" firstAttribute="trailing" secondItem="rRv-ND-00U" secondAttribute="trailingMargin" id="72F-4B-TWr"/>
                                             <constraint firstItem="KoM-2c-Vvz" firstAttribute="leading" secondItem="rRv-ND-00U" secondAttribute="leadingMargin" id="8PT-Tm-yhN"/>
@@ -93,6 +93,7 @@
                                         <connections>
                                             <outlet property="issueNumberLabel" destination="KoM-2c-Vvz" id="zWJ-fQ-oTb"/>
                                             <outlet property="issueTitleLabel" destination="D3F-sV-HFK" id="4ml-Mp-kcK"/>
+                                            <segue destination="u7Q-55-F6P" kind="show" identifier="showIssueDetailViewController" id="BWW-4C-qhq"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -106,14 +107,73 @@
                             <constraint firstItem="Hk5-kM-11d" firstAttribute="top" secondItem="L6M-QE-O5f" secondAttribute="bottom" constant="-64" id="zlg-1B-aa1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Issues" id="Qpq-0x-fRz"/>
+                    <navigationItem key="navigationItem" title="Issues" id="Qpq-0x-fRz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Q4s-nA-xh1"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="issueAddButton" destination="Q4s-nA-xh1" id="rHC-uS-njn"/>
                         <outlet property="issueCollectionView" destination="Hk5-kM-11d" id="ibZ-pD-Dxx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgu-MH-qV1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="384.80000000000001" y="-36.431784107946029"/>
+        </scene>
+        <!--Issue Detail View Controller-->
+        <scene sceneID="lQO-mt-TXQ">
+            <objects>
+                <viewController storyboardIdentifier="IssueDetailViewController" id="u7Q-55-F6P" customClass="IssueDetailViewController" customModule="GithubIssues" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cAJ-mO-s64"/>
+                        <viewControllerLayoutGuide type="bottom" id="xOb-ol-cKq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ghh-ut-YrJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oOo-H0-Toq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1156" y="-725"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eAC-ux-FSK">
+            <objects>
+                <navigationController id="pNz-D2-QvC" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8Gy-GO-IcF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="YnR-w3-Usz" kind="relationship" relationship="rootViewController" id="IW1-Iw-sta"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xvU-ua-Ajt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1156" y="-42"/>
+        </scene>
+        <!--New Issue-->
+        <scene sceneID="fzX-yC-eeW">
+            <objects>
+                <viewController storyboardIdentifier="IssueWriteViewController" id="YnR-w3-Usz" customClass="IssueWriteViewController" customModule="GithubIssues" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gXh-CG-8Sn"/>
+                        <viewControllerLayoutGuide type="bottom" id="0xa-Wc-4jV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qxp-jq-YF9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Issue" id="uY7-cz-dUB">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="5Eo-xI-aBv"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ACg-rf-LnG"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Lo-1g-X3e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1905" y="-43"/>
         </scene>
     </scenes>
 </document>

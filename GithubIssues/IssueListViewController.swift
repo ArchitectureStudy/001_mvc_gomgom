@@ -14,6 +14,9 @@ import RxDataSources
 
 class IssueListViewController: UIViewController {
     
+    @IBOutlet weak var issueAddButton: UIBarButtonItem!
+    
+    
     var presenter: IssueListPresenter!
     
     var datasource: Variable<[SectionModel<Int,IssueItem>]> = Variable([SectionModel(model: 1, items:[])])
@@ -48,6 +51,21 @@ class IssueListViewController: UIViewController {
     }
     */
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return true;
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showIssueDetailViewController", let destination = segue.destination as? IssueDetailViewController {
+            
+            if let cell = sender as? IssueCollectionViewCell, let indexPath = issueCollectionView.indexPath(for: cell) {
+                let affiliation = datasource.value.first?.items[indexPath.row]
+                destination.issueItem = affiliation!
+            }
+        }
+    }
+    
+    
 }
 
 
@@ -67,6 +85,13 @@ extension IssueListViewController {
 //                let newOffSet =  CGPoint(x: 0, y: (size?.height ?? 0) - (self?.issueCollectionView.frame.height ?? 0))
 //                self?.issueCollectionView.setContentOffset(newOffSet, animated: true)
 //            }).addDisposableTo(disposeBag)
+        
+        self.navigationItem.rightBarButtonItem?.rx.tap.asObservable().subscribe(onNext: { [weak self] _ in
+            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "IssueWriteViewController") as! IssueWriteViewController
+            viewController.delegate = self
+            self?.present(viewController.wrapNavigation(), animated: true, completion: nil)
+            }
+            ).addDisposableTo(disposeBag)
     }
     
     func bindDataSource() {
@@ -90,6 +115,8 @@ extension IssueListViewController {
     }
 }
 
+
+
 extension IssueListViewController:IssueListPresenterProtocol {
     func displayIssues(issueItems: [IssueItem]) {
         let newSectionModel = SectionModel(model: 1, items: issueItems)
@@ -97,4 +124,13 @@ extension IssueListViewController:IssueListPresenterProtocol {
     }
 }
 
+extension IssueListViewController: IssueWriteViewControllerDelegate {
+    func memoGetController(picker: IssueWriteViewController) {
+//        addCell(text: memo)
+    }
+    
+    func memoGetControllerDidCancel(picker: IssueWriteViewController) {
+        
+    }
+}
 
