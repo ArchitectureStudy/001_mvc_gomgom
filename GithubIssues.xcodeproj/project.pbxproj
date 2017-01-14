@@ -18,11 +18,18 @@
 		561C7E1C1E1FA89E00ED279D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 561C7E1A1E1FA89E00ED279D /* LaunchScreen.storyboard */; };
 		561C7E271E1FA89E00ED279D /* GithubIssuesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C7E261E1FA89E00ED279D /* GithubIssuesTests.swift */; };
 		561C7E321E1FA89E00ED279D /* GithubIssuesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C7E311E1FA89E00ED279D /* GithubIssuesUITests.swift */; };
-		561C7E421E1FA9DC00ED279D /* IssueListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C7E411E1FA9DC00ED279D /* IssueListViewController.swift */; };
-		561C7E461E1FAEDF00ED279D /* IssueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C7E451E1FAEDF00ED279D /* IssueModel.swift */; };
-		561C7E481E1FB50800ED279D /* IssueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C7E471E1FB50800ED279D /* IssueCollectionViewCell.swift */; };
-		569E0BC51E274CB500FB7170 /* IssueWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E0BC41E274CB500FB7170 /* IssueWriteViewController.swift */; };
-		569E0BC71E27784F00FB7170 /* IssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E0BC61E27784F00FB7170 /* IssueDetailViewController.swift */; };
+		561C7E461E1FAEDF00ED279D /* IssueListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C7E451E1FAEDF00ED279D /* IssueListModel.swift */; };
+		56959B161E29FBA00030ED00 /* IssueDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B151E29FBA00030ED00 /* IssueDetailModel.swift */; };
+		56959B181E29FC920030ED00 /* IssueDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B171E29FC920030ED00 /* IssueDetailItem.swift */; };
+		56959B1A1E29FEE60030ED00 /* IssueDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B191E29FEE60030ED00 /* IssueDetailPresenter.swift */; };
+		56959B221E2A007F0030ED00 /* IssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B1E1E2A007F0030ED00 /* IssueDetailViewController.swift */; };
+		56959B231E2A007F0030ED00 /* IssueListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B1F1E2A007F0030ED00 /* IssueListViewController.swift */; };
+		56959B241E2A007F0030ED00 /* IssueWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B201E2A007F0030ED00 /* IssueWriteViewController.swift */; };
+		56959B251E2A007F0030ED00 /* IssueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B211E2A007F0030ED00 /* IssueCollectionViewCell.swift */; };
+		56959B271E2A00870030ED00 /* IssueListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B261E2A00870030ED00 /* IssueListItem.swift */; };
+		56959B291E2A00B50030ED00 /* IssueItemLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B281E2A00B50030ED00 /* IssueItemLabels.swift */; };
+		56959B2B1E2A13B00030ED00 /* IssueUserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B2A1E2A13B00030ED00 /* IssueUserInfoManager.swift */; };
+		56959B2F1E2A1BBA0030ED00 /* GithubUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B2E1E2A1BBA0030ED00 /* GithubUserInfoViewController.swift */; };
 		56BEBA0A1E25CA1300619AE8 /* IssueListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEBA091E25CA1300619AE8 /* IssueListPresenter.swift */; };
 		E4D525BE9CEE6FFB65A4C6D5 /* Pods_GithubIssuesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E7820116DCEDFAE1354FD8C /* Pods_GithubIssuesTests.framework */; };
 /* End PBXBuildFile section */
@@ -60,11 +67,18 @@
 		561C7E2D1E1FA89E00ED279D /* GithubIssuesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GithubIssuesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		561C7E311E1FA89E00ED279D /* GithubIssuesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubIssuesUITests.swift; sourceTree = "<group>"; };
 		561C7E331E1FA89E00ED279D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		561C7E411E1FA9DC00ED279D /* IssueListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueListViewController.swift; sourceTree = "<group>"; };
-		561C7E451E1FAEDF00ED279D /* IssueModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueModel.swift; path = Models/IssueModel.swift; sourceTree = "<group>"; };
-		561C7E471E1FB50800ED279D /* IssueCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueCollectionViewCell.swift; path = Cells/IssueCollectionViewCell.swift; sourceTree = "<group>"; };
-		569E0BC41E274CB500FB7170 /* IssueWriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueWriteViewController.swift; sourceTree = "<group>"; };
-		569E0BC61E27784F00FB7170 /* IssueDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailViewController.swift; path = Cells/IssueDetailViewController.swift; sourceTree = "<group>"; };
+		561C7E451E1FAEDF00ED279D /* IssueListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueListModel.swift; path = Models/IssueListModel.swift; sourceTree = "<group>"; };
+		56959B151E29FBA00030ED00 /* IssueDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailModel.swift; path = Models/IssueDetailModel.swift; sourceTree = "<group>"; };
+		56959B171E29FC920030ED00 /* IssueDetailItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailItem.swift; path = Models/IssueDetailItem.swift; sourceTree = "<group>"; };
+		56959B191E29FEE60030ED00 /* IssueDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailPresenter.swift; path = Presenter/IssueDetailPresenter.swift; sourceTree = "<group>"; };
+		56959B1E1E2A007F0030ED00 /* IssueDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailViewController.swift; path = Views/IssueDetailViewController.swift; sourceTree = "<group>"; };
+		56959B1F1E2A007F0030ED00 /* IssueListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueListViewController.swift; path = Views/IssueListViewController.swift; sourceTree = "<group>"; };
+		56959B201E2A007F0030ED00 /* IssueWriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueWriteViewController.swift; path = Views/IssueWriteViewController.swift; sourceTree = "<group>"; };
+		56959B211E2A007F0030ED00 /* IssueCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueCollectionViewCell.swift; path = Views/IssueCollectionViewCell.swift; sourceTree = "<group>"; };
+		56959B261E2A00870030ED00 /* IssueListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueListItem.swift; path = Models/IssueListItem.swift; sourceTree = "<group>"; };
+		56959B281E2A00B50030ED00 /* IssueItemLabels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueItemLabels.swift; path = Models/IssueItemLabels.swift; sourceTree = "<group>"; };
+		56959B2A1E2A13B00030ED00 /* IssueUserInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueUserInfoManager.swift; path = Models/IssueUserInfoManager.swift; sourceTree = "<group>"; };
+		56959B2E1E2A1BBA0030ED00 /* GithubUserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubUserInfoViewController.swift; sourceTree = "<group>"; };
 		56BEBA091E25CA1300619AE8 /* IssueListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueListPresenter.swift; path = Presenter/IssueListPresenter.swift; sourceTree = "<group>"; };
 		587C3FAB1CF5CC2CA72378FF /* Pods-GithubIssues.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubIssues.release.xcconfig"; path = "Pods/Target Support Files/Pods-GithubIssues/Pods-GithubIssues.release.xcconfig"; sourceTree = "<group>"; };
 		695CCC328FF7CA3A35EE5B39 /* Pods-GithubIssuesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubIssuesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GithubIssuesTests/Pods-GithubIssuesTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -139,10 +153,12 @@
 			isa = PBXGroup;
 			children = (
 				561C7E111E1FA89E00ED279D /* AppDelegate.swift */,
+				56959B2E1E2A1BBA0030ED00 /* GithubUserInfoViewController.swift */,
 				56BEBA081E25C9E600619AE8 /* Presenter */,
 				561C7E491E1FB50E00ED279D /* Views */,
 				561C7E431E1FAE1800ED279D /* Models */,
 				5612FA9A1E2376E7001C1BA2 /* Extensions */,
+				56959B2D1E2A16280030ED00 /* GithubApiManager */,
 				561C7E151E1FA89E00ED279D /* Main.storyboard */,
 				561C7E181E1FA89E00ED279D /* Assets.xcassets */,
 				561C7E1A1E1FA89E00ED279D /* LaunchScreen.storyboard */,
@@ -172,9 +188,11 @@
 		561C7E431E1FAE1800ED279D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				561C7E451E1FAEDF00ED279D /* IssueModel.swift */,
-				5612FA9F1E23803E001C1BA2 /* IssueItem.swift */,
-				5612FA9D1E238020001C1BA2 /* IssueItemUser.swift */,
+				56959B2C1E2A15820030ED00 /* BaseItem */,
+				561C7E451E1FAEDF00ED279D /* IssueListModel.swift */,
+				56959B261E2A00870030ED00 /* IssueListItem.swift */,
+				56959B151E29FBA00030ED00 /* IssueDetailModel.swift */,
+				56959B171E29FC920030ED00 /* IssueDetailItem.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -182,18 +200,37 @@
 		561C7E491E1FB50E00ED279D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				561C7E411E1FA9DC00ED279D /* IssueListViewController.swift */,
-				561C7E471E1FB50800ED279D /* IssueCollectionViewCell.swift */,
-				569E0BC41E274CB500FB7170 /* IssueWriteViewController.swift */,
-				569E0BC61E27784F00FB7170 /* IssueDetailViewController.swift */,
+				56959B1F1E2A007F0030ED00 /* IssueListViewController.swift */,
+				56959B1E1E2A007F0030ED00 /* IssueDetailViewController.swift */,
+				56959B201E2A007F0030ED00 /* IssueWriteViewController.swift */,
+				56959B211E2A007F0030ED00 /* IssueCollectionViewCell.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		56959B2C1E2A15820030ED00 /* BaseItem */ = {
+			isa = PBXGroup;
+			children = (
+				5612FA9F1E23803E001C1BA2 /* IssueItem.swift */,
+				5612FA9D1E238020001C1BA2 /* IssueItemUser.swift */,
+				56959B281E2A00B50030ED00 /* IssueItemLabels.swift */,
+			);
+			name = BaseItem;
+			sourceTree = "<group>";
+		};
+		56959B2D1E2A16280030ED00 /* GithubApiManager */ = {
+			isa = PBXGroup;
+			children = (
+				56959B2A1E2A13B00030ED00 /* IssueUserInfoManager.swift */,
+			);
+			name = GithubApiManager;
 			sourceTree = "<group>";
 		};
 		56BEBA081E25C9E600619AE8 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
 				56BEBA091E25CA1300619AE8 /* IssueListPresenter.swift */,
+				56959B191E29FEE60030ED00 /* IssueDetailPresenter.swift */,
 			);
 			name = Presenter;
 			sourceTree = "<group>";
@@ -489,14 +526,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56959B231E2A007F0030ED00 /* IssueListViewController.swift in Sources */,
 				56BEBA0A1E25CA1300619AE8 /* IssueListPresenter.swift in Sources */,
-				561C7E481E1FB50800ED279D /* IssueCollectionViewCell.swift in Sources */,
-				561C7E461E1FAEDF00ED279D /* IssueModel.swift in Sources */,
-				561C7E421E1FA9DC00ED279D /* IssueListViewController.swift in Sources */,
+				561C7E461E1FAEDF00ED279D /* IssueListModel.swift in Sources */,
+				56959B221E2A007F0030ED00 /* IssueDetailViewController.swift in Sources */,
+				56959B271E2A00870030ED00 /* IssueListItem.swift in Sources */,
+				56959B161E29FBA00030ED00 /* IssueDetailModel.swift in Sources */,
+				56959B241E2A007F0030ED00 /* IssueWriteViewController.swift in Sources */,
+				56959B291E2A00B50030ED00 /* IssueItemLabels.swift in Sources */,
 				5612FA9C1E237B4C001C1BA2 /* NotificationExtension.swift in Sources */,
-				569E0BC71E27784F00FB7170 /* IssueDetailViewController.swift in Sources */,
+				56959B251E2A007F0030ED00 /* IssueCollectionViewCell.swift in Sources */,
+				56959B2F1E2A1BBA0030ED00 /* GithubUserInfoViewController.swift in Sources */,
+				56959B181E29FC920030ED00 /* IssueDetailItem.swift in Sources */,
+				56959B1A1E29FEE60030ED00 /* IssueDetailPresenter.swift in Sources */,
 				5612FA9E1E238020001C1BA2 /* IssueItemUser.swift in Sources */,
-				569E0BC51E274CB500FB7170 /* IssueWriteViewController.swift in Sources */,
+				56959B2B1E2A13B00030ED00 /* IssueUserInfoManager.swift in Sources */,
 				561C7E121E1FA89E00ED279D /* AppDelegate.swift in Sources */,
 				5612FAA01E23803E001C1BA2 /* IssueItem.swift in Sources */,
 			);
@@ -650,6 +694,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CB77C0AE9A36A06C5DB6CC04 /* Pods-GithubIssues.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 28K9LD277B;
 				INFOPLIST_FILE = GithubIssues/Info.plist;
@@ -664,6 +709,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 587C3FAB1CF5CC2CA72378FF /* Pods-GithubIssues.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 28K9LD277B;
 				INFOPLIST_FILE = GithubIssues/Info.plist;

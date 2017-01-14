@@ -11,19 +11,19 @@ import Alamofire
 import SwiftyJSON
 import ObjectMapper
 
-class IssueModel {
+class IssueListModel {
     
     let user:String
     let repo:String
     
-    var issues:[IssueItem] = []
+    var issues:[IssueListItem] = []
     
     func request() {
         Alamofire.request("https://api.github.com/repos/\(user)/\(repo)/issues").responseJSON { [weak self] response in
             guard let weakSelf = self else { return }
             if let json = response.result.value as? [[String: AnyObject]] {
                 
-                weakSelf.issues = Mapper<IssueItem>().mapArray(JSONArray: json)!
+                weakSelf.issues = Mapper<IssueListItem>().mapArray(JSONArray: json)!
                                 
                 NotificationCenter.default.post(name: .IssueRequestCompletedNotification, object: weakSelf)
             }

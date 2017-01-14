@@ -9,17 +9,20 @@
 import Foundation
 
 protocol IssueListPresenterProtocol {
-    func displayIssues(issueItems: [IssueItem])
+    func displayIssues(issueItems: [IssueListItem])
 }
 
 class IssueListPresenter {
     
-    let model:IssueModel
+    let manager = IssueUserInfoManager.sharedInstance
+    
+    let model:IssueListModel
     var view:IssueListPresenterProtocol!
     
     init(view:IssueListPresenterProtocol) {
+        
         self.view = view;
-        self.model = IssueModel(user: "FreeCodeCamp", repo: "FreeCodeCamp")
+        self.model = IssueListModel(user: manager.user, repo: manager.repo)
         
         NotificationCenter.default.addObserver(self, selector: #selector(onIssueRequestCompletedNotification(_:)), name: .IssueRequestCompletedNotification, object: nil)
     }

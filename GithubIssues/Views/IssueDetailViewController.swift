@@ -10,19 +10,24 @@ import UIKit
 
 class IssueDetailViewController: UIViewController {
     
-    var issueItem:IssueItem = IssueItem()
+    //리스트에서 선택한 아이템
+    var issueSelectedItem:IssueListItem = IssueListItem()
+    
+    var presenter: IssueDetailPresenter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
+        presenter = IssueDetailPresenter(view: self, selectedItem: issueSelectedItem)
+        presenter.issuesRequest()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        self.navigationItem.title = "#\(issueItem.number)"
+        self.navigationItem.title = "#\(issueSelectedItem.number)"
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,4 +46,10 @@ class IssueDetailViewController: UIViewController {
     }
     */
 
+}
+
+extension IssueDetailViewController: IssueDetailPresenterProtocol {
+    func displayDetailIssues(issueItems: IssueDetailItem) {
+        
+    }
 }
