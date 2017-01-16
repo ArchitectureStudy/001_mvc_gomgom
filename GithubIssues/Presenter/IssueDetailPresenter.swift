@@ -9,7 +9,7 @@
 import Foundation
 
 protocol IssueDetailPresenterProtocol {
-    func displayDetailIssues(issueItems:IssueDetailItem)
+    func displayDetailIssue(issueItem:IssueDetailItem)
 }
 
 class IssueDetailPresenter {
@@ -28,8 +28,8 @@ class IssueDetailPresenter {
     
     
     @objc func onIssueDetailRequestCompletedNotification(_ notification: Notification) {
-        print("onIssueRequestCompletedNotification IN")
-        self.view.displayDetailIssues(issueItems: model.issueDetail)
+        print("onIssueDetailRequestCompletedNotification IN")
+        self.view.displayDetailIssue(issueItem: model.issueDetail)
     }
     
     func issuesRequest() {

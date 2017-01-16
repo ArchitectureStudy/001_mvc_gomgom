@@ -14,6 +14,8 @@ target 'GithubIssues' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxDataSources'
+  
+  pod 'FDStackView'
 
 
   target 'GithubIssuesTests' do

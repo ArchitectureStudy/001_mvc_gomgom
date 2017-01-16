@@ -19,6 +19,7 @@
 		561C7E271E1FA89E00ED279D /* GithubIssuesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C7E261E1FA89E00ED279D /* GithubIssuesTests.swift */; };
 		561C7E321E1FA89E00ED279D /* GithubIssuesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C7E311E1FA89E00ED279D /* GithubIssuesUITests.swift */; };
 		561C7E461E1FAEDF00ED279D /* IssueListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C7E451E1FAEDF00ED279D /* IssueListModel.swift */; };
+		5694AA4E1E2C5B34006B483D /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5694AA4D1E2C5B34006B483D /* APIManager.swift */; };
 		56959B161E29FBA00030ED00 /* IssueDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B151E29FBA00030ED00 /* IssueDetailModel.swift */; };
 		56959B181E29FC920030ED00 /* IssueDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B171E29FC920030ED00 /* IssueDetailItem.swift */; };
 		56959B1A1E29FEE60030ED00 /* IssueDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B191E29FEE60030ED00 /* IssueDetailPresenter.swift */; };
@@ -68,6 +69,7 @@
 		561C7E311E1FA89E00ED279D /* GithubIssuesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubIssuesUITests.swift; sourceTree = "<group>"; };
 		561C7E331E1FA89E00ED279D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		561C7E451E1FAEDF00ED279D /* IssueListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueListModel.swift; path = Models/IssueListModel.swift; sourceTree = "<group>"; };
+		5694AA4D1E2C5B34006B483D /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = Manager/APIManager.swift; sourceTree = "<group>"; };
 		56959B151E29FBA00030ED00 /* IssueDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailModel.swift; path = Models/IssueDetailModel.swift; sourceTree = "<group>"; };
 		56959B171E29FC920030ED00 /* IssueDetailItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailItem.swift; path = Models/IssueDetailItem.swift; sourceTree = "<group>"; };
 		56959B191E29FEE60030ED00 /* IssueDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailPresenter.swift; path = Presenter/IssueDetailPresenter.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				56959B2A1E2A13B00030ED00 /* IssueUserInfoManager.swift */,
+				5694AA4D1E2C5B34006B483D /* APIManager.swift */,
 			);
 			name = GithubApiManager;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				56959B251E2A007F0030ED00 /* IssueCollectionViewCell.swift in Sources */,
 				56959B2F1E2A1BBA0030ED00 /* GithubUserInfoViewController.swift in Sources */,
 				56959B181E29FC920030ED00 /* IssueDetailItem.swift in Sources */,
+				5694AA4E1E2C5B34006B483D /* APIManager.swift in Sources */,
 				56959B1A1E29FEE60030ED00 /* IssueDetailPresenter.swift in Sources */,
 				5612FA9E1E238020001C1BA2 /* IssueItemUser.swift in Sources */,
 				56959B2B1E2A13B00030ED00 /* IssueUserInfoManager.swift in Sources */,

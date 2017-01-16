@@ -20,20 +20,15 @@ class IssueDetailModel {
     var issueDetail:IssueDetailItem = IssueDetailItem()
     
     func request() {
-        //https://api.github.com/repos/freeCodeCamp/freeCodeCamp/issues/12518
-        Alamofire.request("https://api.github.com/repos/\(user)/\(repo)/issues/\(number)").responseJSON { [weak self] response in
-            guard let weakSelf = self else { return }
-            switch (response.result){
-                case .success:
-                    let json = response.result.value
-                    weakSelf.issueDetail = Mapper<IssueDetailItem>().map(JSONObject: json)!
-                    NotificationCenter.default.post(name: .IssueDetailRequestCompletedNotification, object: weakSelf)
-                    break
-                case .failure:
-                    
-                    break
-            }
-            
+        APIManager.sharedInstance.requestHTTPTask(.get, urlString: "https://api.github.com/repos/\(user)/\(repo)/issues/\(number)",
+            parameters: nil,
+            successBlock: {
+                [weak self] (result) in
+                guard let weakSelf = self else { return }
+                weakSelf.issueDetail = Mapper<IssueDetailItem>().map(JSONObject: result)!
+                NotificationCenter.default.post(name: .IssueDetailRequestCompletedNotification, object: weakSelf)
+        }) { (error) in
+            print(error)
         }
     }
     

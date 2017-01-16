@@ -15,6 +15,9 @@ class IssueDetailViewController: UIViewController {
     
     var presenter: IssueDetailPresenter!
 
+    @IBOutlet weak var idTextField: UITextField!
+    @IBOutlet weak var bodyTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,7 +52,8 @@ class IssueDetailViewController: UIViewController {
 }
 
 extension IssueDetailViewController: IssueDetailPresenterProtocol {
-    func displayDetailIssues(issueItems: IssueDetailItem) {
-        
+    func displayDetailIssue(issueItem: IssueDetailItem) {
+        idTextField.text = issueItem.User.login
+        bodyTextView.text = issueItem.body
     }
 }

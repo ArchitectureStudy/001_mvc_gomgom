@@ -19,14 +19,17 @@ class IssueListModel {
     var issues:[IssueListItem] = []
     
     func request() {
-        Alamofire.request("https://api.github.com/repos/\(user)/\(repo)/issues").responseJSON { [weak self] response in
-            guard let weakSelf = self else { return }
-            if let json = response.result.value as? [[String: AnyObject]] {
-                
-                weakSelf.issues = Mapper<IssueListItem>().mapArray(JSONArray: json)!
-                                
+        APIManager.sharedInstance.requestHTTPTask(.get, urlString: "https://api.github.com/repos/\(user)/\(repo)/issues",
+            parameters: nil,
+            successBlock: {
+                [weak self] (result) in
+                guard let weakSelf = self else { return }
+                if let json = result as? [[String: AnyObject]] {
+                    weakSelf.issues = Mapper<IssueListItem>().mapArray(JSONArray: json)!
+                }
                 NotificationCenter.default.post(name: .IssueRequestCompletedNotification, object: weakSelf)
-            }
+        }) { (error) in
+            print(error)
         }
     }
     

@@ -17,6 +17,11 @@ class IssueDetailItem:IssueItem {
         id <- map["id"]
         number <- map["number"]
         title <- map["title"]
+        state <- map["state"]
+        created_at <- map["created_at"]
+        body <- map["body"]
+        
         User <- map["user"]
+        Labels <- map["labels"]
     }
 }
