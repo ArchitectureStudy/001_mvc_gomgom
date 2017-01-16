@@ -21,13 +21,11 @@
 		561C7E461E1FAEDF00ED279D /* IssueListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C7E451E1FAEDF00ED279D /* IssueListModel.swift */; };
 		5694AA4E1E2C5B34006B483D /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5694AA4D1E2C5B34006B483D /* APIManager.swift */; };
 		56959B161E29FBA00030ED00 /* IssueDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B151E29FBA00030ED00 /* IssueDetailModel.swift */; };
-		56959B181E29FC920030ED00 /* IssueDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B171E29FC920030ED00 /* IssueDetailItem.swift */; };
 		56959B1A1E29FEE60030ED00 /* IssueDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B191E29FEE60030ED00 /* IssueDetailPresenter.swift */; };
 		56959B221E2A007F0030ED00 /* IssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B1E1E2A007F0030ED00 /* IssueDetailViewController.swift */; };
 		56959B231E2A007F0030ED00 /* IssueListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B1F1E2A007F0030ED00 /* IssueListViewController.swift */; };
 		56959B241E2A007F0030ED00 /* IssueWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B201E2A007F0030ED00 /* IssueWriteViewController.swift */; };
 		56959B251E2A007F0030ED00 /* IssueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B211E2A007F0030ED00 /* IssueCollectionViewCell.swift */; };
-		56959B271E2A00870030ED00 /* IssueListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B261E2A00870030ED00 /* IssueListItem.swift */; };
 		56959B291E2A00B50030ED00 /* IssueItemLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B281E2A00B50030ED00 /* IssueItemLabels.swift */; };
 		56959B2B1E2A13B00030ED00 /* IssueUserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B2A1E2A13B00030ED00 /* IssueUserInfoManager.swift */; };
 		56959B2F1E2A1BBA0030ED00 /* GithubUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B2E1E2A1BBA0030ED00 /* GithubUserInfoViewController.swift */; };
@@ -71,13 +69,11 @@
 		561C7E451E1FAEDF00ED279D /* IssueListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueListModel.swift; path = Models/IssueListModel.swift; sourceTree = "<group>"; };
 		5694AA4D1E2C5B34006B483D /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = Manager/APIManager.swift; sourceTree = "<group>"; };
 		56959B151E29FBA00030ED00 /* IssueDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailModel.swift; path = Models/IssueDetailModel.swift; sourceTree = "<group>"; };
-		56959B171E29FC920030ED00 /* IssueDetailItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailItem.swift; path = Models/IssueDetailItem.swift; sourceTree = "<group>"; };
 		56959B191E29FEE60030ED00 /* IssueDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailPresenter.swift; path = Presenter/IssueDetailPresenter.swift; sourceTree = "<group>"; };
 		56959B1E1E2A007F0030ED00 /* IssueDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailViewController.swift; path = Views/IssueDetailViewController.swift; sourceTree = "<group>"; };
 		56959B1F1E2A007F0030ED00 /* IssueListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueListViewController.swift; path = Views/IssueListViewController.swift; sourceTree = "<group>"; };
 		56959B201E2A007F0030ED00 /* IssueWriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueWriteViewController.swift; path = Views/IssueWriteViewController.swift; sourceTree = "<group>"; };
 		56959B211E2A007F0030ED00 /* IssueCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueCollectionViewCell.swift; path = Views/IssueCollectionViewCell.swift; sourceTree = "<group>"; };
-		56959B261E2A00870030ED00 /* IssueListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueListItem.swift; path = Models/IssueListItem.swift; sourceTree = "<group>"; };
 		56959B281E2A00B50030ED00 /* IssueItemLabels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueItemLabels.swift; path = Models/IssueItemLabels.swift; sourceTree = "<group>"; };
 		56959B2A1E2A13B00030ED00 /* IssueUserInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueUserInfoManager.swift; path = Models/IssueUserInfoManager.swift; sourceTree = "<group>"; };
 		56959B2E1E2A1BBA0030ED00 /* GithubUserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubUserInfoViewController.swift; sourceTree = "<group>"; };
@@ -192,9 +188,7 @@
 			children = (
 				56959B2C1E2A15820030ED00 /* BaseItem */,
 				561C7E451E1FAEDF00ED279D /* IssueListModel.swift */,
-				56959B261E2A00870030ED00 /* IssueListItem.swift */,
 				56959B151E29FBA00030ED00 /* IssueDetailModel.swift */,
-				56959B171E29FC920030ED00 /* IssueDetailItem.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -314,6 +308,7 @@
 				561C7E2A1E1FA89E00ED279D /* Frameworks */,
 				561C7E2B1E1FA89E00ED279D /* Resources */,
 				FDFAD30FB6AA467D1BD8364B /* [CP] Copy Pods Resources */,
+				B6E722AF057343E536C0E791 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -429,7 +424,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		55E48C7D1541C89675E78765 /* [CP] Check Pods Manifest.lock */ = {
@@ -444,7 +439,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		5EF473617EFF71A30CAB2D10 /* [CP] Copy Pods Resources */ = {
@@ -474,7 +469,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B6E722AF057343E536C0E791 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GithubIssuesUITests/Pods-GithubIssuesUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B8E7ED603DAEBF97B5279AFF /* [CP] Embed Pods Frameworks */ = {
@@ -533,14 +543,12 @@
 				56BEBA0A1E25CA1300619AE8 /* IssueListPresenter.swift in Sources */,
 				561C7E461E1FAEDF00ED279D /* IssueListModel.swift in Sources */,
 				56959B221E2A007F0030ED00 /* IssueDetailViewController.swift in Sources */,
-				56959B271E2A00870030ED00 /* IssueListItem.swift in Sources */,
 				56959B161E29FBA00030ED00 /* IssueDetailModel.swift in Sources */,
 				56959B241E2A007F0030ED00 /* IssueWriteViewController.swift in Sources */,
 				56959B291E2A00B50030ED00 /* IssueItemLabels.swift in Sources */,
 				5612FA9C1E237B4C001C1BA2 /* NotificationExtension.swift in Sources */,
 				56959B251E2A007F0030ED00 /* IssueCollectionViewCell.swift in Sources */,
 				56959B2F1E2A1BBA0030ED00 /* GithubUserInfoViewController.swift in Sources */,
-				56959B181E29FC920030ED00 /* IssueDetailItem.swift in Sources */,
 				5694AA4E1E2C5B34006B483D /* APIManager.swift in Sources */,
 				56959B1A1E29FEE60030ED00 /* IssueDetailPresenter.swift in Sources */,
 				5612FA9E1E238020001C1BA2 /* IssueItemUser.swift in Sources */,

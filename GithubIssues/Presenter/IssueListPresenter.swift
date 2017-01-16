@@ -9,7 +9,7 @@
 import Foundation
 
 protocol IssueListPresenterProtocol {
-    func displayIssues(issueItems: [IssueListItem])
+    func displayIssues(issueItems: [IssueItem])
 }
 
 class IssueListPresenter {

@@ -11,7 +11,7 @@ import UIKit
 class IssueDetailViewController: UIViewController {
     
     //리스트에서 선택한 아이템
-    var issueSelectedItem:IssueListItem = IssueListItem()
+    var issueSelectedItem:IssueItem = IssueItem()
     
     var presenter: IssueDetailPresenter!
 

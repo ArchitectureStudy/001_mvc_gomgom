@@ -17,7 +17,7 @@ class IssueDetailModel {
     let repo:String
     let number:Int
     
-    var issueDetail:IssueDetailItem = IssueDetailItem()
+    var issueDetail:IssueItem = IssueItem()
     
     func request() {
         APIManager.sharedInstance.requestHTTPTask(.get, urlString: "https://api.github.com/repos/\(user)/\(repo)/issues/\(number)",
@@ -25,7 +25,7 @@ class IssueDetailModel {
             successBlock: {
                 [weak self] (result) in
                 guard let weakSelf = self else { return }
-                weakSelf.issueDetail = Mapper<IssueDetailItem>().map(JSONObject: result)!
+                weakSelf.issueDetail = Mapper<IssueItem>().map(JSONObject: result)!
                 NotificationCenter.default.post(name: .IssueDetailRequestCompletedNotification, object: weakSelf)
         }) { (error) in
             print(error)
