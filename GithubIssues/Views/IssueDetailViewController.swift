@@ -21,6 +21,9 @@ class IssueDetailViewController: UIViewController {
     var datasource: Variable<[SectionModel<Int,IssueItem>]> = Variable([SectionModel(model: 1, items:[])])
     let disposeBag = DisposeBag()
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var commentCountLabel: UILabel!
     @IBOutlet weak var detailCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -61,9 +64,9 @@ class IssueDetailViewController: UIViewController {
 }
 
 extension IssueDetailViewController: IssueDetailPresenterProtocol {
-    func displayDetailIssue(issueItem: IssueDetailItem) {
-//        idTextField.text = issueItem.User.login
-//        bodyTextView.text = issueItem.body
+    func displayDetailIssue(issueItem: IssueDetailItem, ) {
+        usernameLabel.text = issueItem.User.login
+        titleLabel.text = issueItem.body
 //        let newSectionModel = SectionModel(model: 1, items: issueItem)
 //        self.datasource.value = [newSectionModel]
     }
