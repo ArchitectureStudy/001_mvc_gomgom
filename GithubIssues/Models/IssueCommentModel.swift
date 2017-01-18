@@ -19,7 +19,7 @@ class IssueCommentModel {
     let repo:String
     let number:Int
     
-    var issueDetail:IssueCommentItem = IssueCommentItem()
+    var issueComments:[IssueCommentItem] = []
     
     func request() {
         APIManager.sharedInstance.requestHTTPTask(.get, urlString: "https://api.github.com/repos/\(user)/\(repo)/issues/\(number)/comments",
@@ -27,8 +27,11 @@ class IssueCommentModel {
             successBlock: {
                 [weak self] (result) in
                 guard let weakSelf = self else { return }
-                weakSelf.issueDetail = Mapper<IssueCommentItem>().map(JSONObject: result)!
-                NotificationCenter.default.post(name: .IssueDetailRequestCompletedNotification, object: weakSelf)
+                if let json = result as? [[String: AnyObject]] {
+                    weakSelf.issueComments = Mapper<IssueCommentItem>().mapArray(JSONArray: json)!
+                }
+                
+                NotificationCenter.default.post(name: .IssueDetailCommentsRequestCompletedNotification, object: weakSelf)
         }) { (error) in
             print(error)
         }

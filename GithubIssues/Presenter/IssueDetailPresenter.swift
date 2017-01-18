@@ -9,7 +9,8 @@
 import Foundation
 
 protocol IssueDetailPresenterProtocol {
-    func displayDetailIssue(issueItem:IssueDetailItem)
+    func displayIssueDetail(issueItem:IssueDetailItem)
+    func displayIssueDetailComments(issueItems:[IssueCommentItem])
 }
 
 class IssueDetailPresenter {
@@ -27,17 +28,26 @@ class IssueDetailPresenter {
         self.modelComment = IssueCommentModel(user: manager.user, repo: manager.repo, number: selectedItem.number)
         
         NotificationCenter.default.addObserver(self, selector: #selector(onIssueDetailRequestCompletedNotification(_:)), name: .IssueDetailRequestCompletedNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onIssueDetailCommentsRequestCompletedNotification(_:)), name: .IssueDetailCommentsRequestCompletedNotification, object: nil)
+        
     }
     
     
     @objc func onIssueDetailRequestCompletedNotification(_ notification: Notification) {
         print("onIssueDetailRequestCompletedNotification IN")
-        self.view.displayDetailIssue(issueItem: model.issueDetail)
+        self.view.displayIssueDetail(issueItem: model.issueDetail)
+    }
+    
+    @objc func onIssueDetailCommentsRequestCompletedNotification(_ notification: Notification) {
+        print("onIssueDetailCommentsRequestCompletedNotification IN")
+        self.view.displayIssueDetailComments(issueItems: modelComment.issueComments)
     }
     
     func issuesRequest() {
         // api request
         self.model.request()
+        self.modelComment.request()
     }
     
 }

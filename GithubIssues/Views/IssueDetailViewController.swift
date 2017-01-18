@@ -11,6 +11,17 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
+
+class IssueSectionView : IssueDetailCollectionReusableView {
+    
+}
+
+class IssueCommentCell : IssueCommentCollectionViewCell {
+    
+}
+
+
+
 class IssueDetailViewController: UIViewController {
     
     //리스트에서 선택한 아이템
@@ -18,13 +29,11 @@ class IssueDetailViewController: UIViewController {
     
     var presenter: IssueDetailPresenter!
     
-    var datasource: Variable<[SectionModel<Int,IssueItem>]> = Variable([SectionModel(model: 1, items:[])])
+    var datasource: Variable<[SectionModel<Int,IssueCommentItem>]> = Variable([SectionModel(model: 1, items:[])])
     let disposeBag = DisposeBag()
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var commentCountLabel: UILabel!
     @IBOutlet weak var detailCollectionView: UICollectionView!
+    @IBOutlet weak var detailCollectionViewFlowLayout: UICollectionViewFlowLayout!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +46,13 @@ class IssueDetailViewController: UIViewController {
         // collectionView bind Data
         self.bindDataSource()
         self.rxAction()
+        
+        //if let layout = detailCollectionViewFlowLayout as? UICollectionViewFlowLayout {
+        //    detailCollectionViewFlowLayout.estimatedItemSize = CGSize(width: 500, height: 500)
+        //}
+        
+        //detailCollectionViewFlowLayout.estimatedItemSize = CGSize(width: 320, height: 50)
+        //self.detailCollectionView.collectionViewLayout = detailCollectionViewFlowLayout;
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,11 +80,14 @@ class IssueDetailViewController: UIViewController {
 }
 
 extension IssueDetailViewController: IssueDetailPresenterProtocol {
-    func displayDetailIssue(issueItem: IssueDetailItem, ) {
-        usernameLabel.text = issueItem.User.login
-        titleLabel.text = issueItem.body
-//        let newSectionModel = SectionModel(model: 1, items: issueItem)
-//        self.datasource.value = [newSectionModel]
+    func displayIssueDetail(issueItem: IssueDetailItem) {
+//        usernameLabel.text = issueItem.User.login
+//        titleLabel.text = issueItem.body
+    }
+    
+    func displayIssueDetailComments(issueItems: [IssueCommentItem]) {
+        let newSectionModel = SectionModel(model: 1, items: issueItems)
+        self.datasource.value = [newSectionModel]
     }
 }
 
@@ -102,15 +121,32 @@ extension IssueDetailViewController {
         datasource.asObservable().bindTo( detailCollectionView.rx.items(dataSource: createDatasource())).addDisposableTo(disposeBag)
     }
     
-    func createDatasource() -> RxCollectionViewSectionedReloadDataSource<SectionModel<Int,IssueItem>> {
-        let datasource = RxCollectionViewSectionedReloadDataSource<SectionModel<Int,IssueItem>>()
+    func createDatasource() -> RxCollectionViewSectionedReloadDataSource<SectionModel<Int,IssueCommentItem>> {
+        let datasource = RxCollectionViewSectionedReloadDataSource<SectionModel<Int,IssueCommentItem>>()
         
         datasource.configureCell = { datasource, collectionView, indexPath, item in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueCollectionViewCell", for: indexPath) as? IssueCollectionViewCell else { return IssueCollectionViewCell() }
-            cell.issueNumber = "#\(item.number)"
-            cell.issueTitle = "\(item.title)"
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueCommentCell", for: indexPath) as? IssueCommentCell else { return IssueCommentCell() }
+            cell.usernameLabel.text = item.User.login
+            cell.commentLabel.text = item.body
             return cell
         }
+                
+        datasource.supplementaryViewFactory = { [weak self] (ds ,cv, kind, ip) in
+            let section = cv.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "IssueSectionView", for: ip) as! IssueSectionView
+            
+            guard let weakSelf = self else { return section }
+            if ds[ip.section].items.count <= 0 { return section }
+            
+            
+            //ds[ip.section].items[ip.row].User
+            
+            section.titleLabel.text = weakSelf.issueSelectedItem.body
+            section.usernameLabel.text = weakSelf.issueSelectedItem.User.login
+            section.commentCountLabel.text = "\(ds[ip.section].items.count) comments"
+            
+            return section
+        }
+        
         return datasource
     }
     

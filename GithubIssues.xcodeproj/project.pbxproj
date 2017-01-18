@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1892FFB6D3751F8DD9367CFE /* Pods_GithubIssuesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0462E1FD6D35FAA661AA8F4 /* Pods_GithubIssuesUITests.framework */; };
+		22EC40181E2FC7C9007A2B0C /* NumberSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC40171E2FC7C9007A2B0C /* NumberSection.swift */; };
 		4BF8BCBB8D1CAD9B8BC5D721 /* Pods_GithubIssues.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C6111AC1E228E0F7952A9F /* Pods_GithubIssues.framework */; };
 		5612FA9C1E237B4C001C1BA2 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612FA9B1E237B4C001C1BA2 /* NotificationExtension.swift */; };
 		5612FA9E1E238020001C1BA2 /* IssueItemUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612FA9D1E238020001C1BA2 /* IssueItemUser.swift */; };
@@ -40,7 +41,7 @@
 		56C35B4A1E2F18EE0035D407 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C35B401E2F18EE0035D407 /* UIImageExtension.swift */; };
 		56C35B4B1E2F18EE0035D407 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C35B411E2F18EE0035D407 /* UIImageViewExtension.swift */; };
 		56C35B4C1E2F18EE0035D407 /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C35B421E2F18EE0035D407 /* FileManagerExtension.swift */; };
-		56C35B4E1E2F3D6F0035D407 /* IssueDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C35B4D1E2F3D6F0035D407 /* IssueDetailCollectionViewCell.swift */; };
+		56C35B4E1E2F3D6F0035D407 /* IssueDetailCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C35B4D1E2F3D6F0035D407 /* IssueDetailCollectionReusableView.swift */; };
 		56C35B501E2F3D8C0035D407 /* IssueCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C35B4F1E2F3D8C0035D407 /* IssueCommentCollectionViewCell.swift */; };
 		56EFAA4E1E2F4E3900B615BD /* IssueCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EFAA4D1E2F4E3900B615BD /* IssueCommentModel.swift */; };
 		E4D525BE9CEE6FFB65A4C6D5 /* Pods_GithubIssuesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E7820116DCEDFAE1354FD8C /* Pods_GithubIssuesTests.framework */; };
@@ -64,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22EC40171E2FC7C9007A2B0C /* NumberSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumberSection.swift; path = Views/NumberSection.swift; sourceTree = "<group>"; };
 		5612FA9B1E237B4C001C1BA2 /* NotificationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationExtension.swift; path = Extensions/NotificationExtension.swift; sourceTree = "<group>"; };
 		5612FA9D1E238020001C1BA2 /* IssueItemUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueItemUser.swift; path = Models/IssueItemUser.swift; sourceTree = "<group>"; };
 		5612FA9F1E23803E001C1BA2 /* IssueItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueItem.swift; path = Models/IssueItem.swift; sourceTree = "<group>"; };
@@ -101,7 +103,7 @@
 		56C35B401E2F18EE0035D407 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageExtension.swift; path = Extensions/UIImageExtension.swift; sourceTree = "<group>"; };
 		56C35B411E2F18EE0035D407 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageViewExtension.swift; path = Extensions/UIImageViewExtension.swift; sourceTree = "<group>"; };
 		56C35B421E2F18EE0035D407 /* FileManagerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileManagerExtension.swift; path = Extensions/FileManagerExtension.swift; sourceTree = "<group>"; };
-		56C35B4D1E2F3D6F0035D407 /* IssueDetailCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailCollectionViewCell.swift; path = Views/IssueDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		56C35B4D1E2F3D6F0035D407 /* IssueDetailCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailCollectionReusableView.swift; path = Views/IssueDetailCollectionReusableView.swift; sourceTree = "<group>"; };
 		56C35B4F1E2F3D8C0035D407 /* IssueCommentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueCommentCollectionViewCell.swift; path = Views/IssueCommentCollectionViewCell.swift; sourceTree = "<group>"; };
 		56EFAA4D1E2F4E3900B615BD /* IssueCommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueCommentModel.swift; path = Models/IssueCommentModel.swift; sourceTree = "<group>"; };
 		587C3FAB1CF5CC2CA72378FF /* Pods-GithubIssues.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubIssues.release.xcconfig"; path = "Pods/Target Support Files/Pods-GithubIssues/Pods-GithubIssues.release.xcconfig"; sourceTree = "<group>"; };
@@ -237,8 +239,9 @@
 				56959B1E1E2A007F0030ED00 /* IssueDetailViewController.swift */,
 				56959B201E2A007F0030ED00 /* IssueWriteViewController.swift */,
 				56959B211E2A007F0030ED00 /* IssueCollectionViewCell.swift */,
-				56C35B4D1E2F3D6F0035D407 /* IssueDetailCollectionViewCell.swift */,
+				56C35B4D1E2F3D6F0035D407 /* IssueDetailCollectionReusableView.swift */,
 				56C35B4F1E2F3D8C0035D407 /* IssueCommentCollectionViewCell.swift */,
+				22EC40171E2FC7C9007A2B0C /* NumberSection.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -586,9 +589,9 @@
 				56959B221E2A007F0030ED00 /* IssueDetailViewController.swift in Sources */,
 				56C35B4A1E2F18EE0035D407 /* UIImageExtension.swift in Sources */,
 				56C35B381E2F187D0035D407 /* UIColorExtension.swift in Sources */,
-				56959B271E2A00870030ED00 /* IssueListItem.swift in Sources */,
 				56C35B451E2F18EE0035D407 /* UIApplicationExtension.swift in Sources */,
 				56959B161E29FBA00030ED00 /* IssueDetailModel.swift in Sources */,
+				22EC40181E2FC7C9007A2B0C /* NumberSection.swift in Sources */,
 				56959B241E2A007F0030ED00 /* IssueWriteViewController.swift in Sources */,
 				56EFAA4E1E2F4E3900B615BD /* IssueCommentModel.swift in Sources */,
 				56C35B471E2F18EE0035D407 /* UINavigationExtension.swift in Sources */,
@@ -597,7 +600,7 @@
 				5612FA9C1E237B4C001C1BA2 /* NotificationExtension.swift in Sources */,
 				56959B251E2A007F0030ED00 /* IssueCollectionViewCell.swift in Sources */,
 				56959B2F1E2A1BBA0030ED00 /* GithubUserInfoViewController.swift in Sources */,
-				56C35B4E1E2F3D6F0035D407 /* IssueDetailCollectionViewCell.swift in Sources */,
+				56C35B4E1E2F3D6F0035D407 /* IssueDetailCollectionReusableView.swift in Sources */,
 				5694AA4E1E2C5B34006B483D /* APIManager.swift in Sources */,
 				56959B1A1E29FEE60030ED00 /* IssueDetailPresenter.swift in Sources */,
 				56C35B4C1E2F18EE0035D407 /* FileManagerExtension.swift in Sources */,

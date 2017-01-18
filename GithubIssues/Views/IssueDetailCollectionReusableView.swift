@@ -8,9 +8,9 @@
 
 import UIKit
 
-class IssueDetailCollectionViewCell: UICollectionViewCell {
+class IssueDetailCollectionReusableView: UICollectionReusableView {
     
-    @IBOutlet weak var TitleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var statusImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var commentCountLabel: UILabel!
