@@ -16,7 +16,6 @@ class IssueListViewController: UIViewController {
     
     @IBOutlet weak var issueAddButton: UIBarButtonItem!
     
-    
     var presenter: IssueListPresenter!
     
     var datasource: Variable<[SectionModel<Int,IssueListItem>]> = Variable([SectionModel(model: 1, items:[])])

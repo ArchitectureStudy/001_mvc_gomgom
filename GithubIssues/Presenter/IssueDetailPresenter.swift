@@ -17,11 +17,14 @@ class IssueDetailPresenter {
     let manager = IssueUserInfoManager.sharedInstance
     
     let model:IssueDetailModel
+    let modelComment:IssueCommentModel
+    
     var view:IssueDetailPresenterProtocol!
     
     init(view:IssueDetailPresenterProtocol, selectedItem:IssueListItem) {
         self.view = view;
-        self.model = IssueDetailModel(user: manager.user, repo: manager.repo, number: selectedItem.number) 
+        self.model = IssueDetailModel(user: manager.user, repo: manager.repo, number: selectedItem.number)
+        self.modelComment = IssueCommentModel(user: manager.user, repo: manager.repo, number: selectedItem.number)
         
         NotificationCenter.default.addObserver(self, selector: #selector(onIssueDetailRequestCompletedNotification(_:)), name: .IssueDetailRequestCompletedNotification, object: nil)
     }
