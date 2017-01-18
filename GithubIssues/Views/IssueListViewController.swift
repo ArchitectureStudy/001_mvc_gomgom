@@ -18,7 +18,7 @@ class IssueListViewController: UIViewController {
     
     var presenter: IssueListPresenter!
     
-    var datasource: Variable<[SectionModel<Int,IssueListItem>]> = Variable([SectionModel(model: 1, items:[])])
+    var datasource: Variable<[SectionModel<Int,IssueItem>]> = Variable([SectionModel(model: 1, items:[])])
     let disposeBag = DisposeBag()
 
     @IBOutlet weak var issueCollectionView: UICollectionView!
@@ -97,8 +97,8 @@ extension IssueListViewController {
         datasource.asObservable().bindTo( issueCollectionView.rx.items(dataSource: createDatasource())).addDisposableTo(disposeBag)
     }
     
-    func createDatasource() -> RxCollectionViewSectionedReloadDataSource<SectionModel<Int,IssueListItem>> {
-        let datasource = RxCollectionViewSectionedReloadDataSource<SectionModel<Int,IssueListItem>>()
+    func createDatasource() -> RxCollectionViewSectionedReloadDataSource<SectionModel<Int,IssueItem>> {
+        let datasource = RxCollectionViewSectionedReloadDataSource<SectionModel<Int,IssueItem>>()
         
         datasource.configureCell = { datasource, collectionView, indexPath, item in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueCollectionViewCell", for: indexPath) as? IssueCollectionViewCell else { return IssueCollectionViewCell() }
@@ -117,7 +117,7 @@ extension IssueListViewController {
 
 
 extension IssueListViewController:IssueListPresenterProtocol {
-    func displayIssues(issueItems: [IssueListItem]) {
+    func displayIssues(issueItems: [IssueItem]) {
         let newSectionModel = SectionModel(model: 1, items: issueItems)
         self.datasource.value = [newSectionModel]
     }

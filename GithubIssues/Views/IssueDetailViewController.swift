@@ -14,7 +14,7 @@ import RxDataSources
 class IssueDetailViewController: UIViewController {
     
     //리스트에서 선택한 아이템
-    var issueSelectedItem:IssueListItem = IssueListItem()
+    var issueSelectedItem:IssueItem = IssueItem()
     
     var presenter: IssueDetailPresenter!
     
@@ -64,8 +64,8 @@ extension IssueDetailViewController: IssueDetailPresenterProtocol {
     func displayDetailIssue(issueItem: IssueDetailItem) {
 //        idTextField.text = issueItem.User.login
 //        bodyTextView.text = issueItem.body
-        let newSectionModel = SectionModel(model: 1, items: issueItems)
-        self.datasource.value = [newSectionModel]
+//        let newSectionModel = SectionModel(model: 1, items: issueItem)
+//        self.datasource.value = [newSectionModel]
     }
 }
 

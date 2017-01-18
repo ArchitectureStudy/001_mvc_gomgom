@@ -21,7 +21,7 @@ class IssueDetailPresenter {
     
     var view:IssueDetailPresenterProtocol!
     
-    init(view:IssueDetailPresenterProtocol, selectedItem:IssueListItem) {
+    init(view:IssueDetailPresenterProtocol, selectedItem:IssueItem) {
         self.view = view;
         self.model = IssueDetailModel(user: manager.user, repo: manager.repo, number: selectedItem.number)
         self.modelComment = IssueCommentModel(user: manager.user, repo: manager.repo, number: selectedItem.number)
