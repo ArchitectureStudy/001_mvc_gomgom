@@ -1,5 +1,6 @@
 # Uncomment this line to define a global platform for your project
 # platform :ios, '9.0'
+# use_frameworks!
 
 target 'GithubIssues' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
@@ -7,7 +8,11 @@ target 'GithubIssues' do
 
   # Pods for GithubIssues
   
-  pod 'Alamofire'
+  pod 'Alamofire', '~> 4.0'
+  pod 'AlamofireImage', '~> 3.1'
+  
+  pod 'p2.OAuth2', '~> 3.0'
+  
   pod 'SwiftyJSON'
   pod 'ObjectMapper'
   

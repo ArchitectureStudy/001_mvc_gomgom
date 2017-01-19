@@ -153,4 +153,5 @@ extension IssueDetailViewController {
     func addCell(text: String) {
         
     }
+    
 }
