@@ -790,3 +790,61 @@ Pods/Target Support Files/FDStackView/FDStackView-umbrella.h
 Pods/Target Support Files/FDStackView/FDStackView.modulemap
 Pods/Target Support Files/FDStackView/FDStackView.xcconfig
 Pods/Target Support Files/FDStackView/Info.plist
+Pods/AlamofireImage/LICENSE
+Pods/AlamofireImage/README.md
+Pods/AlamofireImage/Source/AFIError.swift
+Pods/AlamofireImage/Source/Image.swift
+Pods/AlamofireImage/Source/ImageCache.swift
+Pods/AlamofireImage/Source/ImageDownloader.swift
+Pods/AlamofireImage/Source/ImageFilter.swift
+Pods/AlamofireImage/Source/Request+AlamofireImage.swift
+Pods/AlamofireImage/Source/UIButton+AlamofireImage.swift
+Pods/AlamofireImage/Source/UIImage+AlamofireImage.swift
+Pods/AlamofireImage/Source/UIImageView+AlamofireImage.swift
+Pods/p2.OAuth2/LICENSE.txt
+Pods/p2.OAuth2/README.md
+Pods/p2.OAuth2/Sources/Base/extensions.swift
+Pods/p2.OAuth2/Sources/Base/OAuth2AuthConfig.swift
+Pods/p2.OAuth2/Sources/Base/OAuth2AuthorizerUI.swift
+Pods/p2.OAuth2/Sources/Base/OAuth2AuthRequest.swift
+Pods/p2.OAuth2/Sources/Base/OAuth2Base.swift
+Pods/p2.OAuth2/Sources/Base/OAuth2ClientConfig.swift
+Pods/p2.OAuth2/Sources/Base/OAuth2DebugURLSessionDelegate.swift
+Pods/p2.OAuth2/Sources/Base/OAuth2Error.swift
+Pods/p2.OAuth2/Sources/Base/OAuth2KeychainAccount.swift
+Pods/p2.OAuth2/Sources/Base/OAuth2Logger.swift
+Pods/p2.OAuth2/Sources/Base/OAuth2Requestable.swift
+Pods/p2.OAuth2/Sources/Base/OAuth2RequestPerformer.swift
+Pods/p2.OAuth2/Sources/Base/OAuth2Response.swift
+Pods/p2.OAuth2/Sources/Base/OAuth2Securable.swift
+Pods/p2.OAuth2/Sources/DataLoader/OAuth2DataLoader.swift
+Pods/p2.OAuth2/Sources/DataLoader/OAuth2DataRequest.swift
+Pods/p2.OAuth2/Sources/Flows/OAuth2.swift
+Pods/p2.OAuth2/Sources/Flows/OAuth2ClientCredentials.swift
+Pods/p2.OAuth2/Sources/Flows/OAuth2ClientCredentialsReddit.swift
+Pods/p2.OAuth2/Sources/Flows/OAuth2CodeGrant.swift
+Pods/p2.OAuth2/Sources/Flows/OAuth2CodeGrantAzure.swift
+Pods/p2.OAuth2/Sources/Flows/OAuth2CodeGrantBasicAuth.swift
+Pods/p2.OAuth2/Sources/Flows/OAuth2CodeGrantFacebook.swift
+Pods/p2.OAuth2/Sources/Flows/OAuth2CodeGrantLinkedIn.swift
+Pods/p2.OAuth2/Sources/Flows/OAuth2CodeGrantNoTokenType.swift
+Pods/p2.OAuth2/Sources/Flows/OAuth2DynReg.swift
+Pods/p2.OAuth2/Sources/Flows/OAuth2ImplicitGrant.swift
+Pods/p2.OAuth2/Sources/Flows/OAuth2PasswordGrant.swift
+Pods/p2.OAuth2/Sources/iOS/OAuth2Authorizer+iOS.swift
+Pods/p2.OAuth2/Sources/iOS/OAuth2WebViewController.swift
+Pods/p2.OAuth2/SwiftKeychain/Keychain/Keychain.swift
+Pods/Pods.xcodeproj/xcuserdata/mobdev.xcuserdatad/xcschemes/AlamofireImage.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/mobdev.xcuserdatad/xcschemes/p2.OAuth2.xcscheme
+Pods/Target Support Files/AlamofireImage/AlamofireImage-dummy.m
+Pods/Target Support Files/AlamofireImage/AlamofireImage-prefix.pch
+Pods/Target Support Files/AlamofireImage/AlamofireImage-umbrella.h
+Pods/Target Support Files/AlamofireImage/AlamofireImage.modulemap
+Pods/Target Support Files/AlamofireImage/AlamofireImage.xcconfig
+Pods/Target Support Files/AlamofireImage/Info.plist
+Pods/Target Support Files/p2.OAuth2/Info.plist
+Pods/Target Support Files/p2.OAuth2/p2.OAuth2-dummy.m
+Pods/Target Support Files/p2.OAuth2/p2.OAuth2-prefix.pch
+Pods/Target Support Files/p2.OAuth2/p2.OAuth2-umbrella.h
+Pods/Target Support Files/p2.OAuth2/p2.OAuth2.modulemap
+Pods/Target Support Files/p2.OAuth2/p2.OAuth2.xcconfig
