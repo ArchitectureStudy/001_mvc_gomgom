@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         if (url.absoluteString.hasPrefix("githubissuesapp://")) {
-            if let vc = window?.rootViewController as? GithubUserInfoViewController {
-                vc.oauth2.handleRedirectURL(url)
+            if (window?.rootViewController as? GithubUserInfoViewController) != nil {
+                IssueUserInfoManager.sharedInstance.oauth2.handleRedirectURL(url)
                 return true
             }
         }

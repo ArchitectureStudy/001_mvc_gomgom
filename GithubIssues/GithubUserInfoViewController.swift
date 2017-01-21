@@ -14,18 +14,7 @@ class GithubUserInfoViewController: UIViewController {
     
     fileprivate var alamofireManager: SessionManager?
     
-    var loader: OAuth2DataLoader?
     
-    var oauth2 = OAuth2CodeGrant(settings: [
-        "client_id": "af1c542e34cc2cb919a8",                         // yes, this client-id and secret will work!
-        "client_secret": "3bd94893094a92345a93d48076dbb42e9664ea7b",
-        "authorize_uri": "https://github.com/login/oauth/authorize",
-        "token_uri": "https://github.com/login/oauth/access_token",
-        "scope": "user repo:status admin:org",
-        "redirect_uris": ["githubissuesapp://oauth/callback"],            // app has registered this scheme
-        "secret_in_body": true,                                      // GitHub does not accept client secret in the Authorization header
-        "verbose": true,
-        ] as OAuth2JSON)
 
     @IBOutlet var imageView: UIImageView?
     @IBOutlet weak var usernameTextField: UITextField!
@@ -86,7 +75,7 @@ class GithubUserInfoViewController: UIViewController {
  */
         sender?.setTitle("Authorizing...", for: UIControlState.normal)
         let sessionManager = SessionManager()
-        let retrier = OAuth2RetryHandler(oauth2: oauth2)
+        let retrier = OAuth2RetryHandler(oauth2: IssueUserInfoManager.sharedInstance.oauth2)
         sessionManager.adapter = retrier
         sessionManager.retrier = retrier
         alamofireManager = sessionManager
@@ -120,7 +109,7 @@ class GithubUserInfoViewController: UIViewController {
             
             IssueUserInfoManager.sharedInstance.repo = tempRepo
             IssueUserInfoManager.sharedInstance.user = tempUser
-            IssueUserInfoManager.sharedInstance.secretKey = tempSecretKey
+            IssueUserInfoManager.sharedInstance.accessToken = tempSecretKey
         }
     }
     

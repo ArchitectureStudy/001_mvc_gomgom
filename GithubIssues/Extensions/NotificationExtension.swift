@@ -12,4 +12,5 @@ extension Notification.Name {
     static let IssueRequestCompletedNotification = Notification.Name("IssueRequestCompleted")
     static let IssueDetailRequestCompletedNotification = Notification.Name("IssueDetailRequestCompleted")
     static let IssueDetailCommentsRequestCompletedNotification = Notification.Name("IssueDetailCommentsRequestCompleted")
+    static let IssueWriteCommentsRequestCompletedNotification = Notification.Name("IssueWriteCommentsRequestCompleted")
 }

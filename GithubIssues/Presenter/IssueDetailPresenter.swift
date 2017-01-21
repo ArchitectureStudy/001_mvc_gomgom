@@ -31,6 +31,7 @@ class IssueDetailPresenter {
         
         NotificationCenter.default.addObserver(self, selector: #selector(onIssueDetailCommentsRequestCompletedNotification(_:)), name: .IssueDetailCommentsRequestCompletedNotification, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(onIssueWriteCommentsRequestCompletedNotification(_:)), name: .IssueWriteCommentsRequestCompletedNotification, object: nil)
     }
     
     
@@ -44,10 +45,19 @@ class IssueDetailPresenter {
         self.view.displayIssueDetailComments(issueItems: modelComment.issueComments)
     }
     
+    @objc func onIssueWriteCommentsRequestCompletedNotification(_ notification: Notification) {
+        print("onIssueDetailCommentsRequestCompletedNotification IN")
+        self.modelComment.request()
+    }
+    
     func issuesRequest() {
         // api request
         self.model.request()
         self.modelComment.request()
+    }
+    
+    func writeComment(comment:String) {
+        self.modelComment.commentPost(comment: comment)
     }
     
 }

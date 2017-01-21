@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import AlamofireImage
 
 
 class IssueSectionView : IssueDetailCollectionReusableView {
@@ -32,6 +33,9 @@ class IssueDetailViewController: UIViewController {
     var datasource: Variable<[SectionModel<Int,IssueCommentItem>]> = Variable([SectionModel(model: 1, items:[])])
     let disposeBag = DisposeBag()
 
+    @IBOutlet weak var writeCommentTextField: UITextField!
+    @IBOutlet weak var saveButton: UIButton!
+    
     @IBOutlet weak var detailCollectionView: UICollectionView!
     @IBOutlet weak var detailCollectionViewFlowLayout: UICollectionViewFlowLayout!
     
@@ -115,6 +119,12 @@ extension IssueDetailViewController {
 //            self?.present(viewController.wrapNavigation(), animated: true, completion: nil)
 //            }
 //            ).addDisposableTo(disposeBag)
+        
+        self.saveButton.rx.tap.asObservable().subscribe(onNext: { [weak self] _ in
+                guard let weakSelf = self else { return }
+                weakSelf.presenter.writeComment(comment: weakSelf.writeCommentTextField.text!)
+            }
+            ).addDisposableTo(disposeBag)
     }
     
     func bindDataSource() {
@@ -126,6 +136,9 @@ extension IssueDetailViewController {
         
         datasource.configureCell = { datasource, collectionView, indexPath, item in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueCommentCell", for: indexPath) as? IssueCommentCell else { return IssueCommentCell() }
+            let url = URL(string: item.User.avatar_url)!
+            let placeholderImage = UIImage(named: "placeholder")!
+            cell.profileThumbnail.af_setImage(withURL: url, placeholderImage: placeholderImage)
             cell.usernameLabel.text = item.User.login
             cell.commentLabel.text = item.body
             return cell

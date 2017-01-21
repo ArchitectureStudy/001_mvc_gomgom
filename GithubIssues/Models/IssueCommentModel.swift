@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import ObjectMapper
-
+import p2_OAuth2
 
 
 class IssueCommentModel {
@@ -35,6 +35,38 @@ class IssueCommentModel {
         }) { (error) in
             print(error)
         }
+    }
+    
+    func commentPost(comment:String) {
+        
+        let url = URL(string: "https://api.github.com/repos/\(user)/\(repo)/issues/\(number)/comments")
+        var request = IssueUserInfoManager.sharedInstance.oauth2.request(forURL: url!)
+        request.httpMethod = "post"
+        let parameters = ["body" : comment]
+
+        request = try! JSONEncoding.default.encode(request, with: parameters)
+        // OAuth 라이브러리에서 token 이라고 안넣어준다!! 왜지..뭐지..모르겠다.
+        request.setValue("token \(IssueUserInfoManager.sharedInstance.accessToken)", forHTTPHeaderField: "Authorization")
+        
+        let task = IssueUserInfoManager.sharedInstance.oauth2.session.dataTask(with: request) { data, response, error in
+            
+            if error != nil {
+                // something went wrong, check the error
+                print("error=\(error)")
+                return
+            }
+            else {
+                // check the response and the data
+                // you have just received data with an OAuth2-signed request!
+                print("response = \(response)")
+                
+                let responseString = String(data: data!, encoding: .utf8)
+                print("responseString = \(responseString)")
+                
+                NotificationCenter.default.post(name: .IssueWriteCommentsRequestCompletedNotification, object: responseString)
+            }
+        }
+        task.resume()
     }
     
     init(user: String, repo: String, number:Int) {
