@@ -48,7 +48,7 @@ class IssueCommentModel {
         // OAuth 라이브러리에서 token 이라고 안넣어준다!! 왜지..뭐지..모르겠다.
         request.setValue("token \(IssueUserInfoManager.sharedInstance.accessToken)", forHTTPHeaderField: "Authorization")
         
-        let task = IssueUserInfoManager.sharedInstance.oauth2.session.dataTask(with: request) { data, response, error in
+        let task = IssueUserInfoManager.sharedInstance.oauth2.session.dataTask(with: request) { [weak self] data, response, error in
             
             if error != nil {
                 // something went wrong, check the error
@@ -58,15 +58,34 @@ class IssueCommentModel {
             else {
                 // check the response and the data
                 // you have just received data with an OAuth2-signed request!
-                print("response = \(response)")
+                guard let weakSelf = self else { return }
+                guard let responseString = String(data: data!, encoding: .utf8) else { return }
                 
-                let responseString = String(data: data!, encoding: .utf8)
                 print("responseString = \(responseString)")
+                
+                let jsonResponse = weakSelf.convertToDictionary(text: responseString)
+                
+                if let json = jsonResponse as [String: Any]? {
+                    if let commentItem = Mapper<IssueCommentItem>().map(JSON: json) {
+                        weakSelf.issueComments.append(commentItem)
+                    }
+                }
                 
                 NotificationCenter.default.post(name: .IssueWriteCommentsRequestCompletedNotification, object: responseString)
             }
         }
         task.resume()
+    }
+    
+    func convertToDictionary(text: String) -> [String: Any]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return nil
     }
     
     init(user: String, repo: String, number:Int) {

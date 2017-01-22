@@ -11,6 +11,7 @@ import Foundation
 protocol IssueDetailPresenterProtocol {
     func displayIssueDetail(issueItem:IssueDetailItem)
     func displayIssueDetailComments(issueItems:[IssueCommentItem])
+    func displayIssueWriteComments(issueItems:[IssueCommentItem])
 }
 
 class IssueDetailPresenter {
@@ -47,7 +48,7 @@ class IssueDetailPresenter {
     
     @objc func onIssueWriteCommentsRequestCompletedNotification(_ notification: Notification) {
         print("onIssueDetailCommentsRequestCompletedNotification IN")
-        self.modelComment.request()
+        self.view.displayIssueWriteComments(issueItems: modelComment.issueComments)
     }
     
     func issuesRequest() {

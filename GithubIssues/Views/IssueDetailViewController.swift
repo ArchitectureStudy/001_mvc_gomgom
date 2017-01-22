@@ -93,6 +93,15 @@ extension IssueDetailViewController: IssueDetailPresenterProtocol {
         let newSectionModel = SectionModel(model: 1, items: issueItems)
         self.datasource.value = [newSectionModel]
     }
+    
+    func displayIssueWriteComments(issueItems: [IssueCommentItem]) {
+        let newSectionModel = SectionModel(model: 1, items: issueItems)
+        self.datasource.value = [newSectionModel]
+        
+        DispatchQueue.main.async {
+            self.writeCommentTextField.text = ""
+        }
+    }
 }
 
 
@@ -100,28 +109,21 @@ extension IssueDetailViewController: IssueDetailPresenterProtocol {
 extension IssueDetailViewController {
     
     func rxAction() {
-        //        issueCollectionView.rx.observe(CGSize.self, "contentSize")
-        //            .filter{ size -> Bool in
-        //                size?.height != 0
-        //            }
-        //            .distinctUntilChanged{ (old,new) -> Bool in
-        //                return (old?.width == new?.width && old?.height == new?.height)
-        //            }
-        //            .skip(1)
-        //            .subscribe(onNext: { [weak self] size in
-        //                let newOffSet =  CGPoint(x: 0, y: (size?.height ?? 0) - (self?.issueCollectionView.frame.height ?? 0))
-        //                self?.issueCollectionView.setContentOffset(newOffSet, animated: true)
-        //            }).addDisposableTo(disposeBag)
-        
-//        self.navigationItem.rightBarButtonItem?.rx.tap.asObservable().subscribe(onNext: { [weak self] _ in
-//            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "IssueWriteViewController") as! IssueWriteViewController
-//            viewController.delegate = self
-//            self?.present(viewController.wrapNavigation(), animated: true, completion: nil)
-//            }
-//            ).addDisposableTo(disposeBag)
+        detailCollectionView.rx.observe(CGSize.self, "contentSize")
+            .filter{ size -> Bool in
+                size?.height != 0
+            }
+            .distinctUntilChanged{ (old,new) -> Bool in
+                return (old?.width == new?.width && old?.height == new?.height)
+            }
+            .skip(1)
+            .subscribe(onNext: { [weak self] size in
+                let newOffSet =  CGPoint(x: 0, y: (size?.height ?? 0) - (self?.detailCollectionView.frame.height ?? 0))
+                self?.detailCollectionView.setContentOffset(newOffSet, animated: true)
+            }).addDisposableTo(disposeBag)
         
         self.saveButton.rx.tap.asObservable().subscribe(onNext: { [weak self] _ in
-                guard let weakSelf = self else { return }
+            guard let weakSelf = self else { return }
                 weakSelf.presenter.writeComment(comment: weakSelf.writeCommentTextField.text!)
             }
             ).addDisposableTo(disposeBag)
