@@ -50,18 +50,18 @@ class GithubUserInfoViewController: UIViewController {
     }
     */
     @IBAction func pressedLoginButton(_ sender: UIButton?) {
-        /*
-        if oauth2.isAuthorizing {
-            oauth2.abortAuthorization()
+        
+        if IssueUserInfoManager.sharedInstance.oauth2.isAuthorizing {
+            IssueUserInfoManager.sharedInstance.oauth2.abortAuthorization()
             return
         }
         
         sender?.setTitle("Authorizing...", for: UIControlState.normal)
         
-        oauth2.authConfig.authorizeEmbedded = true
-        oauth2.authConfig.authorizeContext = self
-        let loader = OAuth2DataLoader(oauth2: oauth2)
-        self.loader = loader
+        IssueUserInfoManager.sharedInstance.oauth2.authConfig.authorizeEmbedded = true
+        IssueUserInfoManager.sharedInstance.oauth2.authConfig.authorizeContext = self
+        let loader = OAuth2DataLoader(oauth2: IssueUserInfoManager.sharedInstance.oauth2)
+        IssueUserInfoManager.sharedInstance.loader = loader
         
         loader.perform(request: userDataRequest) { response in
             do {
@@ -72,26 +72,31 @@ class GithubUserInfoViewController: UIViewController {
                 self.didCancelOrFail(error)
             }
         }
- */
-        sender?.setTitle("Authorizing...", for: UIControlState.normal)
-        let sessionManager = SessionManager()
-        let retrier = OAuth2RetryHandler(oauth2: IssueUserInfoManager.sharedInstance.oauth2)
-        sessionManager.adapter = retrier
-        sessionManager.retrier = retrier
-        alamofireManager = sessionManager
         
-        sessionManager.request("https://api.github.com/user").validate().responseJSON { response in
-            debugPrint(response)
-            if let dict = response.result.value as? [String: Any] {
-                self.didGetUserdata(dict: dict, loader: nil)
-            }
-            else {
-                self.didCancelOrFail(OAuth2Error.generic("\(response)"))
-            }
-        }
-        sessionManager.request("https://api.github.com/user/repos").validate().responseJSON { response in
-            debugPrint(response)
-        }
+        
+         sender?.setTitle("Authorizing...", for: UIControlState.normal)
+         let sessionManager = SessionManager()
+         let retrier = OAuth2RetryHandler(oauth2: IssueUserInfoManager.sharedInstance.oauth2)
+         sessionManager.adapter = retrier
+         sessionManager.retrier = retrier
+         alamofireManager = sessionManager
+        
+        /*
+         sessionManager.request("https://api.github.com/user").validate().responseJSON { response in
+         debugPrint(response)
+         if let dict = response.result.value as? [String: Any] {
+         self.didGetUserdata(dict: dict, loader: nil)
+         }
+         else {
+         self.didCancelOrFail(OAuth2Error.generic("\(response)"))
+         }
+         }
+         sessionManager.request("https://api.github.com/user/repos").validate().responseJSON { response in
+         debugPrint(response)
+         }
+         */
+         
+        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

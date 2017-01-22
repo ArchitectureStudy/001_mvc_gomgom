@@ -45,7 +45,6 @@ class IssueCommentModel {
         let parameters = ["body" : comment]
 
         request = try! JSONEncoding.default.encode(request, with: parameters)
-        // OAuth 라이브러리에서 token 이라고 안넣어준다!! 왜지..뭐지..모르겠다.
         request.setValue("token \(IssueUserInfoManager.sharedInstance.accessToken)", forHTTPHeaderField: "Authorization")
         
         let task = IssueUserInfoManager.sharedInstance.oauth2.session.dataTask(with: request) { [weak self] data, response, error in
