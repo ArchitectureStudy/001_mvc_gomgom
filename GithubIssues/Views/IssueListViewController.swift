@@ -15,6 +15,7 @@ import RxDataSources
 class IssueListViewController: UIViewController {
     
     @IBOutlet weak var issueAddButton: UIBarButtonItem!
+    @IBOutlet weak var memoCountLabel: UILabel!
     
     var presenter: IssueListPresenter!
     
@@ -32,6 +33,10 @@ class IssueListViewController: UIViewController {
         // collectionView bind Data
         self.bindDataSource()
         self.rxAction()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.issueCollectionView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -104,6 +109,7 @@ extension IssueListViewController {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueCollectionViewCell", for: indexPath) as? IssueCollectionViewCell else { return IssueCollectionViewCell() }
             cell.issueNumber = "#\(item.number)"
             cell.issueTitle = "\(item.title)"
+            cell.issueCommentCount = "\(item.comments)"
             return cell
         }
         return datasource

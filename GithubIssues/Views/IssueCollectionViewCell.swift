@@ -12,6 +12,7 @@ class IssueCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var issueNumberLabel: UILabel!
     @IBOutlet weak var issueTitleLabel: UILabel!
+    @IBOutlet weak var issueCommentCountLabel: UILabel!
     
     var issueNumber: String? {
         didSet {
@@ -25,5 +26,10 @@ class IssueCollectionViewCell: UICollectionViewCell {
         }
     }
 
+    var issueCommentCount: String? {
+        didSet {
+            issueCommentCountLabel.text = issueCommentCount
+        }
+    }
     
 }

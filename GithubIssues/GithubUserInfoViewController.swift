@@ -51,29 +51,29 @@ class GithubUserInfoViewController: UIViewController {
     */
     @IBAction func pressedLoginButton(_ sender: UIButton?) {
         
-        if IssueUserInfoManager.sharedInstance.oauth2.isAuthorizing {
-            IssueUserInfoManager.sharedInstance.oauth2.abortAuthorization()
-            return
-        }
-        
-        sender?.setTitle("Authorizing...", for: UIControlState.normal)
-        
-        IssueUserInfoManager.sharedInstance.oauth2.authConfig.authorizeEmbedded = true
-        IssueUserInfoManager.sharedInstance.oauth2.authConfig.authorizeContext = self
-        let loader = OAuth2DataLoader(oauth2: IssueUserInfoManager.sharedInstance.oauth2)
-        IssueUserInfoManager.sharedInstance.loader = loader
-        
-        loader.perform(request: userDataRequest) { response in
-            do {
-                let json = try response.responseJSON()
-                self.didGetUserdata(dict: json, loader: loader)
-            }
-            catch let error {
-                self.didCancelOrFail(error)
-            }
-        }
-        
-        
+//        if IssueUserInfoManager.sharedInstance.oauth2.isAuthorizing {
+//            IssueUserInfoManager.sharedInstance.oauth2.abortAuthorization()
+//            return
+//        }
+//        
+//        sender?.setTitle("Authorizing...", for: UIControlState.normal)
+//        
+//        IssueUserInfoManager.sharedInstance.oauth2.authConfig.authorizeEmbedded = true
+//        IssueUserInfoManager.sharedInstance.oauth2.authConfig.authorizeContext = self
+//        let loader = OAuth2DataLoader(oauth2: IssueUserInfoManager.sharedInstance.oauth2)
+//        IssueUserInfoManager.sharedInstance.loader = loader
+//        
+//        loader.perform(request: userDataRequest) { response in
+//            do {
+//                let json = try response.responseJSON()
+//                self.didGetUserdata(dict: json, loader: loader)
+//            }
+//            catch let error {
+//                self.didCancelOrFail(error)
+//            }
+//        }
+//        
+//        
          sender?.setTitle("Authorizing...", for: UIControlState.normal)
          let sessionManager = SessionManager()
          let retrier = OAuth2RetryHandler(oauth2: IssueUserInfoManager.sharedInstance.oauth2)
@@ -81,22 +81,28 @@ class GithubUserInfoViewController: UIViewController {
          sessionManager.retrier = retrier
          alamofireManager = sessionManager
         
-        /*
-         sessionManager.request("https://api.github.com/user").validate().responseJSON { response in
-         debugPrint(response)
-         if let dict = response.result.value as? [String: Any] {
-         self.didGetUserdata(dict: dict, loader: nil)
-         }
-         else {
-         self.didCancelOrFail(OAuth2Error.generic("\(response)"))
-         }
-         }
-         sessionManager.request("https://api.github.com/user/repos").validate().responseJSON { response in
-         debugPrint(response)
-         }
-         */
+        
+        sessionManager.request("https://api.github.com/user").validate().responseJSON { response in
+            debugPrint(response)
+            if let dict = response.result.value as? [String: Any] {
+                self.didGetUserdata(dict: dict, loader: nil)
+            }
+            else {
+                self.didCancelOrFail(OAuth2Error.generic("\(response)"))
+            }
+        }
+        sessionManager.request("https://api.github.com/user/repos").validate().responseJSON { response in
+            debugPrint(response)
+        }
+        
          
         
+    }
+    @IBAction func pressedLogoutButton(_ sender: Any) {
+        
+        IssueUserInfoManager.sharedInstance.oauth2.forgetTokens()
+        IssueUserInfoManager.sharedInstance.oauth2.forgetClient()
+        self.loginShowButtons()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

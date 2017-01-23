@@ -126,6 +126,9 @@
                                     <constraint firstAttribute="width" constant="80" id="suE-RD-fon"/>
                                 </constraints>
                                 <state key="normal" title="로그아웃"/>
+                                <connections>
+                                    <action selector="pressedLogoutButton:" destination="Oqq-NN-a6y" eventType="touchUpInside" id="GBp-mV-u9C"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -223,12 +226,22 @@
                                                     <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="믓찌네" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KoM-2c-Vvz">
-                                                    <rect key="frame" x="8" y="66" width="359" height="25"/>
+                                                    <rect key="frame" x="8" y="66" width="270" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="C8t-Bu-GRX"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="몇개냐" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5Q-oI-IIf">
+                                                    <rect key="frame" x="280" y="66" width="80" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="9bz-qg-TtV"/>
+                                                        <constraint firstAttribute="height" constant="25" id="gQ8-QZ-9Ba"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -237,13 +250,16 @@
                                         <constraints>
                                             <constraint firstItem="D3F-sV-HFK" firstAttribute="trailing" secondItem="rRv-ND-00U" secondAttribute="trailingMargin" id="72F-4B-TWr"/>
                                             <constraint firstItem="KoM-2c-Vvz" firstAttribute="leading" secondItem="rRv-ND-00U" secondAttribute="leadingMargin" id="8PT-Tm-yhN"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="s5Q-oI-IIf" secondAttribute="trailing" constant="7" id="9hx-CK-7vE"/>
+                                            <constraint firstItem="s5Q-oI-IIf" firstAttribute="leading" secondItem="KoM-2c-Vvz" secondAttribute="trailing" constant="2" id="B5p-3y-Auq"/>
                                             <constraint firstItem="D3F-sV-HFK" firstAttribute="leading" secondItem="rRv-ND-00U" secondAttribute="leadingMargin" id="Bfi-MQ-ko1"/>
-                                            <constraint firstItem="KoM-2c-Vvz" firstAttribute="trailing" secondItem="rRv-ND-00U" secondAttribute="trailingMargin" id="MJB-Li-NHg"/>
                                             <constraint firstItem="D3F-sV-HFK" firstAttribute="top" secondItem="rRv-ND-00U" secondAttribute="topMargin" id="VZx-Dd-Dya"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="s5Q-oI-IIf" secondAttribute="bottom" constant="1" id="i2z-WA-Ugu"/>
                                             <constraint firstItem="KoM-2c-Vvz" firstAttribute="top" secondItem="D3F-sV-HFK" secondAttribute="bottom" constant="3" id="sFl-FW-HVw"/>
                                         </constraints>
                                         <size key="customSize" width="375" height="100"/>
                                         <connections>
+                                            <outlet property="issueCommentCountLabel" destination="s5Q-oI-IIf" id="y0L-yv-iyE"/>
                                             <outlet property="issueNumberLabel" destination="KoM-2c-Vvz" id="zWJ-fQ-oTb"/>
                                             <outlet property="issueTitleLabel" destination="D3F-sV-HFK" id="4ml-Mp-kcK"/>
                                             <segue destination="u7Q-55-F6P" kind="show" identifier="showIssueDetailViewController" id="BWW-4C-qhq"/>

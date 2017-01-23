@@ -81,6 +81,7 @@ class IssueItem:Mappable{
     var state:String = ""
     var created_at:String = ""
     var body:String = ""
+    var comments:Int = 0
     
     var User:IssueItemUser = IssueItemUser()
     var Labels:[IssueItemLabels] = []
@@ -97,6 +98,7 @@ class IssueItem:Mappable{
         state <- map["state"]
         created_at <- map["created_at"]
         body <- map["body"]
+        comments <- map["comments"]
         
         User <- map["user"]
         Labels <- map["labels"]

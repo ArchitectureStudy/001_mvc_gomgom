@@ -95,8 +95,20 @@ extension IssueDetailViewController: IssueDetailPresenterProtocol {
     }
     
     func displayIssueWriteComments(issueItems: [IssueCommentItem]) {
+        
+//        issueItems
+//        
+//        issueItems.forEach { issueJson in
+//            let json = JSON(issueJson)
+//            let id = json["id"].int ?? 0
+//            let title = json["title"].string ?? ""
+//            weakSelf.issues.append("\(id) : \(title)")
+//        }
+        
         let newSectionModel = SectionModel(model: 1, items: issueItems)
         self.datasource.value = [newSectionModel]
+        
+        self.issueSelectedItem.comments = issueItems.count
         
         DispatchQueue.main.async {
             self.writeCommentTextField.text = ""
