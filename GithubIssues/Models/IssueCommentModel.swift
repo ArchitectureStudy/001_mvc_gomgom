@@ -10,8 +10,6 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import ObjectMapper
-import p2_OAuth2
-
 
 class IssueCommentModel {
     
@@ -22,58 +20,58 @@ class IssueCommentModel {
     var issueComments:[IssueCommentItem] = []
     
     func request() {
-        APIManager.sharedInstance.requestHTTPTask(.get, urlString: "https://api.github.com/repos/\(user)/\(repo)/issues/\(number)/comments",
-            parameters: nil,
-            successBlock: {
-                [weak self] (result) in
-                guard let weakSelf = self else { return }
-                if let json = result as? [[String: AnyObject]] {
-                    weakSelf.issueComments = Mapper<IssueCommentItem>().mapArray(JSONArray: json)!
-                }
-                
-                NotificationCenter.default.post(name: .IssueDetailCommentsRequestCompletedNotification, object: weakSelf)
-        }) { (error) in
-            print(error)
-        }
+//        APIManager.sharedInstance.requestHTTPTask(.get, urlString: "https://api.github.com/repos/\(user)/\(repo)/issues/\(number)/comments",
+//            parameters: nil,
+//            successBlock: {
+//                [weak self] (result) in
+//                guard let weakSelf = self else { return }
+//                if let json = result as? [[String: AnyObject]] {
+//                    weakSelf.issueComments = Mapper<IssueCommentItem>().mapArray(JSONArray: json)!
+//                }
+//                
+//                NotificationCenter.default.post(name: .IssueDetailCommentsRequestCompletedNotification, object: weakSelf)
+//        }) { (error) in
+//            print(error)
+//        }
     }
     
     func commentPost(comment:String) {
         
-        let url = URL(string: "https://api.github.com/repos/\(user)/\(repo)/issues/\(number)/comments")
-        var request = IssueUserInfoManager.sharedInstance.oauth2.request(forURL: url!)
-        request.httpMethod = "post"
-        let parameters = ["body" : comment]
-
-        request = try! JSONEncoding.default.encode(request, with: parameters)
-        request.setValue("token \(IssueUserInfoManager.sharedInstance.accessToken)", forHTTPHeaderField: "Authorization")
-        
-        let task = IssueUserInfoManager.sharedInstance.oauth2.session.dataTask(with: request) { [weak self] data, response, error in
-            
-            if error != nil {
-                // something went wrong, check the error
-                print("error=\(error)")
-                return
-            }
-            else {
-                // check the response and the data
-                // you have just received data with an OAuth2-signed request!
-                guard let weakSelf = self else { return }
-                guard let responseString = String(data: data!, encoding: .utf8) else { return }
-                
-                print("responseString = \(responseString)")
-                
-                let jsonResponse = weakSelf.convertToDictionary(text: responseString)
-                
-                if let json = jsonResponse as [String: Any]? {
-                    if let commentItem = Mapper<IssueCommentItem>().map(JSON: json) {
-                        weakSelf.issueComments.append(commentItem)
-                    }
-                }
-                
-                NotificationCenter.default.post(name: .IssueWriteCommentsRequestCompletedNotification, object: responseString)
-            }
-        }
-        task.resume()
+//        let url = URL(string: "https://api.github.com/repos/\(user)/\(repo)/issues/\(number)/comments")
+//        var request = IssueUserInfoManager.sharedInstance.oauth2.request(forURL: url!)
+//        request.httpMethod = "post"
+//        let parameters = ["body" : comment]
+//
+//        request = try! JSONEncoding.default.encode(request, with: parameters)
+//        request.setValue("token \(IssueUserInfoManager.sharedInstance.accessToken)", forHTTPHeaderField: "Authorization")
+//        
+//        let task = IssueUserInfoManager.sharedInstance.oauth2.session.dataTask(with: request) { [weak self] data, response, error in
+//            
+//            if error != nil {
+//                // something went wrong, check the error
+//                print("error=\(error)")
+//                return
+//            }
+//            else {
+//                // check the response and the data
+//                // you have just received data with an OAuth2-signed request!
+//                guard let weakSelf = self else { return }
+//                guard let responseString = String(data: data!, encoding: .utf8) else { return }
+//                
+//                print("responseString = \(responseString)")
+//                
+//                let jsonResponse = weakSelf.convertToDictionary(text: responseString)
+//                
+//                if let json = jsonResponse as [String: Any]? {
+//                    if let commentItem = Mapper<IssueCommentItem>().map(JSON: json) {
+//                        weakSelf.issueComments.append(commentItem)
+//                    }
+//                }
+//                
+//                NotificationCenter.default.post(name: .IssueWriteCommentsRequestCompletedNotification, object: responseString)
+//            }
+//        }
+//        task.resume()
     }
     
     func convertToDictionary(text: String) -> [String: Any]? {

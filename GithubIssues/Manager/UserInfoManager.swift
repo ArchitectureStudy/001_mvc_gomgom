@@ -1,17 +1,17 @@
 //
-//  GithubUser.swift
+//  UserInfoManager.swift
 //  GithubIssues
 //
-//  Created by Chang Gwi Lee on 2017. 1. 14..
+//  Created by MOBDEV on 2017. 2. 3..
 //  Copyright © 2017년 AfreecaTV. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class IssueUserInfoManager: NSObject {
+class UserInfoManager: NSObject {
     
     static let sharedInstance = IssueUserInfoManager()
-    
+
     var repo:String
     var user:String
     var accessToken:String
@@ -20,5 +20,6 @@ class IssueUserInfoManager: NSObject {
         self.repo = ""
         self.user = ""
         self.accessToken = ""
-    }    
+    }
+    
 }

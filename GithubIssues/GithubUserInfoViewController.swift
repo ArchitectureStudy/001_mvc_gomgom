@@ -7,14 +7,21 @@
 //
 
 import UIKit
-import p2_OAuth2
 import Alamofire
+import RxSwift
+import SwiftyJSON
+import ObjectMapper
+import SDWebImage
+
 
 class GithubUserInfoViewController: UIViewController {
     
-    fileprivate var alamofireManager: SessionManager?
+    var disposeBag = DisposeBag()
+    let userInfoVariable: Variable<JSON> = Variable<JSON>([])
+    let userInfoSubject: PublishSubject<JSON> = PublishSubject<JSON>()
     
-    
+    var setUserInfo:UserInfoItem = UserInfoItem()
+    let avatarurl: String = ""
 
     @IBOutlet var imageView: UIImageView?
     @IBOutlet weak var usernameTextField: UITextField!
@@ -32,6 +39,18 @@ class GithubUserInfoViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // 유저 정보 로딩이 완료되면 리프레쉬되게
+        userInfoVariable.asObservable().subscribe(onNext: userInfoReload).addDisposableTo(disposeBag)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        self.logoutShowButtons()
+        
+        // 유저 정보 읽어오기
+        APIRequest.getUserInfo().bindTo(userInfoVariable).addDisposableTo(disposeBag)
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,63 +68,20 @@ class GithubUserInfoViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func pressedLoginButton(_ sender: UIButton?) {
+    
+    @IBAction func pressedTokenRemoveButton(_ sender: Any) {
         
-//        if IssueUserInfoManager.sharedInstance.oauth2.isAuthorizing {
-//            IssueUserInfoManager.sharedInstance.oauth2.abortAuthorization()
-//            return
-//        }
-//        
-//        sender?.setTitle("Authorizing...", for: UIControlState.normal)
-//        
-//        IssueUserInfoManager.sharedInstance.oauth2.authConfig.authorizeEmbedded = true
-//        IssueUserInfoManager.sharedInstance.oauth2.authConfig.authorizeContext = self
-//        let loader = OAuth2DataLoader(oauth2: IssueUserInfoManager.sharedInstance.oauth2)
-//        IssueUserInfoManager.sharedInstance.loader = loader
-//        
-//        loader.perform(request: userDataRequest) { response in
-//            do {
-//                let json = try response.responseJSON()
-//                self.didGetUserdata(dict: json, loader: loader)
-//            }
-//            catch let error {
-//                self.didCancelOrFail(error)
-//            }
-//        }
-//        
-//        
-         sender?.setTitle("Authorizing...", for: UIControlState.normal)
-         let sessionManager = SessionManager()
-         let retrier = OAuth2RetryHandler(oauth2: IssueUserInfoManager.sharedInstance.oauth2)
-         sessionManager.adapter = retrier
-         sessionManager.retrier = retrier
-         alamofireManager = sessionManager
+        let userDefaults = UserDefaults.standard
+        userDefaults.removeObject(forKey: "accessToken")
+        userDefaults.synchronize()
         
+        UserInfoManager.sharedInstance.accessToken = ""
         
-        sessionManager.request("https://api.github.com/user").validate().responseJSON { response in
-            debugPrint(response)
-            if let dict = response.result.value as? [String: Any] {
-                self.didGetUserdata(dict: dict, loader: nil)
-            }
-            else {
-                self.didCancelOrFail(OAuth2Error.generic("\(response)"))
-            }
-        }
-        sessionManager.request("https://api.github.com/user/repos").validate().responseJSON { response in
-            debugPrint(response)
-        }
-        
-         
-        
+        self.performSegue(withIdentifier: "sequeShowUserTokenViewController", sender: self)
     }
-    @IBAction func pressedLogoutButton(_ sender: Any) {
-        
-        IssueUserInfoManager.sharedInstance.oauth2.forgetTokens()
-        IssueUserInfoManager.sharedInstance.oauth2.forgetClient()
-        self.loginShowButtons()
-    }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        /*
         if segue.identifier == "showIssueListViewController" {
             
             guard let tempRepo:String = self.repoTextField.text else {
@@ -122,45 +98,17 @@ class GithubUserInfoViewController: UIViewController {
             IssueUserInfoManager.sharedInstance.user = tempUser
             IssueUserInfoManager.sharedInstance.accessToken = tempSecretKey
         }
+        
+        if segue.identifier == "sequeShowUserTokenViewController" {
+            let userDefaults = UserDefaults.standard
+            userDefaults.removeObject(forKey: "accessToken")
+            userDefaults.synchronize()
+        }
+ */
     }
     
     // MARK: - Actions
-    
-    var userDataRequest: URLRequest {
-        var request = URLRequest(url: URL(string: "https://api.github.com/user")!)
-        request.setValue("application/vnd.github.v3+json", forHTTPHeaderField: "Accept")
-        return request
-    }
-    
-    func didGetUserdata(dict: [String: Any], loader: OAuth2DataLoader?) {
-        DispatchQueue.main.async {
-            if let username = dict["login"] as? String {
-                self.usernameTextField?.text = username
-            }
-            else {
-                self.usernameTextField?.text = "(No name found)"
-            }
-            
-            if let imgURL = dict["avatar_url"] as? String, let url = URL(string: imgURL) {
-                self.loadAvatar(from: url, with: loader)
-            }
-            
-            self.logoutShowButtons()
-        }
-    }
-    
-    func didCancelOrFail(_ error: Error?) {
-        DispatchQueue.main.async {
-            if let error = error {
-                print("Authorization went wrong: \(error)")
-            }
-            self.loginShowButtons()
-        }
-    }
-    
     func loginShowButtons() {
-        self.loginButton.isHidden = false
-        
         self.logoutButton.isHidden = true
         self.issueShowButton.isHidden = true
         self.infoView.isHidden = true
@@ -169,8 +117,6 @@ class GithubUserInfoViewController: UIViewController {
     }
     
     func logoutShowButtons() {
-        self.loginButton.isHidden = true
-        
         self.logoutButton.isHidden = false
         self.issueShowButton.isHidden = false
         self.infoView.isHidden = false
@@ -178,33 +124,43 @@ class GithubUserInfoViewController: UIViewController {
         self.usernameTextField.isHidden = false
     }
 
+    func userInfoReload(userInfo: JSON) {
+//        let issues = self.issuesVariable.value
+//        let newIssues = issues.map { issue -> Issue in
+//            if issue.number == oldIssue.number {
+//                return newIssue
+//            }
+//            return issue
+//        }
+//        self.issuesVariable.value = newIssues
+        print("Failed to load avatar: \(userInfo)")
+        print("Failed to load avatar: \(userInfo)")
+        
+        print("avatar : \(userInfo["avatar_url"])")
+        
+        if let dictionary = userInfo.dictionaryObject {
+            if let avatarurl = dictionary["avatar_url"] as? String {
+                // access individual value in dictionary
+                let url = URL(string: avatarurl)
+                self.imageView?.sd_setImage(with: url)
+            }
+            
+            if let username = dictionary["name"] as? String {
+                self.usernameTextField.text = username
+            }
+        }
+    }
+}
+
+
+class UserInfoItem:Mappable {
     
-    // MARK: - Avatar
-    func loadAvatar(from url: URL, with loader: OAuth2DataLoader?) {
-        if let loader = loader {
-            loader.perform(request: URLRequest(url: url)) { response in
-                do {
-                    let data = try response.responseData()
-                    DispatchQueue.main.async {
-                        self.imageView?.image = UIImage(data: data)
-                        self.imageView?.isHidden = false
-                    }
-                }
-                catch let error {
-                    print("Failed to load avatar: \(error)")
-                }
-            }
-        }
-        else {
-            alamofireManager?.request(url).validate().responseData() { response in
-                if let data = response.result.value {
-                    self.imageView?.image = UIImage(data: data)
-                    self.imageView?.isHidden = false
-                }
-                else {
-                    print("Failed to load avatar: \(response)")
-                }
-            }
-        }
+    var avatarurl:String = ""
+
+    init() {}
+    required init?(map: Map) {}
+    
+    func mapping(map: Map) {
+        avatarurl <- map["avatar_url"]
     }
 }

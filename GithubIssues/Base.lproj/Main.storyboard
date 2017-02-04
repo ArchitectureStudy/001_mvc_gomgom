@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Oqq-NN-a6y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rvT-W1-XIV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,60 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--User Token Save View Controller-->
+        <scene sceneID="J5c-9k-ZV2">
+            <objects>
+                <viewController id="rvT-W1-XIV" customClass="UserTokenSaveViewController" customModule="GithubIssues" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tJh-pD-v3b"/>
+                        <viewControllerLayoutGuide type="bottom" id="tgb-ez-Rn8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fUi-p1-rfG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="토큰을 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U2n-5w-YLM">
+                                <rect key="frame" x="66" y="318" width="243" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="243" id="1c5-L6-Uo4"/>
+                                    <constraint firstAttribute="height" constant="30" id="V8w-Ua-aAT"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bwn-bH-m1V">
+                                <rect key="frame" x="164" y="376" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="PHq-G2-0AH"/>
+                                    <constraint firstAttribute="width" constant="46" id="mrK-Io-ZYp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="저장" backgroundImage="button">
+                                    <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedTokenSaveButton:" destination="rvT-W1-XIV" eventType="touchUpInside" id="Rr0-va-6f7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Bwn-bH-m1V" firstAttribute="top" secondItem="U2n-5w-YLM" secondAttribute="bottom" constant="28" id="9si-ee-ieQ"/>
+                            <constraint firstItem="U2n-5w-YLM" firstAttribute="centerX" secondItem="fUi-p1-rfG" secondAttribute="centerX" id="OH1-Aa-7dS"/>
+                            <constraint firstItem="Bwn-bH-m1V" firstAttribute="centerX" secondItem="fUi-p1-rfG" secondAttribute="centerX" id="Xe7-XM-dX2"/>
+                            <constraint firstItem="U2n-5w-YLM" firstAttribute="centerY" secondItem="fUi-p1-rfG" secondAttribute="centerY" id="qXg-ST-5x4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tokenTextField" destination="U2n-5w-YLM" id="UHZ-Pn-r5q"/>
+                        <segue destination="Oqq-NN-a6y" kind="showDetail" identifier="segueShowRepository" id="fgX-ft-qSQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V8G-dI-Ht8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1738.4000000000001" y="-36.431784107946029"/>
+        </scene>
         <!--Github User Info View Controller-->
         <scene sceneID="EkL-nw-Zzv">
             <objects>
@@ -22,22 +76,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fih-5o-QHm">
-                                <rect key="frame" x="125" y="304" width="125" height="60"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="wYP-97-3Ff"/>
-                                    <constraint firstAttribute="width" constant="125" id="xXK-75-OcD"/>
-                                </constraints>
-                                <state key="normal" title="로그인하기">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="pressedLoginButton:" destination="Oqq-NN-a6y" eventType="touchUpInside" id="3C8-mi-B6R"/>
-                                </connections>
-                            </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIk-cr-3J7">
-                                <rect key="frame" x="125" y="462" width="125" height="60"/>
+                                <rect key="frame" x="125" y="389" width="125" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="0cX-Xu-QR4"/>
@@ -57,8 +97,8 @@
                                     <constraint firstAttribute="height" constant="128" id="tJ2-Dc-ylk"/>
                                 </constraints>
                             </imageView>
-                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="갓태완" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ua-3q-2J1">
-                                <rect key="frame" x="167" y="180" width="41" height="30"/>
+                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="갓숭아엉덩숭아" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ua-3q-2J1">
+                                <rect key="frame" x="143" y="180" width="89" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Dgb-8k-XHi"/>
                                 </constraints>
@@ -67,7 +107,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpo-E7-lwW" userLabel="infoView">
-                                <rect key="frame" x="57" y="220" width="260" height="242"/>
+                                <rect key="frame" x="57" y="220" width="260" height="161"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Repo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D06-uc-W1r">
                                         <rect key="frame" x="34" y="8" width="106" height="34"/>
@@ -83,29 +123,15 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="OAuth access token" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJc-rU-B2J">
-                                        <rect key="frame" x="34" y="148" width="165" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="study" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S8U-XO-c3u">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S8U-XO-c3u">
                                         <rect key="frame" x="34" y="42" width="206" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ArchitectureStudy" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ifx-Mx-tn3">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ifx-Mx-tn3">
                                         <rect key="frame" x="34" y="111" width="206" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="안넣어도됨" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ELq-Qm-XuF">
-                                        <rect key="frame" x="34" y="184" width="206" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -114,20 +140,21 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="242" id="dPR-qx-mTV"/>
+                                    <constraint firstAttribute="height" constant="161" id="dPR-qx-mTV"/>
                                 </constraints>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phH-iD-EyP">
-                                <rect key="frame" x="147" y="552" width="80" height="40"/>
+                                <rect key="frame" x="147" y="481" width="80" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="I7G-Jl-zqM"/>
                                     <constraint firstAttribute="height" constant="40" id="hHg-va-4uO"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="mfj-Lh-wSw"/>
                                     <constraint firstAttribute="width" constant="80" id="suE-RD-fon"/>
                                 </constraints>
-                                <state key="normal" title="로그아웃"/>
+                                <state key="normal" title="토큰삭제" backgroundImage="button"/>
                                 <connections>
-                                    <action selector="pressedLogoutButton:" destination="Oqq-NN-a6y" eventType="touchUpInside" id="GBp-mV-u9C"/>
+                                    <action selector="pressedTokenRemoveButton:" destination="Oqq-NN-a6y" eventType="touchUpInside" id="HRQ-Qq-NGk"/>
+                                    <segue destination="rvT-W1-XIV" kind="showDetail" identifier="sequeShowUserTokenViewController" id="JfV-8g-7bY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -138,26 +165,22 @@
                             <constraint firstItem="phH-iD-EyP" firstAttribute="centerX" secondItem="4PN-9E-2Ci" secondAttribute="centerX" id="3u1-yw-Epv"/>
                             <constraint firstItem="KIk-cr-3J7" firstAttribute="centerX" secondItem="bpo-E7-lwW" secondAttribute="centerX" id="8k8-42-1Zv"/>
                             <constraint firstItem="GLS-n7-4Ek" firstAttribute="leading" secondItem="4PN-9E-2Ci" secondAttribute="leadingMargin" constant="106" id="AdV-b2-exP"/>
-                            <constraint firstItem="fih-5o-QHm" firstAttribute="centerX" secondItem="4PN-9E-2Ci" secondAttribute="centerX" id="DBn-lu-MxH"/>
                             <constraint firstItem="GLS-n7-4Ek" firstAttribute="top" secondItem="dfl-aS-rgt" secondAttribute="bottom" constant="23" id="LtW-s4-KrB"/>
-                            <constraint firstItem="phH-iD-EyP" firstAttribute="top" secondItem="KIk-cr-3J7" secondAttribute="bottom" constant="30" id="RrB-Yc-BQH"/>
+                            <constraint firstItem="phH-iD-EyP" firstAttribute="top" secondItem="KIk-cr-3J7" secondAttribute="bottom" constant="32" id="RrB-Yc-BQH"/>
                             <constraint firstItem="bpo-E7-lwW" firstAttribute="top" secondItem="5ua-3q-2J1" secondAttribute="bottom" constant="10" id="SIH-1E-5Sd"/>
                             <constraint firstItem="5ua-3q-2J1" firstAttribute="centerX" secondItem="4PN-9E-2Ci" secondAttribute="centerX" id="VQt-Ng-AmW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GLS-n7-4Ek" secondAttribute="trailing" constant="109" id="dUu-11-7HO"/>
-                            <constraint firstItem="fih-5o-QHm" firstAttribute="centerY" secondItem="4PN-9E-2Ci" secondAttribute="centerY" id="ev3-8j-XZF"/>
                             <constraint firstItem="bpo-E7-lwW" firstAttribute="centerX" secondItem="4PN-9E-2Ci" secondAttribute="centerX" id="l1O-Qb-7es"/>
                             <constraint firstItem="phH-iD-EyP" firstAttribute="centerX" secondItem="4PN-9E-2Ci" secondAttribute="centerX" id="mH4-kT-EOY"/>
-                            <constraint firstItem="KIk-cr-3J7" firstAttribute="top" secondItem="bpo-E7-lwW" secondAttribute="bottom" id="oG8-t1-iva"/>
+                            <constraint firstItem="KIk-cr-3J7" firstAttribute="top" secondItem="bpo-E7-lwW" secondAttribute="bottom" constant="8" id="oG8-t1-iva"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="GLS-n7-4Ek" id="mak-gN-H2D"/>
                         <outlet property="infoView" destination="bpo-E7-lwW" id="mi4-Xs-xEZ"/>
                         <outlet property="issueShowButton" destination="KIk-cr-3J7" id="O5N-O8-Vv7"/>
-                        <outlet property="loginButton" destination="fih-5o-QHm" id="B7W-zJ-CcK"/>
                         <outlet property="logoutButton" destination="phH-iD-EyP" id="2VQ-Fa-9lZ"/>
                         <outlet property="repoTextField" destination="S8U-XO-c3u" id="KdB-bh-seA"/>
-                        <outlet property="secretKeyTextField" destination="ELq-Qm-XuF" id="UNz-Lj-eUf"/>
                         <outlet property="userTextField" destination="ifx-Mx-tn3" id="XwX-4b-gus"/>
                         <outlet property="usernameTextField" destination="5ua-3q-2J1" id="6Yh-48-tZc"/>
                     </connections>
@@ -170,7 +193,7 @@
         <scene sceneID="nCS-mv-U9F">
             <objects>
                 <navigationController id="1cg-tg-jpN" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zG0-dU-wRE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="zG0-dU-wRE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -473,7 +496,7 @@
         <scene sceneID="eAC-ux-FSK">
             <objects>
                 <navigationController id="pNz-D2-QvC" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8Gy-GO-IcF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="8Gy-GO-IcF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -509,6 +532,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="button" width="29" height="14"/>
         <image name="open" width="105" height="42"/>
     </resources>
 </document>

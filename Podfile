@@ -11,10 +11,9 @@ target 'GithubIssues' do
   pod 'Alamofire', '~> 4.0'
   pod 'AlamofireImage', '~> 3.1'
   
-  pod 'p2.OAuth2', '~> 3.0'
-  
   pod 'SwiftyJSON'
   pod 'ObjectMapper'
+  pod 'SDWebImage'
   
   pod 'RxSwift'
   pod 'RxCocoa'

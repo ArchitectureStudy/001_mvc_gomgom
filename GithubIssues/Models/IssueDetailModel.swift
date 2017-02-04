@@ -20,16 +20,16 @@ class IssueDetailModel {
     var issueDetail:IssueDetailItem = IssueDetailItem()
     
     func request() {
-        APIManager.sharedInstance.requestHTTPTask(.get, urlString: "https://api.github.com/repos/\(user)/\(repo)/issues/\(number)",
-            parameters: nil,
-            successBlock: {
-                [weak self] (result) in
-                guard let weakSelf = self else { return }
-                weakSelf.issueDetail = Mapper<IssueDetailItem>().map(JSONObject: result)!
-                NotificationCenter.default.post(name: .IssueDetailRequestCompletedNotification, object: weakSelf)
-        }) { (error) in
-            print(error)
-        }
+//        APIManager.sharedInstance.requestHTTPTask(.get, urlString: "https://api.github.com/repos/\(user)/\(repo)/issues/\(number)",
+//            parameters: nil,
+//            successBlock: {
+//                [weak self] (result) in
+//                guard let weakSelf = self else { return }
+//                weakSelf.issueDetail = Mapper<IssueDetailItem>().map(JSONObject: result)!
+//                NotificationCenter.default.post(name: .IssueDetailRequestCompletedNotification, object: weakSelf)
+//        }) { (error) in
+//            print(error)
+//        }
     }
     
     init(user: String, repo: String, number:Int) {

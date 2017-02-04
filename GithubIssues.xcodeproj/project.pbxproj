@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1892FFB6D3751F8DD9367CFE /* Pods_GithubIssuesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0462E1FD6D35FAA661AA8F4 /* Pods_GithubIssuesUITests.framework */; };
+		2231802D1E46249E0067BB55 /* DataRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2231802C1E46249E0067BB55 /* DataRequestExtension.swift */; };
+		22DEBF151E44C5B2006BAD79 /* UserTokenSaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DEBF141E44C5B2006BAD79 /* UserTokenSaveViewController.swift */; };
+		22DEBF171E44C6E5006BAD79 /* UserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DEBF161E44C6E5006BAD79 /* UserInfoManager.swift */; };
 		22EC40181E2FC7C9007A2B0C /* NumberSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC40171E2FC7C9007A2B0C /* NumberSection.swift */; };
-		22EC401B1E312DD0007A2B0C /* OAuth2RetryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC401A1E312DD0007A2B0C /* OAuth2RetryHandler.swift */; };
 		4BF8BCBB8D1CAD9B8BC5D721 /* Pods_GithubIssues.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C6111AC1E228E0F7952A9F /* Pods_GithubIssues.framework */; };
 		5612FA9C1E237B4C001C1BA2 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612FA9B1E237B4C001C1BA2 /* NotificationExtension.swift */; };
 		5612FA9E1E238020001C1BA2 /* IssueItemUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612FA9D1E238020001C1BA2 /* IssueItemUser.swift */; };
@@ -66,8 +68,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2231802C1E46249E0067BB55 /* DataRequestExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataRequestExtension.swift; path = Extensions/DataRequestExtension.swift; sourceTree = "<group>"; };
+		22DEBF141E44C5B2006BAD79 /* UserTokenSaveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTokenSaveViewController.swift; path = Views/UserTokenSaveViewController.swift; sourceTree = "<group>"; };
+		22DEBF161E44C6E5006BAD79 /* UserInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfoManager.swift; path = Manager/UserInfoManager.swift; sourceTree = "<group>"; };
 		22EC40171E2FC7C9007A2B0C /* NumberSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumberSection.swift; path = Views/NumberSection.swift; sourceTree = "<group>"; };
-		22EC401A1E312DD0007A2B0C /* OAuth2RetryHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OAuth2RetryHandler.swift; path = Manager/OAuth2RetryHandler.swift; sourceTree = "<group>"; };
 		5612FA9B1E237B4C001C1BA2 /* NotificationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationExtension.swift; path = Extensions/NotificationExtension.swift; sourceTree = "<group>"; };
 		5612FA9D1E238020001C1BA2 /* IssueItemUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueItemUser.swift; path = Models/IssueItemUser.swift; sourceTree = "<group>"; };
 		5612FA9F1E23803E001C1BA2 /* IssueItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueItem.swift; path = Models/IssueItem.swift; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 				56C35B401E2F18EE0035D407 /* UIImageExtension.swift */,
 				56C35B411E2F18EE0035D407 /* UIImageViewExtension.swift */,
 				56C35B421E2F18EE0035D407 /* FileManagerExtension.swift */,
+				2231802C1E46249E0067BB55 /* DataRequestExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -191,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				561C7E111E1FA89E00ED279D /* AppDelegate.swift */,
+				22DEBF141E44C5B2006BAD79 /* UserTokenSaveViewController.swift */,
 				56959B2E1E2A1BBA0030ED00 /* GithubUserInfoViewController.swift */,
 				56BEBA081E25C9E600619AE8 /* Presenter */,
 				561C7E491E1FB50E00ED279D /* Views */,
@@ -262,8 +268,8 @@
 			isa = PBXGroup;
 			children = (
 				5694AA4D1E2C5B34006B483D /* APIManager.swift */,
+				22DEBF161E44C6E5006BAD79 /* UserInfoManager.swift */,
 				56959B2A1E2A13B00030ED00 /* IssueUserInfoManager.swift */,
-				22EC401A1E312DD0007A2B0C /* OAuth2RetryHandler.swift */,
 			);
 			name = GithubApiManager;
 			sourceTree = "<group>";
@@ -584,9 +590,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22EC401B1E312DD0007A2B0C /* OAuth2RetryHandler.swift in Sources */,
 				56959B231E2A007F0030ED00 /* IssueListViewController.swift in Sources */,
 				56BEBA0A1E25CA1300619AE8 /* IssueListPresenter.swift in Sources */,
+				2231802D1E46249E0067BB55 /* DataRequestExtension.swift in Sources */,
 				56C35B501E2F3D8C0035D407 /* IssueCommentCollectionViewCell.swift in Sources */,
 				56C35B481E2F18EE0035D407 /* UIViewControllerExtension.swift in Sources */,
 				561C7E461E1FAEDF00ED279D /* IssueListModel.swift in Sources */,
@@ -595,6 +601,7 @@
 				56C35B381E2F187D0035D407 /* UIColorExtension.swift in Sources */,
 				56C35B451E2F18EE0035D407 /* UIApplicationExtension.swift in Sources */,
 				56959B161E29FBA00030ED00 /* IssueDetailModel.swift in Sources */,
+				22DEBF171E44C6E5006BAD79 /* UserInfoManager.swift in Sources */,
 				22EC40181E2FC7C9007A2B0C /* NumberSection.swift in Sources */,
 				56959B241E2A007F0030ED00 /* IssueWriteViewController.swift in Sources */,
 				56EFAA4E1E2F4E3900B615BD /* IssueCommentModel.swift in Sources */,
@@ -614,6 +621,7 @@
 				56C35B491E2F18EE0035D407 /* UIViewExtension.swift in Sources */,
 				56C35B431E2F18EE0035D407 /* Optional+Extension.swift in Sources */,
 				561C7E121E1FA89E00ED279D /* AppDelegate.swift in Sources */,
+				22DEBF151E44C5B2006BAD79 /* UserTokenSaveViewController.swift in Sources */,
 				5612FAA01E23803E001C1BA2 /* IssueItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
