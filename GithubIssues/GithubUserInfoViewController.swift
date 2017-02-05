@@ -20,7 +20,6 @@ class GithubUserInfoViewController: UIViewController {
     let userInfoVariable: Variable<JSON> = Variable<JSON>([])
     let userInfoSubject: PublishSubject<JSON> = PublishSubject<JSON>()
     
-    var setUserInfo:UserInfoItem = UserInfoItem()
     let avatarurl: String = ""
 
     @IBOutlet var imageView: UIImageView?
@@ -81,7 +80,7 @@ class GithubUserInfoViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        /*
+        
         if segue.identifier == "showIssueListViewController" {
             
             guard let tempRepo:String = self.repoTextField.text else {
@@ -90,21 +89,10 @@ class GithubUserInfoViewController: UIViewController {
             guard let tempUser:String = self.userTextField.text else {
                 return
             }
-            guard let tempSecretKey:String = self.secretKeyTextField.text else {
-                return
-            }
             
-            IssueUserInfoManager.sharedInstance.repo = tempRepo
-            IssueUserInfoManager.sharedInstance.user = tempUser
-            IssueUserInfoManager.sharedInstance.accessToken = tempSecretKey
+            UserInfoManager.sharedInstance.repo = tempRepo
+            UserInfoManager.sharedInstance.user = tempUser
         }
-        
-        if segue.identifier == "sequeShowUserTokenViewController" {
-            let userDefaults = UserDefaults.standard
-            userDefaults.removeObject(forKey: "accessToken")
-            userDefaults.synchronize()
-        }
- */
     }
     
     // MARK: - Actions
@@ -125,17 +113,7 @@ class GithubUserInfoViewController: UIViewController {
     }
 
     func userInfoReload(userInfo: JSON) {
-//        let issues = self.issuesVariable.value
-//        let newIssues = issues.map { issue -> Issue in
-//            if issue.number == oldIssue.number {
-//                return newIssue
-//            }
-//            return issue
-//        }
-//        self.issuesVariable.value = newIssues
         print("Failed to load avatar: \(userInfo)")
-        print("Failed to load avatar: \(userInfo)")
-        
         print("avatar : \(userInfo["avatar_url"])")
         
         if let dictionary = userInfo.dictionaryObject {
@@ -149,18 +127,5 @@ class GithubUserInfoViewController: UIViewController {
                 self.usernameTextField.text = username
             }
         }
-    }
-}
-
-
-class UserInfoItem:Mappable {
-    
-    var avatarurl:String = ""
-
-    init() {}
-    required init?(map: Map) {}
-    
-    func mapping(map: Map) {
-        avatarurl <- map["avatar_url"]
     }
 }

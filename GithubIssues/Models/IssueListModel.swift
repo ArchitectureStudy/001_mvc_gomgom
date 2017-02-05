@@ -10,13 +10,17 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import ObjectMapper
+import RxSwift
+
 
 class IssueListModel {
     
     let user:String
     let repo:String
     
-    var issues:[IssueItem] = []
+    var disposeBag = DisposeBag()
+    var issuesVariable:Variable<[IssueItem]> = Variable<[IssueItem]>([])
+
     
     func request() {
 //        APIManager.sharedInstance.requestHTTPTask(.get, urlString: "https://api.github.com/repos/\(user)/\(repo)/issues",
@@ -31,6 +35,9 @@ class IssueListModel {
 //        }) { (error) in
 //            print(error)
 //        }
+        
+        // 유저 정보 읽어오기
+        APIRequest.getIssues().bindTo(issuesVariable).addDisposableTo(disposeBag)
     }
     
     init(user: String, repo: String) {

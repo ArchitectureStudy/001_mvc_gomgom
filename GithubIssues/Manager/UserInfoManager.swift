@@ -10,7 +10,7 @@ import UIKit
 
 class UserInfoManager: NSObject {
     
-    static let sharedInstance = IssueUserInfoManager()
+    static let sharedInstance = UserInfoManager()
 
     var repo:String
     var user:String

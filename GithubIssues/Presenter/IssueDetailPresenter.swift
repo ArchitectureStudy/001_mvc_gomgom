@@ -16,7 +16,7 @@ protocol IssueDetailPresenterProtocol {
 
 class IssueDetailPresenter {
     
-    let manager = IssueUserInfoManager.sharedInstance
+    let manager = UserInfoManager.sharedInstance
     
     let model:IssueDetailModel
     let modelComment:IssueCommentModel
