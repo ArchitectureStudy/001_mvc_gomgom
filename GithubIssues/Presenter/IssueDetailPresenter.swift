@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol IssueDetailPresenterProtocol {
     func displayIssueDetail(issueItem:IssueDetailItem)
@@ -15,6 +16,8 @@ protocol IssueDetailPresenterProtocol {
 }
 
 class IssueDetailPresenter {
+    
+    var disposeBag = DisposeBag()
     
     let manager = UserInfoManager.sharedInstance
     
@@ -43,18 +46,24 @@ class IssueDetailPresenter {
     
     @objc func onIssueDetailCommentsRequestCompletedNotification(_ notification: Notification) {
         print("onIssueDetailCommentsRequestCompletedNotification IN")
-        self.view.displayIssueDetailComments(issueItems: modelComment.issueComments)
+        //self.view.displayIssueDetailComments(issueItems: modelComment.issueComments)
     }
     
     @objc func onIssueWriteCommentsRequestCompletedNotification(_ notification: Notification) {
-        print("onIssueDetailCommentsRequestCompletedNotification IN")
-        self.view.displayIssueWriteComments(issueItems: modelComment.issueComments)
+        //print("onIssueDetailCommentsRequestCompletedNotification IN")
+        //self.view.displayIssueWriteComments(issueItems: modelComment.issueComments)
     }
     
     func issuesRequest() {
         // api request
         self.model.request()
+        
+        self.modelComment.issueCommentsVariable.asObservable().subscribe(onNext: issueCommentReload).addDisposableTo(disposeBag)
         self.modelComment.request()
+    }
+    
+    func issueCommentReload(comments: [IssueCommentItem]) {
+        self.view.displayIssueDetailComments(issueItems: self.modelComment.issueCommentsVariable.value)
     }
     
     func writeComment(comment:String) {

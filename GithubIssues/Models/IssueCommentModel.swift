@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import ObjectMapper
+import RxSwift
 
 class IssueCommentModel {
     
@@ -17,7 +18,9 @@ class IssueCommentModel {
     let repo:String
     let number:Int
     
-    var issueComments:[IssueCommentItem] = []
+    var disposeBag = DisposeBag()
+    var issueCommentsVariable:Variable<[IssueCommentItem]> = Variable<[IssueCommentItem]>([])
+    var issueWriteCommentVariable:Variable<[IssueCommentItem]> = Variable<[IssueCommentItem]>([])
     
     func request() {
 //        APIManager.sharedInstance.requestHTTPTask(.get, urlString: "https://api.github.com/repos/\(user)/\(repo)/issues/\(number)/comments",
@@ -33,6 +36,7 @@ class IssueCommentModel {
 //        }) { (error) in
 //            print(error)
 //        }
+        APIRequest.getIssueComments(number: number).bindTo(issueCommentsVariable).addDisposableTo(disposeBag)
     }
     
     func commentPost(comment:String) {
@@ -72,6 +76,13 @@ class IssueCommentModel {
 //            }
 //        }
 //        task.resume()
+        
+        
+        APIRequest.createIssueComment(number: number, body: comment).subscribe(onNext: {[unowned self] comment in
+            print(comment)
+            let newComments = self.issueCommentsVariable.value + [comment]
+            self.issueCommentsVariable.value = newComments
+        }).addDisposableTo(disposeBag)
     }
     
     func convertToDictionary(text: String) -> [String: Any]? {

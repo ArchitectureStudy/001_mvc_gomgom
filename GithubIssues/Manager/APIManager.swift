@@ -124,37 +124,25 @@ struct APIRequest {
     static func getIssues() -> Observable<[IssueItem]> {
         return APIManager.requestIssues(user: UserInfoManager.sharedInstance.user, repo: UserInfoManager.sharedInstance.repo).buildRequest().map { json -> [IssueItem] in
             let jsonString: String = json.rawString()!
-            do {
-                let issues = try Mapper<IssueItem>().mapArray(JSONString: jsonString)
-                return issues!
-            } catch {
-                return []
-            }
+            let issues = Mapper<IssueItem>().mapArray(JSONString: jsonString)
+            return issues!
         }
     }
     
-//    static func createIssueComment(number: Int, body: String) -> Observable<IssueItem> {
-//        let parameters = ["body": body]
-//        return APIManager.createIssueComment(user: UserInfoManager.sharedInstance.user, repo: UserInfoManager.sharedInstance.repo, number: number).buildRequest(parameters).flatMap{ json -> Observable<IssueItem> in
-//            let jsonString: String = json.rawString()!
-//            do {
-//                let comment = try Mapper<IssueItem>().map(JSONString: jsonString)
-//                return Observable.just(comment)
-//            } catch {
-//                return Observable.error(NSError(domain: "Error", code: 10011, userInfo: ["":""]))
-//            }
-//        }
-//    }
+    static func createIssueComment(number: Int, body: String) -> Observable<IssueCommentItem> {
+        let parameters = ["body": body]
+        return APIManager.createIssueComment(user: UserInfoManager.sharedInstance.user, repo: UserInfoManager.sharedInstance.repo, number: number).buildRequest(parameters).map { json -> IssueCommentItem in
+            let jsonString: String = json.rawString()!
+            let comment = Mapper<IssueCommentItem>().map(JSONString: jsonString)
+            return comment!
+        }
+    }
     
     static func getIssueComments(number: Int) -> Observable<[IssueCommentItem]> {
         return APIManager.requestIssueComments(user: UserInfoManager.sharedInstance.user, repo: UserInfoManager.sharedInstance.repo, number: number).buildRequest().map{ json -> [IssueCommentItem] in
             let jsonString: String = json.rawString()!
-            do {
-                let comments = try Mapper<IssueCommentItem>().mapArray(JSONString: jsonString)
-                return comments!
-            } catch {
-                return []
-            }
+            let comments = Mapper<IssueCommentItem>().mapArray(JSONString: jsonString)
+            return comments!
         }
     }
 }

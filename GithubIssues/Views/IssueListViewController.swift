@@ -19,8 +19,9 @@ class IssueListViewController: UIViewController {
     
     var presenter: IssueListPresenter!
     
-    var datasource: Variable<[SectionModel<Int,IssueItem>]> = Variable([SectionModel(model: 1, items:[])])
     let disposeBag = DisposeBag()
+    var datasource: Variable<[SectionModel<Int,IssueItem>]> = Variable([SectionModel(model: 1, items:[])])
+    
 
     @IBOutlet weak var issueCollectionView: UICollectionView!
     
@@ -33,10 +34,12 @@ class IssueListViewController: UIViewController {
         // collectionView bind Data
         self.bindDataSource()
         self.rxAction()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onIssueWriteCommentsRequestCompletedNotification(_:)), name: .IssueWriteCommentsRequestCompletedNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.issueCollectionView.reloadData()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,6 +47,10 @@ class IssueListViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @objc func onIssueWriteCommentsRequestCompletedNotification(_ notification: Notification) {
+        print("onIssueDetailCommentsRequestCompletedNotification R IN")
+        self.issueCollectionView.reloadData()
+    }
 
     /*
     // MARK: - Navigation
@@ -54,6 +61,21 @@ class IssueListViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func changeIssue(oldIssue: IssueItem, newIssue: IssueItem) {
+        /*
+        let issues = datasource.value.first?.items
+        let newIssues = issues.map { issue -> IssueItem in
+            if issue.number == oldIssue.number {
+                return newIssue
+            }
+            return issue
+        }
+        self.issuesVariable.value = newIssues
+        */
+        
+        self.issueCollectionView.reloadData()
+    }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         return true;

@@ -10,13 +10,14 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import ObjectMapper
+import RxSwift
 
 class IssueDetailModel {
     
     let user:String
     let repo:String
     let number:Int
-    
+        
     var issueDetail:IssueDetailItem = IssueDetailItem()
     
     func request() {
