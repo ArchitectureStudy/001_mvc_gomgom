@@ -1,5 +1,5 @@
 //
-//  IssueDetailPresenter.swift
+//  IssueDetailViewModel.swift
 //  GithubIssues
 //
 //  Created by Chang Gwi Lee on 2017. 1. 14..
@@ -9,13 +9,13 @@
 import Foundation
 import RxSwift
 
-protocol IssueDetailPresenterProtocol {
+protocol IssueDetailViewModelProtocol {
     func displayIssueDetail(issueItem:IssueDetailItem)
     func displayIssueDetailComments(issueItems:[IssueCommentItem])
     func displayIssueWriteComments(issueItems:[IssueCommentItem])
 }
 
-class IssueDetailPresenter {
+class IssueDetailViewModel {
     
     var disposeBag = DisposeBag()
     
@@ -24,9 +24,9 @@ class IssueDetailPresenter {
     let model:IssueDetailModel
     let modelComment:IssueCommentModel
     
-    var view:IssueDetailPresenterProtocol!
+    var view:IssueDetailViewModelProtocol!
     
-    init(view:IssueDetailPresenterProtocol, selectedItem:IssueItem) {
+    init(view:IssueDetailViewModelProtocol, selectedItem:IssueItem) {
         self.view = view;
         self.model = IssueDetailModel(user: manager.user, repo: manager.repo, number: selectedItem.number)
         self.modelComment = IssueCommentModel(user: manager.user, repo: manager.repo, number: selectedItem.number)

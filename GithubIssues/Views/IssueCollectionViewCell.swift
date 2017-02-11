@@ -32,4 +32,10 @@ class IssueCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    func configure(withDelegate delegate: ViewModelProtocol)
+    {
+        self.issueNumber = "#\(delegate.number)"
+        self.issueTitle = delegate.title
+        self.issueCommentCount = "\(delegate.comment)"
+    }
 }

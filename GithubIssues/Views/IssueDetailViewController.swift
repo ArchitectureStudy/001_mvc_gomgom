@@ -28,7 +28,7 @@ class IssueDetailViewController: UIViewController {
     //리스트에서 선택한 아이템
     var issueSelectedItem:IssueItem = IssueItem()
     
-    var presenter: IssueDetailPresenter!
+    var presenter: IssueDetailViewModel!
     
     var datasource: Variable<[SectionModel<Int,IssueCommentItem>]> = Variable([SectionModel(model: 1, items:[])])
     let disposeBag = DisposeBag()
@@ -44,7 +44,7 @@ class IssueDetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        presenter = IssueDetailPresenter(view: self, selectedItem: issueSelectedItem)
+        presenter = IssueDetailViewModel(view: self, selectedItem: issueSelectedItem)
         presenter.issuesRequest()
         
         // collectionView bind Data
@@ -83,7 +83,7 @@ class IssueDetailViewController: UIViewController {
 
 }
 
-extension IssueDetailViewController: IssueDetailPresenterProtocol {
+extension IssueDetailViewController: IssueDetailViewModelProtocol {
     func displayIssueDetail(issueItem: IssueDetailItem) {
 //        usernameLabel.text = issueItem.User.login
 //        titleLabel.text = issueItem.body

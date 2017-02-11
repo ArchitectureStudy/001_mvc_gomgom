@@ -129,6 +129,21 @@ struct APIRequest {
         }
     }
     
+//    static func createIssueComment(number: Int, body: String) -> Observable<IssueCommentItem> {
+//        let parameters = ["body": body]
+//        return APIManager.createIssueComment(user: UserInfoManager.sharedInstance.user, repo: UserInfoManager.sharedInstance.repo, number: number).buildRequest(parameters).flatMap{ json -> Observable<IssueCommentItem> in
+//            let jsonString: String = json.rawString()!
+//            do {
+//                guard let comment = try Mapper<IssueCommentItem>().map(JSONString: jsonString) else {
+//                    return Observable.error(NSError(domain: "Error", code: 10011, userInfo: ["":""]))
+//                }
+//                return Observable.just(comment)
+//            } catch {
+//                return Observable.error(NSError(domain: "Error", code: 10011, userInfo: ["":""]))
+//            }
+//        }
+//    }
+    
     static func createIssueComment(number: Int, body: String) -> Observable<IssueCommentItem> {
         let parameters = ["body": body]
         return APIManager.createIssueComment(user: UserInfoManager.sharedInstance.user, repo: UserInfoManager.sharedInstance.repo, number: number).buildRequest(parameters).map { json -> IssueCommentItem in

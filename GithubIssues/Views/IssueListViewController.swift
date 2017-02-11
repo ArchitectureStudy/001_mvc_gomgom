@@ -17,18 +17,18 @@ class IssueListViewController: UIViewController {
     @IBOutlet weak var issueAddButton: UIBarButtonItem!
     @IBOutlet weak var memoCountLabel: UILabel!
     
-    var presenter: IssueListPresenter!
+    var presenter: IssueListViewModel!
     
     let disposeBag = DisposeBag()
     var datasource: Variable<[SectionModel<Int,IssueItem>]> = Variable([SectionModel(model: 1, items:[])])
+    //let issuesSaveSubject: PublishSubject<(IssueItem, IssueItem)> = PublishSubject<(IssueItem, IssueItem)>()
     
-
     @IBOutlet weak var issueCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter = IssueListPresenter(view: self)
+        presenter = IssueListViewModel(view: self)
         presenter.issuesRequest()
 
         // collectionView bind Data
@@ -36,11 +36,19 @@ class IssueListViewController: UIViewController {
         self.rxAction()
         
         NotificationCenter.default.addObserver(self, selector: #selector(onIssueWriteCommentsRequestCompletedNotification(_:)), name: .IssueWriteCommentsRequestCompletedNotification, object: nil)
+        
+        
+        //issuesSaveSubject.subscribe(onNext: savedIssue).addDisposableTo(disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
     }
+    
+    func savedIssue(oldIssue: IssueItem, newIssue: IssueItem) {
+        print("savedIssue IN")
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -129,9 +137,8 @@ extension IssueListViewController {
         
         datasource.configureCell = { datasource, collectionView, indexPath, item in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueCollectionViewCell", for: indexPath) as? IssueCollectionViewCell else { return IssueCollectionViewCell() }
-            cell.issueNumber = "#\(item.number)"
-            cell.issueTitle = "\(item.title)"
-            cell.issueCommentCount = "\(item.comments)"
+            
+            cell.configure(withDelegate: IssueCollectionViewCellViewModel(item: item))
             return cell
         }
         return datasource
@@ -144,7 +151,7 @@ extension IssueListViewController {
 
 
 
-extension IssueListViewController:IssueListPresenterProtocol {
+extension IssueListViewController:IssueListViewModelProtocol {
     func displayIssues(issueItems: [IssueItem]) {
         let newSectionModel = SectionModel(model: 1, items: issueItems)
         self.datasource.value = [newSectionModel]

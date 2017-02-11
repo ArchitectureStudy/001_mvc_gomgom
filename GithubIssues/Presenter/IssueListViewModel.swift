@@ -1,5 +1,5 @@
 //
-//  IssueListPresenter.swift
+//  IssueListViewModel.swift
 //  GithubIssues
 //
 //  Created by Chang Gwi Lee on 2017. 1. 11..
@@ -9,20 +9,19 @@
 import Foundation
 import RxSwift
 
-protocol IssueListPresenterProtocol {
+protocol IssueListViewModelProtocol {
     func displayIssues(issueItems: [IssueItem])
 }
 
-class IssueListPresenter {
+class IssueListViewModel {
     
     var disposeBag = DisposeBag()
-    
     let manager = UserInfoManager.sharedInstance
     
     let model:IssueListModel
-    var view:IssueListPresenterProtocol!
+    var view:IssueListViewModelProtocol!
     
-    init(view:IssueListPresenterProtocol) {
+    init(view:IssueListViewModelProtocol) {
         
         self.view = view;
         self.model = IssueListModel(user: manager.user, repo: manager.repo)
