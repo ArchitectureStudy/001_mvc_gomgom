@@ -80,6 +80,8 @@ class IssueCommentModel {
         
         APIRequest.createIssueComment(number: number, body: comment).subscribe(onNext: {[unowned self] comment in
             print(comment)
+            //let imageDataDict:[String: IssueCommentItem] = ["writeComment": comment]
+            //NotificationCenter.default.post(name: .IssueWriteCommentsRequestCompletedNotification, object: imageDataDict)
             let newComments = self.issueCommentsVariable.value + [comment]
             self.issueCommentsVariable.value = newComments
         }).addDisposableTo(disposeBag)

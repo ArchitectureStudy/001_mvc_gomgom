@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct IssueCollectionViewCellViewModel: ViewModelProtocol {
+struct IssueCellViewModel: ViewModelProtocol {
     
     let item: IssueItem
     

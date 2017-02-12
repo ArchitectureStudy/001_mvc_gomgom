@@ -29,3 +29,24 @@ extension ViewModelProtocol {
         return 0
     }
 }
+
+
+protocol ViewModelCommentProtocol {
+    var avatar_url: String { get }
+    var username: String { get }
+    var body: String { get }
+}
+
+extension ViewModelCommentProtocol {
+    var avatar_url: String {
+        return ""
+    }
+    
+    var username: String {
+        return ""
+    }
+    
+    var body: String {
+        return ""
+    }
+}

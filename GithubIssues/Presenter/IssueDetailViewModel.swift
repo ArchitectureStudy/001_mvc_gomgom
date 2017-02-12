@@ -50,8 +50,10 @@ class IssueDetailViewModel {
     }
     
     @objc func onIssueWriteCommentsRequestCompletedNotification(_ notification: Notification) {
-        //print("onIssueDetailCommentsRequestCompletedNotification IN")
-        //self.view.displayIssueWriteComments(issueItems: modelComment.issueComments)
+        //if let writeComment = notification.userInfo?["writeComment"] as? IssueCommentItem {
+        //    let newComments = self.modelComment.issueCommentsVariable.value + [writeComment]
+        //    self.modelComment.issueCommentsVariable.value = newComments
+        //}
     }
     
     func issuesRequest() {

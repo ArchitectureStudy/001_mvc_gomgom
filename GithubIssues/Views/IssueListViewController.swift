@@ -139,7 +139,7 @@ extension IssueListViewController {
         datasource.configureCell = { datasource, collectionView, indexPath, item in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueCollectionViewCell", for: indexPath) as? IssueCollectionViewCell else { return IssueCollectionViewCell() }
             
-            cell.configure(withDelegate: IssueCollectionViewCellViewModel(item: item))
+            cell.configure(withDelegate: IssueCellViewModel(item: item))
             return cell
         }
         return datasource

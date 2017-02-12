@@ -88,8 +88,47 @@ extension IssueDetailViewController: IssueDetailViewModelProtocol {
     }
     
     func displayIssueDetailComments(commentItems: [IssueCommentItem]) {
-        let newSectionModel = SectionModel(model: 1, items: commentItems)
-        self.datasource.value = [newSectionModel]
+        
+        if commentItems.count > 0 {
+            let newSectionModel = SectionModel(model: 1, items: commentItems)
+            self.datasource.value = [newSectionModel]
+        } else {
+            /*
+             let login:String
+             let id:Int
+             let avatar_url:String
+             let type:String
+             */
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "YYYY-MM-dd"
+
+            let dict:Dictionary = ["url" : "aaaa",
+                                   "id" : 5450,
+                                   "created_at" : "2017-02-13",
+                                   "body" : "코멘트가 없습니다.",
+                                   "user" : ["login" : "",
+                                             "id" : 5450,
+                                             "avatar_url" : "bb",
+                                             "type" : "aa"]] as [String : Any]
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
+                // here "jsonData" is the dictionary encoded in JSON data
+                
+                let decoded = try JSONSerialization.jsonObject(with: jsonData, options: [])
+                // here "decoded" is of type `Any`, decoded from JSON data
+                
+                // you can now cast it with the right type
+                if let dictFromJSON = decoded as? [String:Any] {
+                    // use dictFromJSON
+                    let comment = try IssueCommentItem(JSON: dictFromJSON)
+                    let newSectionModel = SectionModel(model: 1, items: [comment])
+                    self.datasource.value = [newSectionModel]
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+        }
         
         DispatchQueue.main.async {
             self.writeCommentTextField.text = ""
@@ -147,11 +186,9 @@ extension IssueDetailViewController {
         
         datasource.configureCell = { datasource, collectionView, indexPath, item in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueCommentCell", for: indexPath) as? IssueCommentCell else { return IssueCommentCell() }
-            let url = URL(string: item.user.avatar_url)!
-            let placeholderImage = UIImage(named: "placeholder")!
-            cell.profileThumbnail.af_setImage(withURL: url, placeholderImage: placeholderImage)
-            cell.usernameLabel.text = item.user.login
-            cell.commentLabel.text = item.body
+            
+            cell.configure(withDelegate: IssueCommentCellViewModel(item: item))
+            
             return cell
         }
                 
@@ -160,9 +197,6 @@ extension IssueDetailViewController {
             
             guard let weakSelf = self else { return section }
             if ds[ip.section].items.count <= 0 { return section }
-            
-            
-            //ds[ip.section].items[ip.row].User
             
             section.titleLabel.text = weakSelf.issueSelectedItem.body
             section.usernameLabel.text = weakSelf.issueSelectedItem.user.login

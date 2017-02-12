@@ -19,5 +19,14 @@ class IssueCommentCollectionViewCell: UICollectionViewCell {
         let toReturn = super.preferredLayoutAttributesFitting(layoutAttributes)
         return toReturn
     }
+    
+    func configure(withDelegate delegate: ViewModelCommentProtocol)
+    {
+        let url = URL(string: delegate.avatar_url)!
+        let placeholderImage = UIImage(named: "placeholder")!
+        self.profileThumbnail.af_setImage(withURL: url, placeholderImage: placeholderImage)
+        self.usernameLabel.text = delegate.username
+        self.commentLabel.text = delegate.body
+    }
  
 }
