@@ -57,7 +57,8 @@ class IssueListViewController: UIViewController {
     
     @objc func onIssueWriteCommentsRequestCompletedNotification(_ notification: Notification) {
         print("onIssueDetailCommentsRequestCompletedNotification R IN")
-        self.issueCollectionView.reloadData()
+        //self.issueCollectionView.reloadData()
+        presenter.issuesRequest()
     }
 
     /*

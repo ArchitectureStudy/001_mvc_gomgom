@@ -124,8 +124,8 @@ struct APIRequest {
     static func getIssues() -> Observable<[IssueItem]> {
         return APIManager.requestIssues(user: UserInfoManager.sharedInstance.user, repo: UserInfoManager.sharedInstance.repo).buildRequest().map { json -> [IssueItem] in
             let jsonString: String = json.rawString()!
-            let issues = Mapper<IssueItem>().mapArray(JSONString: jsonString)
-            return issues!
+            let issues = try Mapper<IssueItem>().mapArray(JSONString: jsonString)
+            return issues
         }
     }
     
@@ -148,16 +148,16 @@ struct APIRequest {
         let parameters = ["body": body]
         return APIManager.createIssueComment(user: UserInfoManager.sharedInstance.user, repo: UserInfoManager.sharedInstance.repo, number: number).buildRequest(parameters).map { json -> IssueCommentItem in
             let jsonString: String = json.rawString()!
-            let comment = Mapper<IssueCommentItem>().map(JSONString: jsonString)
-            return comment!
+            let comment = try Mapper<IssueCommentItem>().map(JSONString: jsonString)
+            return comment
         }
     }
     
     static func getIssueComments(number: Int) -> Observable<[IssueCommentItem]> {
         return APIManager.requestIssueComments(user: UserInfoManager.sharedInstance.user, repo: UserInfoManager.sharedInstance.repo, number: number).buildRequest().map{ json -> [IssueCommentItem] in
             let jsonString: String = json.rawString()!
-            let comments = Mapper<IssueCommentItem>().mapArray(JSONString: jsonString)
-            return comments!
+            let comments = try Mapper<IssueCommentItem>().mapArray(JSONString: jsonString)
+            return comments
         }
     }
 }

@@ -18,7 +18,7 @@ class IssueDetailModel {
     let repo:String
     let number:Int
         
-    var issueDetail:IssueDetailItem = IssueDetailItem()
+    var issueDetail:IssueItem
     
     func request() {
 //        APIManager.sharedInstance.requestHTTPTask(.get, urlString: "https://api.github.com/repos/\(user)/\(repo)/issues/\(number)",
@@ -33,27 +33,11 @@ class IssueDetailModel {
 //        }
     }
     
-    init(user: String, repo: String, number:Int) {
+    init(user: String, repo: String, number:Int, issueDetail: IssueItem) {
         self.user = user
         self.repo = repo
         self.number = number
-    }
-}
-
-
-class IssueDetailItem:IssueItem {
-    
-    override func mapping(map: Map) {
-        url <- map["url"]
-        repository_url <- map["repository_url"]
-        id <- map["id"]
-        number <- map["number"]
-        title <- map["title"]
-        state <- map["state"]
-        created_at <- map["created_at"]
-        body <- map["body"]
         
-        User <- map["user"]
-        Labels <- map["labels"]
+        self.issueDetail = issueDetail
     }
 }

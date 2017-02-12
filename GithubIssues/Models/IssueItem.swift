@@ -72,35 +72,46 @@ import ObjectMapper
  
  */
 
-class IssueItem:Mappable{
-    var url:String = ""
-    var repository_url:String = ""
-    var id:Int = 0
-    var number:Int = 0
-    var title:String = ""
-    var state:String = ""
-    var created_at:String = ""
-    var body:String = ""
-    var comments:Int = 0
+struct IssueItem:ImmutableMappable{
+    let url:String
+    let repository_url:String
+    let id:Int
+    let number:Int
+    let title:String
+    let state:String
+    let created_at:Date?
+    let body:String
+    let comments:Int
     
-    var User:IssueItemUser = IssueItemUser()
-    var Labels:[IssueItemLabels] = []
+    let user:IssueItemUser
     
-    init() {}
-    required init?(map: Map) {}
-    
-    func mapping(map: Map) {
-        url <- map["url"]
-        repository_url <- map["repository_url"]
-        id <- map["id"]
-        number <- map["number"]
-        title <- map["title"]
-        state <- map["state"]
-        created_at <- map["created_at"]
-        body <- map["body"]
-        comments <- map["comments"]
+    init(map: Map) throws {
+        url = try map.value("url")
+        repository_url = try map.value("repository_url")
+        id = try map.value("id")
         
-        User <- map["user"]
-        Labels <- map["labels"]
+        number = try map.value("number")
+        title = try map.value("title")
+        state = try map.value("state")
+        created_at = try? map.value("created_at", using: DateTransform())
+        body = try map.value("body")
+        comments = try map.value("comments")
+        
+        user = try map.value("user")
+    }
+    
+    mutating func mapping(map: Map) {
+        url >>> map["url"]
+        repository_url >>> map["repository_url"]
+        id >>> map["id"]
+        
+        number >>> map["number"]
+        title >>> map["title"]
+        state >>> map["state"]
+        created_at >>> map["created_at"]
+        body >>> map["body"]
+        comments >>> map["comments"]
+        
+        user >>> map["user"]
     }
 }

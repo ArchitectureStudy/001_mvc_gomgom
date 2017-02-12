@@ -13,6 +13,7 @@
 		22093E531E4E0475004072E3 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22093E521E4E0475004072E3 /* ViewModel.swift */; };
 		22093E551E4E04B6004072E3 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22093E541E4E04B6004072E3 /* ViewModelProtocol.swift */; };
 		22093E571E4E04D3004072E3 /* ViewModelServicesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22093E561E4E04D3004072E3 /* ViewModelServicesProtocol.swift */; };
+		2221AEA01E50B6E9007903C4 /* IssueCommentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2221AE9F1E50B6E9007903C4 /* IssueCommentItem.swift */; };
 		2231802D1E46249E0067BB55 /* DataRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2231802C1E46249E0067BB55 /* DataRequestExtension.swift */; };
 		22DEBF151E44C5B2006BAD79 /* UserTokenSaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DEBF141E44C5B2006BAD79 /* UserTokenSaveViewController.swift */; };
 		22DEBF171E44C6E5006BAD79 /* UserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DEBF161E44C6E5006BAD79 /* UserInfoManager.swift */; };
@@ -77,6 +78,7 @@
 		22093E521E4E0475004072E3 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewModel.swift; path = ViewModels/ViewModel.swift; sourceTree = "<group>"; };
 		22093E541E4E04B6004072E3 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewModelProtocol.swift; path = ViewModels/ViewModelProtocol.swift; sourceTree = "<group>"; };
 		22093E561E4E04D3004072E3 /* ViewModelServicesProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewModelServicesProtocol.swift; path = ViewModels/ViewModelServicesProtocol.swift; sourceTree = "<group>"; };
+		2221AE9F1E50B6E9007903C4 /* IssueCommentItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueCommentItem.swift; path = Models/IssueCommentItem.swift; sourceTree = "<group>"; };
 		2231802C1E46249E0067BB55 /* DataRequestExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataRequestExtension.swift; path = Extensions/DataRequestExtension.swift; sourceTree = "<group>"; };
 		22DEBF141E44C5B2006BAD79 /* UserTokenSaveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTokenSaveViewController.swift; path = Views/UserTokenSaveViewController.swift; sourceTree = "<group>"; };
 		22DEBF161E44C6E5006BAD79 /* UserInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfoManager.swift; path = Manager/UserInfoManager.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				5612FA9F1E23803E001C1BA2 /* IssueItem.swift */,
 				5612FA9D1E238020001C1BA2 /* IssueItemUser.swift */,
 				56959B281E2A00B50030ED00 /* IssueItemLabels.swift */,
+				2221AE9F1E50B6E9007903C4 /* IssueCommentItem.swift */,
 			);
 			name = BaseItem;
 			sourceTree = "<group>";
@@ -636,6 +639,7 @@
 				22DEBF171E44C6E5006BAD79 /* UserInfoManager.swift in Sources */,
 				22EC40181E2FC7C9007A2B0C /* NumberSection.swift in Sources */,
 				56959B241E2A007F0030ED00 /* IssueWriteViewController.swift in Sources */,
+				2221AEA01E50B6E9007903C4 /* IssueCommentItem.swift in Sources */,
 				56EFAA4E1E2F4E3900B615BD /* IssueCommentModel.swift in Sources */,
 				56C35B471E2F18EE0035D407 /* UINavigationExtension.swift in Sources */,
 				56C35B441E2F18EE0035D407 /* StringExtension.swift in Sources */,

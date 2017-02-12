@@ -32,18 +32,23 @@ import ObjectMapper
  
  */
 
-class IssueItemUser:Mappable{
-    var login:String = ""
-    var id:Int = 0
-    var avatar_url:String = ""
-    var type:String = ""
+struct IssueItemUser:ImmutableMappable {
+    let login:String
+    let id:Int
+    let avatar_url:String
+    let type:String
     
-    init() {}
-    required init?(map: Map) {}
-    func mapping(map: Map) {
-        login <- map["login"]
-        id <- map["id"]
-        avatar_url <- map["avatar_url"]
-        type <- map["type"]
+    init(map: Map) throws {
+        login = try map.value("login")
+        id = try map.value("id")
+        avatar_url = try map.value("avatar_url")
+        type = try map.value("type")
+    }
+    
+    mutating func mapping(map: Map) {
+        login >>> map["login"]
+        id >>> map["id"]
+        avatar_url >>> map["avatar_url"]
+        type >>> map["type"]
     }
 }

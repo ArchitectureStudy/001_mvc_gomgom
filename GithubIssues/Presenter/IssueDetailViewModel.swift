@@ -10,8 +10,8 @@ import Foundation
 import RxSwift
 
 protocol IssueDetailViewModelProtocol {
-    func displayIssueDetail(issueItem:IssueDetailItem)
-    func displayIssueDetailComments(issueItems:[IssueCommentItem])
+    func displayIssueDetail(issueItem:IssueItem)
+    func displayIssueDetailComments(commentItems:[IssueCommentItem])
     func displayIssueWriteComments(issueItems:[IssueCommentItem])
 }
 
@@ -28,7 +28,7 @@ class IssueDetailViewModel {
     
     init(view:IssueDetailViewModelProtocol, selectedItem:IssueItem) {
         self.view = view;
-        self.model = IssueDetailModel(user: manager.user, repo: manager.repo, number: selectedItem.number)
+        self.model = IssueDetailModel(user: manager.user, repo: manager.repo, number: selectedItem.number, issueDetail: selectedItem)
         self.modelComment = IssueCommentModel(user: manager.user, repo: manager.repo, number: selectedItem.number)
         
         NotificationCenter.default.addObserver(self, selector: #selector(onIssueDetailRequestCompletedNotification(_:)), name: .IssueDetailRequestCompletedNotification, object: nil)
@@ -63,7 +63,7 @@ class IssueDetailViewModel {
     }
     
     func issueCommentReload(comments: [IssueCommentItem]) {
-        self.view.displayIssueDetailComments(issueItems: self.modelComment.issueCommentsVariable.value)
+        self.view.displayIssueDetailComments(commentItems: self.modelComment.issueCommentsVariable.value)
     }
     
     func writeComment(comment:String) {

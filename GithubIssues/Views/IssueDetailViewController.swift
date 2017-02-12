@@ -22,11 +22,10 @@ class IssueCommentCell : IssueCommentCollectionViewCell {
 }
 
 
-
 class IssueDetailViewController: UIViewController {
     
     //리스트에서 선택한 아이템
-    var issueSelectedItem:IssueItem = IssueItem()
+    var issueSelectedItem:IssueItem!
     
     var presenter: IssueDetailViewModel!
     
@@ -84,16 +83,13 @@ class IssueDetailViewController: UIViewController {
 }
 
 extension IssueDetailViewController: IssueDetailViewModelProtocol {
-    func displayIssueDetail(issueItem: IssueDetailItem) {
-//        usernameLabel.text = issueItem.User.login
-//        titleLabel.text = issueItem.body
+    func displayIssueDetail(issueItem: IssueItem) {
+        self.detailCollectionView.reloadData()
     }
     
-    func displayIssueDetailComments(issueItems: [IssueCommentItem]) {
-        let newSectionModel = SectionModel(model: 1, items: issueItems)
+    func displayIssueDetailComments(commentItems: [IssueCommentItem]) {
+        let newSectionModel = SectionModel(model: 1, items: commentItems)
         self.datasource.value = [newSectionModel]
-        
-        self.issueSelectedItem.comments = issueItems.count
         
         DispatchQueue.main.async {
             self.writeCommentTextField.text = ""
@@ -112,7 +108,7 @@ extension IssueDetailViewController: IssueDetailViewModelProtocol {
         let newSectionModel = SectionModel(model: 1, items: issueItems)
         self.datasource.value = [newSectionModel]
         
-        self.issueSelectedItem.comments = issueItems.count
+        //self.issueSelectedItem.comments = issueItems.count
     }
 }
 
@@ -151,10 +147,10 @@ extension IssueDetailViewController {
         
         datasource.configureCell = { datasource, collectionView, indexPath, item in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueCommentCell", for: indexPath) as? IssueCommentCell else { return IssueCommentCell() }
-            let url = URL(string: item.User.avatar_url)!
+            let url = URL(string: item.user.avatar_url)!
             let placeholderImage = UIImage(named: "placeholder")!
             cell.profileThumbnail.af_setImage(withURL: url, placeholderImage: placeholderImage)
-            cell.usernameLabel.text = item.User.login
+            cell.usernameLabel.text = item.user.login
             cell.commentLabel.text = item.body
             return cell
         }
@@ -169,7 +165,7 @@ extension IssueDetailViewController {
             //ds[ip.section].items[ip.row].User
             
             section.titleLabel.text = weakSelf.issueSelectedItem.body
-            section.usernameLabel.text = weakSelf.issueSelectedItem.User.login
+            section.usernameLabel.text = weakSelf.issueSelectedItem.user.login
             section.commentCountLabel.text = "\(ds[ip.section].items.count) comments"
             
             return section

@@ -134,14 +134,3 @@ class IssueCommentModel {
  "body": "Can you post the code that's causing the crash, along with the versions of Alamofire, Xcode, the operating systems you're seeing the crash on?"
  }
  */
-class IssueCommentItem:IssueItem {
-    
-    override func mapping(map: Map) {
-        url <- map["url"]
-        id <- map["id"]
-        created_at <- map["created_at"]
-        body <- map["body"]
-        
-        User <- map["user"]
-    }
-}
