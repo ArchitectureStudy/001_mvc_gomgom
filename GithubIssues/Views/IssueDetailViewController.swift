@@ -38,9 +38,9 @@ class IssueDetailViewController: UIViewController {
     @IBOutlet weak var detailCollectionView: UICollectionView!
     @IBOutlet weak var detailCollectionViewFlowLayout: UICollectionViewFlowLayout!
     
-    @IBOutlet weak var issueBodyLabel: UILabel!
-    @IBOutlet weak var issueUserName: UILabel!
-    @IBOutlet weak var issueCommentCount: UILabel!
+    @IBOutlet weak var issueTitleLabel: UILabel!
+    @IBOutlet weak var issueUserNameLabel: UILabel!
+    @IBOutlet weak var issueCommentCountLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -62,9 +62,9 @@ class IssueDetailViewController: UIViewController {
         //detailCollectionViewFlowLayout.estimatedItemSize = CGSize(width: 320, height: 50)
         //self.detailCollectionView.collectionViewLayout = detailCollectionViewFlowLayout;
         
-        self.issueBodyLabel.text = self.issueSelectedItem.body
-        self.issueUserName.text = self.issueSelectedItem.user.login
-        self.issueCommentCount.text = "0 comments"
+        self.issueTitleLabel.text = self.issueSelectedItem.title
+        self.issueUserNameLabel.text = self.issueSelectedItem.user.login
+        self.issueCommentCountLabel.text = "0 comments"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,7 +99,7 @@ extension IssueDetailViewController: IssueDetailViewModelProtocol {
     func displayIssueDetailComments(commentItems: [IssueCommentItem]) {
         
         if commentItems.count > 0 {
-            self.issueCommentCount.text = "\(commentItems.count) comments"
+            self.issueCommentCountLabel.text = "\(commentItems.count) comments"
             
             let newSectionModel = SectionModel(model: 1, items: commentItems)
             self.datasource.value = [newSectionModel]
