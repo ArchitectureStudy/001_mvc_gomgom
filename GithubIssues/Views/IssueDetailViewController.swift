@@ -38,6 +38,11 @@ class IssueDetailViewController: UIViewController {
     @IBOutlet weak var detailCollectionView: UICollectionView!
     @IBOutlet weak var detailCollectionViewFlowLayout: UICollectionViewFlowLayout!
     
+    @IBOutlet weak var issueBodyLabel: UILabel!
+    @IBOutlet weak var issueUserName: UILabel!
+    @IBOutlet weak var issueCommentCount: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,6 +61,10 @@ class IssueDetailViewController: UIViewController {
         
         //detailCollectionViewFlowLayout.estimatedItemSize = CGSize(width: 320, height: 50)
         //self.detailCollectionView.collectionViewLayout = detailCollectionViewFlowLayout;
+        
+        self.issueBodyLabel.text = self.issueSelectedItem.body
+        self.issueUserName.text = self.issueSelectedItem.user.login
+        self.issueCommentCount.text = "0 comments"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,15 +99,11 @@ extension IssueDetailViewController: IssueDetailViewModelProtocol {
     func displayIssueDetailComments(commentItems: [IssueCommentItem]) {
         
         if commentItems.count > 0 {
+            self.issueCommentCount.text = "\(commentItems.count) comments"
+            
             let newSectionModel = SectionModel(model: 1, items: commentItems)
             self.datasource.value = [newSectionModel]
         } else {
-            /*
-             let login:String
-             let id:Int
-             let avatar_url:String
-             let type:String
-             */
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YYYY-MM-dd"
 
@@ -191,7 +196,9 @@ extension IssueDetailViewController {
             
             return cell
         }
-                
+        
+        /*
+         섹션 셀 사용..
         datasource.supplementaryViewFactory = { [weak self] (ds ,cv, kind, ip) in
             let section = cv.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "IssueSectionView", for: ip) as! IssueSectionView
             
@@ -204,6 +211,7 @@ extension IssueDetailViewController {
             
             return section
         }
+ */
         
         return datasource
     }
