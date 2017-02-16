@@ -16,15 +16,16 @@ protocol IssueListViewModelProtocol {
 class IssueListViewModel {
     
     var disposeBag = DisposeBag()
-    let manager = UserInfoManager.sharedInstance
     
     let model:IssueListModel
-    var view:IssueListViewModelProtocol!
+    //var view:IssueListViewModelProtocol!
     
-    init(view:IssueListViewModelProtocol) {
+    let issuesReloadSubject: PublishSubject<([IssueItem])> = PublishSubject<([IssueItem])>()
+    
+    init(user:String, repo:String) {
         
-        self.view = view;
-        self.model = IssueListModel(user: manager.user, repo: manager.repo)
+        //self.view = view;
+        self.model = IssueListModel(user: user, repo: repo)
         
         //NotificationCenter.default.addObserver(self, selector: #selector(onIssueRequestCompletedNotification(_:)), name: .IssueRequestCompletedNotification, object: nil)
     }
@@ -35,7 +36,7 @@ class IssueListViewModel {
         //self.view.displayIssues(issueItems: model.issues)
     }
     
-    func issuesRequest() {
+    func getissuesList() {
         // api request
         // 유저 정보 로딩이 완료되면 리프레쉬되게
         self.model.issuesVariable.asObservable().subscribe(onNext: issueListReload).addDisposableTo(disposeBag)
@@ -43,7 +44,7 @@ class IssueListViewModel {
     }
     
     func issueListReload(issues: [IssueItem]) {
-        self.view.displayIssues(issueItems: issues)
+        self.issuesReloadSubject.onNext(issues)
     }
 
     

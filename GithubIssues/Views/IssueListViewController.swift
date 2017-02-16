@@ -17,7 +17,9 @@ class IssueListViewController: UIViewController {
     @IBOutlet weak var issueAddButton: UIBarButtonItem!
     @IBOutlet weak var memoCountLabel: UILabel!
     
-    var presenter: IssueListViewModel!
+    let manager = UserInfoManager.sharedInstance
+    
+    var viewModel: IssueListViewModel!
     
     let disposeBag = DisposeBag()
     var datasource: Variable<[SectionModel<Int,IssueItem>]> = Variable([SectionModel(model: 1, items:[])])
@@ -28,8 +30,8 @@ class IssueListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter = IssueListViewModel(view: self)
-        presenter.issuesRequest()
+        viewModel = IssueListViewModel(user: manager.user, repo: manager.repo)
+        viewModel.getissuesList()
 
         // collectionView bind Data
         self.bindDataSource()
@@ -38,17 +40,21 @@ class IssueListViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onIssueWriteCommentsRequestCompletedNotification(_:)), name: .IssueWriteCommentsRequestCompletedNotification, object: nil)
         
         
-        //issuesSaveSubject.subscribe(onNext: savedIssue).addDisposableTo(disposeBag)
+        viewModel.issuesReloadSubject.subscribe(onNext: displayIssues).addDisposableTo(disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
     }
     
+    func displayIssues(issueItems: [IssueItem]) {
+        let newSectionModel = SectionModel(model: 1, items: issueItems)
+        self.datasource.value = [newSectionModel]
+    }
+    
     func savedIssue(oldIssue: IssueItem, newIssue: IssueItem) {
         print("savedIssue IN")
     }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -58,7 +64,7 @@ class IssueListViewController: UIViewController {
     @objc func onIssueWriteCommentsRequestCompletedNotification(_ notification: Notification) {
         print("onIssueDetailCommentsRequestCompletedNotification R IN")
         //self.issueCollectionView.reloadData()
-        presenter.issuesRequest()
+        viewModel.getissuesList()
     }
 
     /*
@@ -140,6 +146,7 @@ extension IssueListViewController {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueCollectionViewCell", for: indexPath) as? IssueCollectionViewCell else { return IssueCollectionViewCell() }
             
             cell.configure(withDelegate: IssueCellViewModel(item: item))
+            
             return cell
         }
         return datasource
@@ -151,13 +158,13 @@ extension IssueListViewController {
 }
 
 
-
+/*
 extension IssueListViewController:IssueListViewModelProtocol {
     func displayIssues(issueItems: [IssueItem]) {
         let newSectionModel = SectionModel(model: 1, items: issueItems)
         self.datasource.value = [newSectionModel]
     }
-}
+}*/
 
 extension IssueListViewController: IssueWriteViewControllerDelegate {
     func memoGetController(picker: IssueWriteViewController) {
