@@ -23,7 +23,6 @@ class IssueListViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     var datasource: Variable<[SectionModel<Int,IssueItem>]> = Variable([SectionModel(model: 1, items:[])])
-    //let issuesSaveSubject: PublishSubject<(IssueItem, IssueItem)> = PublishSubject<(IssueItem, IssueItem)>()
     
     @IBOutlet weak var issueCollectionView: UICollectionView!
     
@@ -40,7 +39,9 @@ class IssueListViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onIssueWriteCommentsRequestCompletedNotification(_:)), name: .IssueWriteCommentsRequestCompletedNotification, object: nil)
         
         
-        viewModel.issuesReloadSubject.subscribe(onNext: displayIssues).addDisposableTo(disposeBag)
+//        viewModel.issuesReloadSubject.subscribe(onNext: displayIssues).addDisposableTo(disposeBag)
+        viewModel.issueReloadDrive.drive(onNext: displayIssues, onCompleted: nil, onDisposed: nil).addDisposableTo(disposeBag)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

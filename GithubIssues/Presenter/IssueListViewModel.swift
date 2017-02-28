@@ -8,10 +8,11 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
-protocol IssueListViewModelProtocol {
-    func displayIssues(issueItems: [IssueItem])
-}
+//protocol IssueListViewModelProtocol {
+//    func displayIssues(issueItems: [IssueItem])
+//}
 
 class IssueListViewModel {
     
@@ -20,7 +21,12 @@ class IssueListViewModel {
     let model:IssueListModel
     //var view:IssueListViewModelProtocol!
     
-    let issuesReloadSubject: PublishSubject<([IssueItem])> = PublishSubject<([IssueItem])>()
+//    let issuesReloadSubject: PublishSubject<([IssueItem])> = PublishSubject<([IssueItem])>()
+    var issueReloadDrive: Driver<[IssueItem]> {
+        get {
+            return self.model.issuesVariable.asObservable().asDriver(onErrorJustReturn: [])
+        }
+    }
     
     init(user:String, repo:String) {
         
@@ -38,14 +44,16 @@ class IssueListViewModel {
     
     func getissuesList() {
         // api request
-        // 유저 정보 로딩이 완료되면 리프레쉬되게
-        self.model.issuesVariable.asObservable().subscribe(onNext: issueListReload).addDisposableTo(disposeBag)
+        // 유저 정보 로딩이 완료되면 리프레쉬되게 
+//        self.model.issuesVariable.asObservable().bindTo(issuesReloadSubject).addDisposableTo(disposeBag)
+//        self.model.issuesVariable.asDriver()
+//        self.model.issuesVariable.asObservable().subscribe(onNext: issueListReload).addDisposableTo(disposeBag)
         self.model.request()
     }
     
-    func issueListReload(issues: [IssueItem]) {
-        self.issuesReloadSubject.onNext(issues)
-    }
+//    func issueListReload(issues: [IssueItem]) {
+//        self.issuesReloadSubject.onNext(issues)
+//    }
 
     
 }
