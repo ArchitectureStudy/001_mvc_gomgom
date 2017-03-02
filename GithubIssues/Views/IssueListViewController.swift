@@ -48,8 +48,8 @@ class IssueListViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onIssueWriteCommentsRequestCompletedNotification(_:)), name: .IssueWriteCommentsRequestCompletedNotification, object: nil)
         
         
-        viewModel.issuesReloadSubject.subscribe(onNext: displayIssues).addDisposableTo(disposeBag)
-//        viewModel.issueReloadDrive.drive(onNext: displayIssues, onCompleted: nil, onDisposed: nil).addDisposableTo(disposeBag)
+//        viewModel.issuesReloadSubject.subscribe(onNext: displayIssues).addDisposableTo(disposeBag)
+        viewModel.issueReloadDrive.drive(onNext: displayIssues, onCompleted: nil, onDisposed: nil).addDisposableTo(disposeBag)
         
     }
     
