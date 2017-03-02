@@ -30,6 +30,12 @@
 		561C7E271E1FA89E00ED279D /* GithubIssuesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C7E261E1FA89E00ED279D /* GithubIssuesTests.swift */; };
 		561C7E321E1FA89E00ED279D /* GithubIssuesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C7E311E1FA89E00ED279D /* GithubIssuesUITests.swift */; };
 		561C7E461E1FAEDF00ED279D /* IssueListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C7E451E1FAEDF00ED279D /* IssueListModel.swift */; };
+		564825021E6826C3008AA433 /* IssueListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564825011E6826C3008AA433 /* IssueListRouter.swift */; };
+		564825061E6826FB008AA433 /* IssueListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564825051E6826FB008AA433 /* IssueListPresenter.swift */; };
+		564825081E682732008AA433 /* IssueListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564825071E682732008AA433 /* IssueListInteractor.swift */; };
+		5648250A1E682758008AA433 /* IssueListDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564825091E682758008AA433 /* IssueListDataService.swift */; };
+		5648250D1E686F0C008AA433 /* GitHubUserInfoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5648250C1E686F0C008AA433 /* GitHubUserInfoRouter.swift */; };
+		5648250F1E6871A1008AA433 /* GitHubUserInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5648250E1E6871A1008AA433 /* GitHubUserInfoPresenter.swift */; };
 		5694AA4E1E2C5B34006B483D /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5694AA4D1E2C5B34006B483D /* APIManager.swift */; };
 		56959B161E29FBA00030ED00 /* IssueDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B151E29FBA00030ED00 /* IssueDetailModel.swift */; };
 		56959B1A1E29FEE60030ED00 /* IssueDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959B191E29FEE60030ED00 /* IssueDetailViewModel.swift */; };
@@ -100,6 +106,12 @@
 		561C7E311E1FA89E00ED279D /* GithubIssuesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubIssuesUITests.swift; sourceTree = "<group>"; };
 		561C7E331E1FA89E00ED279D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		561C7E451E1FAEDF00ED279D /* IssueListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueListModel.swift; path = Models/IssueListModel.swift; sourceTree = "<group>"; };
+		564825011E6826C3008AA433 /* IssueListRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueListRouter.swift; path = Viper/IssueList/IssueListRouter.swift; sourceTree = "<group>"; };
+		564825051E6826FB008AA433 /* IssueListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueListPresenter.swift; path = Viper/IssueList/IssueListPresenter.swift; sourceTree = "<group>"; };
+		564825071E682732008AA433 /* IssueListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueListInteractor.swift; path = Viper/IssueList/IssueListInteractor.swift; sourceTree = "<group>"; };
+		564825091E682758008AA433 /* IssueListDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueListDataService.swift; path = Viper/IssueList/IssueListDataService.swift; sourceTree = "<group>"; };
+		5648250C1E686F0C008AA433 /* GitHubUserInfoRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GitHubUserInfoRouter.swift; path = Viper/GithubUserInfo/GitHubUserInfoRouter.swift; sourceTree = "<group>"; };
+		5648250E1E6871A1008AA433 /* GitHubUserInfoPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GitHubUserInfoPresenter.swift; path = Viper/GithubUserInfo/GitHubUserInfoPresenter.swift; sourceTree = "<group>"; };
 		5694AA4D1E2C5B34006B483D /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = Manager/APIManager.swift; sourceTree = "<group>"; };
 		56959B151E29FBA00030ED00 /* IssueDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailModel.swift; path = Models/IssueDetailModel.swift; sourceTree = "<group>"; };
 		56959B191E29FEE60030ED00 /* IssueDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailViewModel.swift; path = Presenter/IssueDetailViewModel.swift; sourceTree = "<group>"; };
@@ -223,6 +235,7 @@
 		561C7E101E1FA89E00ED279D /* GithubIssues */ = {
 			isa = PBXGroup;
 			children = (
+				564825031E6826CD008AA433 /* Viper */,
 				561C7E111E1FA89E00ED279D /* AppDelegate.swift */,
 				22DEBF141E44C5B2006BAD79 /* UserTokenSaveViewController.swift */,
 				56959B2E1E2A1BBA0030ED00 /* GithubUserInfoViewController.swift */,
@@ -281,6 +294,35 @@
 				22EC40171E2FC7C9007A2B0C /* NumberSection.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		564825031E6826CD008AA433 /* Viper */ = {
+			isa = PBXGroup;
+			children = (
+				5648250B1E686CDF008AA433 /* GithubUserInfo */,
+				564825041E6826D9008AA433 /* IssueList */,
+			);
+			name = Viper;
+			sourceTree = "<group>";
+		};
+		564825041E6826D9008AA433 /* IssueList */ = {
+			isa = PBXGroup;
+			children = (
+				564825011E6826C3008AA433 /* IssueListRouter.swift */,
+				564825051E6826FB008AA433 /* IssueListPresenter.swift */,
+				564825071E682732008AA433 /* IssueListInteractor.swift */,
+				564825091E682758008AA433 /* IssueListDataService.swift */,
+			);
+			name = IssueList;
+			sourceTree = "<group>";
+		};
+		5648250B1E686CDF008AA433 /* GithubUserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				5648250C1E686F0C008AA433 /* GitHubUserInfoRouter.swift */,
+				5648250E1E6871A1008AA433 /* GitHubUserInfoPresenter.swift */,
+			);
+			name = GithubUserInfo;
 			sourceTree = "<group>";
 		};
 		56959B2C1E2A15820030ED00 /* BaseItem */ = {
@@ -627,15 +669,19 @@
 				56C35B501E2F3D8C0035D407 /* IssueCommentCollectionViewCell.swift in Sources */,
 				56C35B481E2F18EE0035D407 /* UIViewControllerExtension.swift in Sources */,
 				561C7E461E1FAEDF00ED279D /* IssueListModel.swift in Sources */,
+				5648250F1E6871A1008AA433 /* GitHubUserInfoPresenter.swift in Sources */,
 				56959B221E2A007F0030ED00 /* IssueDetailViewController.swift in Sources */,
 				56C35B4A1E2F18EE0035D407 /* UIImageExtension.swift in Sources */,
+				564825061E6826FB008AA433 /* IssueListPresenter.swift in Sources */,
 				22093E551E4E04B6004072E3 /* ViewModelProtocol.swift in Sources */,
 				22093E571E4E04D3004072E3 /* ViewModelServicesProtocol.swift in Sources */,
 				56C35B381E2F187D0035D407 /* UIColorExtension.swift in Sources */,
+				564825021E6826C3008AA433 /* IssueListRouter.swift in Sources */,
 				22093E4B1E4DFDC3004072E3 /* IssueProtocol.swift in Sources */,
 				56C35B451E2F18EE0035D407 /* UIApplicationExtension.swift in Sources */,
 				22093E511E4E0316004072E3 /* IssueCellViewModel.swift in Sources */,
 				56959B161E29FBA00030ED00 /* IssueDetailModel.swift in Sources */,
+				564825081E682732008AA433 /* IssueListInteractor.swift in Sources */,
 				22DEBF171E44C6E5006BAD79 /* UserInfoManager.swift in Sources */,
 				22EC40181E2FC7C9007A2B0C /* NumberSection.swift in Sources */,
 				56959B241E2A007F0030ED00 /* IssueWriteViewController.swift in Sources */,
@@ -647,6 +693,8 @@
 				5612FA9C1E237B4C001C1BA2 /* NotificationExtension.swift in Sources */,
 				56959B251E2A007F0030ED00 /* IssueCollectionViewCell.swift in Sources */,
 				56959B2F1E2A1BBA0030ED00 /* GithubUserInfoViewController.swift in Sources */,
+				5648250A1E682758008AA433 /* IssueListDataService.swift in Sources */,
+				5648250D1E686F0C008AA433 /* GitHubUserInfoRouter.swift in Sources */,
 				56C35B4E1E2F3D6F0035D407 /* IssueDetailCollectionReusableView.swift in Sources */,
 				5694AA4E1E2C5B34006B483D /* APIManager.swift in Sources */,
 				56959B1A1E29FEE60030ED00 /* IssueDetailViewModel.swift in Sources */,

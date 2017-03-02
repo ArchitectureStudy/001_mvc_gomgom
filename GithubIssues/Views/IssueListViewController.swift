@@ -24,10 +24,19 @@ class IssueListViewController: UIViewController {
     let disposeBag = DisposeBag()
     var datasource: Variable<[SectionModel<Int,IssueItem>]> = Variable([SectionModel(model: 1, items:[])])
     
+    
+    var presenter: IssueListPresenter!
+    
+    
     @IBOutlet weak var issueCollectionView: UICollectionView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.presenter = IssueListPresenter()
+        self.presenter.router = IssueListRouter(viewController: self, navigationController: self.navigationController!)
+        
         
         viewModel = IssueListViewModel(user: manager.user, repo: manager.repo)
         viewModel.getissuesList()
@@ -39,8 +48,8 @@ class IssueListViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onIssueWriteCommentsRequestCompletedNotification(_:)), name: .IssueWriteCommentsRequestCompletedNotification, object: nil)
         
         
-//        viewModel.issuesReloadSubject.subscribe(onNext: displayIssues).addDisposableTo(disposeBag)
-        viewModel.issueReloadDrive.drive(onNext: displayIssues, onCompleted: nil, onDisposed: nil).addDisposableTo(disposeBag)
+        viewModel.issuesReloadSubject.subscribe(onNext: displayIssues).addDisposableTo(disposeBag)
+//        viewModel.issueReloadDrive.drive(onNext: displayIssues, onCompleted: nil, onDisposed: nil).addDisposableTo(disposeBag)
         
     }
     

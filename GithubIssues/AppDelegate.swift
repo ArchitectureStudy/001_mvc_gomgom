@@ -20,6 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         URLCache.shared = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
         
         
+        guard let navigationController = window?.rootViewController as? UINavigationController,
+            let viewController = navigationController.viewControllers.first as? GithubUserInfoViewController
+        else { return false }
+        
+        let presenter = GitHubUserInfoPresenter()
+        viewController.presenter = presenter
+        presenter.router = GitHubUserInfoRouter(navigationController: navigationController)
+        
+        
+        
         return true
     }
     

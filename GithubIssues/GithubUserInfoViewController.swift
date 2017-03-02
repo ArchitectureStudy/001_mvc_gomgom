@@ -34,6 +34,8 @@ class GithubUserInfoViewController: UIViewController {
     @IBOutlet weak var issueShowButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
     
+    var presenter: GitHubUserInfoPresenter!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -111,7 +113,7 @@ class GithubUserInfoViewController: UIViewController {
         self.imageView?.isHidden = false
         self.usernameTextField.isHidden = false
     }
-
+    
     func userInfoReload(userInfo: JSON) {
         print("Failed to load avatar: \(userInfo)")
         print("avatar : \(userInfo["avatar_url"])")
