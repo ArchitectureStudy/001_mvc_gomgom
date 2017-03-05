@@ -31,7 +31,20 @@ class GitHubUserInfoPresenter {
         return self.interactor.getUserInfo()
     }
     
-    func pressedTokenDeleteButton() {
-        self.router?.showTokenInputButton()
+    func showTokenInputTextField() {
+        let userDefaults = UserDefaults.standard
+        userDefaults.removeObject(forKey: "accessToken")
+        userDefaults.synchronize()
+        UserInfoManager.sharedInstance.accessToken = ""
+        
+        self.router?.showTokenInputTextField()
+    }
+    
+    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
+    
+    func showIssueList() {
+        self.router?.showIssueList()
     }
 }

@@ -79,14 +79,13 @@ class GithubUserInfoViewController: UIViewController {
     */
     
     @IBAction func pressedTokenRemoveButton(_ sender: Any) {
-        let userDefaults = UserDefaults.standard
-        userDefaults.removeObject(forKey: "accessToken")
-        userDefaults.synchronize()
-        UserInfoManager.sharedInstance.accessToken = ""
-        
-        self.presenter.pressedTokenDeleteButton()
+        self.presenter.showTokenInputTextField()
     }
     
+    /*
+     이 화면이동 segue를 어떻게 처리해야 할까...
+     버튼의 이벤트를 받아서 수동으로만 처리해야 하나...
+    */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showIssueListViewController" {
             guard let tempRepo:String = self.repoTextField.text else {
@@ -98,15 +97,8 @@ class GithubUserInfoViewController: UIViewController {
             UserInfoManager.sharedInstance.repo = tempRepo
             UserInfoManager.sharedInstance.user = tempUser
         }
-    }
-    
-    // MARK: - Actions
-    func loginShowButtons() {
-        self.logoutButton.isHidden = true
-        self.issueShowButton.isHidden = true
-        self.infoView.isHidden = true
-        self.imageView?.isHidden = true
-        self.usernameTextField.isHidden = true
+        
+        self.presenter.prepare(for: segue, sender: sender)
     }
     
     func logoutShowButtons() {

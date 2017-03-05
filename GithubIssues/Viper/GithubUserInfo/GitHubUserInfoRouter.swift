@@ -29,12 +29,13 @@ class GitHubUserInfoRouter: NSObject, GitHubRouterProtocol {
         self.navigationController = navigationController
     }
     
-    func showTokenInputButton() {
+    func showTokenInputTextField() {
         let viewController = self.viewController as? GithubUserInfoViewController
         viewController?.performSegue(withIdentifier: "sequeShowUserTokenViewController", sender: self)
     }
     
     func showIssueList() {
         // 이걸 구현해야 하는지 모르겠다... 스토리보드에서 해주는데..
+        // 아무것도 안해도 된다...
     }
 }
