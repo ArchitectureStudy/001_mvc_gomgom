@@ -30,6 +30,8 @@
 		561C7E271E1FA89E00ED279D /* GithubIssuesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C7E261E1FA89E00ED279D /* GithubIssuesTests.swift */; };
 		561C7E321E1FA89E00ED279D /* GithubIssuesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C7E311E1FA89E00ED279D /* GithubIssuesUITests.swift */; };
 		561C7E461E1FAEDF00ED279D /* IssueListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C7E451E1FAEDF00ED279D /* IssueListModel.swift */; };
+		561D6B051E6C4E77004B8161 /* GitHubRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561D6B041E6C4E77004B8161 /* GitHubRouterProtocol.swift */; };
+		561D6B071E6C548D004B8161 /* GitHubUserInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561D6B061E6C548D004B8161 /* GitHubUserInfoInteractor.swift */; };
 		564825021E6826C3008AA433 /* IssueListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564825011E6826C3008AA433 /* IssueListRouter.swift */; };
 		564825061E6826FB008AA433 /* IssueListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564825051E6826FB008AA433 /* IssueListPresenter.swift */; };
 		564825081E682732008AA433 /* IssueListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564825071E682732008AA433 /* IssueListInteractor.swift */; };
@@ -106,6 +108,8 @@
 		561C7E311E1FA89E00ED279D /* GithubIssuesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubIssuesUITests.swift; sourceTree = "<group>"; };
 		561C7E331E1FA89E00ED279D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		561C7E451E1FAEDF00ED279D /* IssueListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueListModel.swift; path = Models/IssueListModel.swift; sourceTree = "<group>"; };
+		561D6B041E6C4E77004B8161 /* GitHubRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GitHubRouterProtocol.swift; path = Viper/GitHubRouterProtocol.swift; sourceTree = "<group>"; };
+		561D6B061E6C548D004B8161 /* GitHubUserInfoInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GitHubUserInfoInteractor.swift; path = Viper/GithubUserInfo/GitHubUserInfoInteractor.swift; sourceTree = "<group>"; };
 		564825011E6826C3008AA433 /* IssueListRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueListRouter.swift; path = Viper/IssueList/IssueListRouter.swift; sourceTree = "<group>"; };
 		564825051E6826FB008AA433 /* IssueListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueListPresenter.swift; path = Viper/IssueList/IssueListPresenter.swift; sourceTree = "<group>"; };
 		564825071E682732008AA433 /* IssueListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueListInteractor.swift; path = Viper/IssueList/IssueListInteractor.swift; sourceTree = "<group>"; };
@@ -235,10 +239,10 @@
 		561C7E101E1FA89E00ED279D /* GithubIssues */ = {
 			isa = PBXGroup;
 			children = (
-				564825031E6826CD008AA433 /* Viper */,
 				561C7E111E1FA89E00ED279D /* AppDelegate.swift */,
 				22DEBF141E44C5B2006BAD79 /* UserTokenSaveViewController.swift */,
 				56959B2E1E2A1BBA0030ED00 /* GithubUserInfoViewController.swift */,
+				564825031E6826CD008AA433 /* Viper */,
 				22093E4C1E4DFDD1004072E3 /* Protocols */,
 				56BEBA081E25C9E600619AE8 /* ViewModels */,
 				561C7E491E1FB50E00ED279D /* Views */,
@@ -299,6 +303,7 @@
 		564825031E6826CD008AA433 /* Viper */ = {
 			isa = PBXGroup;
 			children = (
+				561D6B041E6C4E77004B8161 /* GitHubRouterProtocol.swift */,
 				5648250B1E686CDF008AA433 /* GithubUserInfo */,
 				564825041E6826D9008AA433 /* IssueList */,
 			);
@@ -321,6 +326,7 @@
 			children = (
 				5648250C1E686F0C008AA433 /* GitHubUserInfoRouter.swift */,
 				5648250E1E6871A1008AA433 /* GitHubUserInfoPresenter.swift */,
+				561D6B061E6C548D004B8161 /* GitHubUserInfoInteractor.swift */,
 			);
 			name = GithubUserInfo;
 			sourceTree = "<group>";
@@ -685,6 +691,7 @@
 				22DEBF171E44C6E5006BAD79 /* UserInfoManager.swift in Sources */,
 				22EC40181E2FC7C9007A2B0C /* NumberSection.swift in Sources */,
 				56959B241E2A007F0030ED00 /* IssueWriteViewController.swift in Sources */,
+				561D6B071E6C548D004B8161 /* GitHubUserInfoInteractor.swift in Sources */,
 				2221AEA01E50B6E9007903C4 /* IssueCommentItem.swift in Sources */,
 				56EFAA4E1E2F4E3900B615BD /* IssueCommentModel.swift in Sources */,
 				56C35B471E2F18EE0035D407 /* UINavigationExtension.swift in Sources */,
@@ -701,6 +708,7 @@
 				56C35B4C1E2F18EE0035D407 /* FileManagerExtension.swift in Sources */,
 				2221AEA21E50BA21007903C4 /* IssueCommentCellViewModel.swift in Sources */,
 				5612FA9E1E238020001C1BA2 /* IssueItemUser.swift in Sources */,
+				561D6B051E6C4E77004B8161 /* GitHubRouterProtocol.swift in Sources */,
 				56C35B4B1E2F18EE0035D407 /* UIImageViewExtension.swift in Sources */,
 				56C35B491E2F18EE0035D407 /* UIViewExtension.swift in Sources */,
 				56C35B431E2F18EE0035D407 /* Optional+Extension.swift in Sources */,

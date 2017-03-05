@@ -9,22 +9,32 @@
 import Foundation
 import UIKit
 
-protocol GitHubUserInfoRouterInput {
-    func push()
-}
-
-class GitHubUserInfoRouter: NSObject,GitHubUserInfoRouterInput {
+class GitHubUserInfoRouter: NSObject, GitHubRouterProtocol {
     
-    weak var navigationController: UINavigationController?
-    weak var viewController: GithubUserInfoViewController?
+    var navigationController: UINavigationController?
+    var viewController: UIViewController?
     
-    
-    init(navigationController: UINavigationController) {
+    init(viewController: UIViewController, navigationController: UINavigationController) {
+        self.viewController = viewController
         self.navigationController = navigationController
     }
     
-    func push() {
-        let issueListViewController: IssueListViewController = IssueListViewController()
-        self.navigationController?.pushViewController(issueListViewController, animated: true);
+    init(viewController: UIViewController) {
+        self.viewController = viewController
+        self.navigationController = nil
+    }
+    
+    init(navigationController: UINavigationController) {
+        self.viewController = navigationController.viewControllers.first
+        self.navigationController = navigationController
+    }
+    
+    func showTokenInputButton() {
+        let viewController = self.viewController as? GithubUserInfoViewController
+        viewController?.performSegue(withIdentifier: "sequeShowUserTokenViewController", sender: self)
+    }
+    
+    func showIssueList() {
+        // 이걸 구현해야 하는지 모르겠다... 스토리보드에서 해주는데..
     }
 }

@@ -41,6 +41,10 @@ class GithubUserInfoViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        let presenter = GitHubUserInfoPresenter(view: self)
+        self.presenter = presenter
+        presenter.router = GitHubUserInfoRouter(viewController: self)
+        
         // 유저 정보 로딩이 완료되면 리프레쉬되게
         userInfoVariable.asObservable().subscribe(onNext: userInfoReload).addDisposableTo(disposeBag)
     }
@@ -51,7 +55,11 @@ class GithubUserInfoViewController: UIViewController {
         self.logoutShowButtons()
         
         // 유저 정보 읽어오기
-        APIRequest.getUserInfo().bindTo(userInfoVariable).addDisposableTo(disposeBag)
+        self.presenter.getUserInfo().bindTo(userInfoVariable).addDisposableTo(disposeBag)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,27 +79,22 @@ class GithubUserInfoViewController: UIViewController {
     */
     
     @IBAction func pressedTokenRemoveButton(_ sender: Any) {
-        
         let userDefaults = UserDefaults.standard
         userDefaults.removeObject(forKey: "accessToken")
         userDefaults.synchronize()
-        
         UserInfoManager.sharedInstance.accessToken = ""
         
-        self.performSegue(withIdentifier: "sequeShowUserTokenViewController", sender: self)
+        self.presenter.pressedTokenDeleteButton()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "showIssueListViewController" {
-            
             guard let tempRepo:String = self.repoTextField.text else {
                 return
             }
             guard let tempUser:String = self.userTextField.text else {
                 return
             }
-            
             UserInfoManager.sharedInstance.repo = tempRepo
             UserInfoManager.sharedInstance.user = tempUser
         }
@@ -129,5 +132,11 @@ class GithubUserInfoViewController: UIViewController {
                 self.usernameTextField.text = username
             }
         }
+    }
+}
+
+extension GithubUserInfoViewController: GitHubUserInfoPresenterProtocol {
+    func displayUserInfo(userInfo: JSON) {
+        
     }
 }

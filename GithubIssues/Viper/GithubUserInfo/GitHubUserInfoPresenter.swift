@@ -7,13 +7,31 @@
 //
 
 import Foundation
+import RxSwift
+import SwiftyJSON
+
+protocol GitHubUserInfoPresenterProtocol {
+    func displayUserInfo(userInfo: JSON)
+}
 
 class GitHubUserInfoPresenter {
     
-    var router: GitHubUserInfoRouter!
+    let manager = UserInfoManager.sharedInstance
     
+    var router: GitHubUserInfoRouter?
+    var interactor: GitHubUserInfoInteractor
+    var view:GitHubUserInfoPresenterProtocol!
     
-    func showIssueList() {
-        self.router.push()
+    init(view:GitHubUserInfoPresenterProtocol) {
+        self.view = view
+        self.interactor = GitHubUserInfoInteractor()
+    }
+    
+    func getUserInfo() -> Observable<JSON> {
+        return self.interactor.getUserInfo()
+    }
+    
+    func pressedTokenDeleteButton() {
+        self.router?.showTokenInputButton()
     }
 }

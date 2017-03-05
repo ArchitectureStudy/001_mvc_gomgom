@@ -24,9 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let viewController = navigationController.viewControllers.first as? GithubUserInfoViewController
         else { return false }
         
-        let presenter = GitHubUserInfoPresenter()
+        let presenter = GitHubUserInfoPresenter(view: viewController)
         viewController.presenter = presenter
-        presenter.router = GitHubUserInfoRouter(navigationController: navigationController)
+        presenter.router = GitHubUserInfoRouter(viewController: viewController, navigationController: navigationController)
         
         
         
