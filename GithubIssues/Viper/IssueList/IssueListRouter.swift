@@ -14,8 +14,11 @@ class IssueListRouter: NSObject, GitHubRouterProtocol {
     var viewController: UIViewController?
     var navigationController: UINavigationController?
     
-    init(viewController: UIViewController, navigationController: UINavigationController) {
+    init(viewController: UIViewController, navigationController: UINavigationController?) {
         self.viewController = viewController
-        self.navigationController = navigationController
+        
+        if navigationController != nil {
+            self.navigationController = navigationController
+        }
     }    
 }

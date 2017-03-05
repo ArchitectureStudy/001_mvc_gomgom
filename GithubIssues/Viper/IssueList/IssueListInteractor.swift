@@ -7,3 +7,12 @@
 //
 
 import Foundation
+import RxSwift
+import SwiftyJSON
+
+class IssueListInteractor {
+    
+    func getUserInfo() -> Observable<JSON> {
+        return APIRequest.getUserInfo()
+    }
+}

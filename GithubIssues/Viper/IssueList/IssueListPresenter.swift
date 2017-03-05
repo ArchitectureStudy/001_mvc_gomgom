@@ -8,11 +8,21 @@
 
 import Foundation
 
+protocol IssueListPresenterProtocol {
+    func displayIssueList()
+}
+
 class IssueListPresenter {
+    let manager = UserInfoManager.sharedInstance
     
     var router: IssueListRouter!
+    var interactor: IssueListInteractor
+    var view:IssueListPresenterProtocol!
     
-    init() {
-        
+    init(view:IssueListPresenterProtocol) {
+        self.view = view
+        self.interactor = IssueListInteractor()
     }
+
+
 }

@@ -14,19 +14,12 @@ class GitHubUserInfoRouter: NSObject, GitHubRouterProtocol {
     var navigationController: UINavigationController?
     var viewController: UIViewController?
     
-    init(viewController: UIViewController, navigationController: UINavigationController) {
+    init(viewController: UIViewController, navigationController: UINavigationController?) {
         self.viewController = viewController
-        self.navigationController = navigationController
-    }
-    
-    init(viewController: UIViewController) {
-        self.viewController = viewController
-        self.navigationController = nil
-    }
-    
-    init(navigationController: UINavigationController) {
-        self.viewController = navigationController.viewControllers.first
-        self.navigationController = navigationController
+        
+        if navigationController != nil {
+            self.navigationController = navigationController
+        }
     }
     
     func showTokenInputTextField() {

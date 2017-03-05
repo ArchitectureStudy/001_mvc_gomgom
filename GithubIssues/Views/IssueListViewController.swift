@@ -34,8 +34,8 @@ class IssueListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.presenter = IssueListPresenter()
-        self.presenter.router = IssueListRouter(viewController: self, navigationController: self.navigationController!)
+        self.presenter = IssueListPresenter(view:self)
+        self.presenter.router = IssueListRouter(viewController: self, navigationController: self.navigationController)
         
         
         viewModel = IssueListViewModel(user: manager.user, repo: manager.repo)
@@ -168,13 +168,15 @@ extension IssueListViewController {
 }
 
 
-/*
-extension IssueListViewController:IssueListViewModelProtocol {
-    func displayIssues(issueItems: [IssueItem]) {
-        let newSectionModel = SectionModel(model: 1, items: issueItems)
-        self.datasource.value = [newSectionModel]
+extension IssueListViewController:IssueListPresenterProtocol {
+//    func displayIssues(issueItems: [IssueItem]) {
+//        let newSectionModel = SectionModel(model: 1, items: issueItems)
+//        self.datasource.value = [newSectionModel]
+//    }
+    func displayIssueList() {
+        
     }
-}*/
+}
 
 extension IssueListViewController: IssueWriteViewControllerDelegate {
     func memoGetController(picker: IssueWriteViewController) {

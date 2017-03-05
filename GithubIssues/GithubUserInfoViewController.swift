@@ -43,7 +43,7 @@ class GithubUserInfoViewController: UIViewController {
         
         let presenter = GitHubUserInfoPresenter(view: self)
         self.presenter = presenter
-        presenter.router = GitHubUserInfoRouter(viewController: self)
+        presenter.router = GitHubUserInfoRouter(viewController: self, navigationController: self.navigationController)
         
         // 유저 정보 로딩이 완료되면 리프레쉬되게
         userInfoVariable.asObservable().subscribe(onNext: userInfoReload).addDisposableTo(disposeBag)
