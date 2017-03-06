@@ -32,11 +32,7 @@ class GitHubUserInfoPresenter {
     }
     
     func showTokenInputTextField() {
-        let userDefaults = UserDefaults.standard
-        userDefaults.removeObject(forKey: "accessToken")
-        userDefaults.synchronize()
-        UserInfoManager.sharedInstance.accessToken = ""
-        
+        self.interactor.deleteToken()
         self.router?.showTokenInputTextField()
     }
     

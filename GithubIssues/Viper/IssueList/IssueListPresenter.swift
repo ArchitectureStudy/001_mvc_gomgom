@@ -9,7 +9,7 @@
 import Foundation
 
 protocol IssueListPresenterProtocol {
-    func displayIssueList()
+    func displayIssueList(issues: [IssueItem])
 }
 
 class IssueListPresenter {
@@ -18,11 +18,23 @@ class IssueListPresenter {
     var router: IssueListRouter!
     var interactor: IssueListInteractor
     var view:IssueListPresenterProtocol!
+
     
     init(view:IssueListPresenterProtocol) {
         self.view = view
-        self.interactor = IssueListInteractor()
+        self.interactor = IssueListInteractor(user: manager.user, repo: manager.repo)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onIssueListRequestCompletedNotification(_:)), name: .IssueListRequestCompletedNotification, object: nil)
     }
-
+    
+    func getIssueItems() {
+        self.interactor.issueRquest()
+    }
+    
+    @objc func onIssueListRequestCompletedNotification(_ notification: Notification) {
+        if let issueListData = notification.userInfo?["issueListData"] as? [IssueItem] {
+            self.view.displayIssueList(issues: issueListData)
+        }
+    }
 
 }

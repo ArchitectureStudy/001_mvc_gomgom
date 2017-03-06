@@ -36,10 +36,7 @@ class IssueListViewController: UIViewController {
         
         self.presenter = IssueListPresenter(view:self)
         self.presenter.router = IssueListRouter(viewController: self, navigationController: self.navigationController)
-        
-        
-        viewModel = IssueListViewModel(user: manager.user, repo: manager.repo)
-        viewModel.getissuesList()
+        self.presenter.getIssueItems()
 
         // collectionView bind Data
         self.bindDataSource()
@@ -49,7 +46,7 @@ class IssueListViewController: UIViewController {
         
         
 //        viewModel.issuesReloadSubject.subscribe(onNext: displayIssues).addDisposableTo(disposeBag)
-        viewModel.issueReloadDrive.drive(onNext: displayIssues, onCompleted: nil, onDisposed: nil).addDisposableTo(disposeBag)
+//        viewModel.issueReloadDrive.drive(onNext: displayIssues, onCompleted: nil, onDisposed: nil).addDisposableTo(disposeBag)
         
     }
     
@@ -74,7 +71,7 @@ class IssueListViewController: UIViewController {
     @objc func onIssueWriteCommentsRequestCompletedNotification(_ notification: Notification) {
         print("onIssueDetailCommentsRequestCompletedNotification R IN")
         //self.issueCollectionView.reloadData()
-        viewModel.getissuesList()
+        //viewModel.getissuesList()
     }
 
     /*
@@ -169,12 +166,9 @@ extension IssueListViewController {
 
 
 extension IssueListViewController:IssueListPresenterProtocol {
-//    func displayIssues(issueItems: [IssueItem]) {
-//        let newSectionModel = SectionModel(model: 1, items: issueItems)
-//        self.datasource.value = [newSectionModel]
-//    }
-    func displayIssueList() {
-        
+    func displayIssueList(issues: [IssueItem]) {
+        let newSectionModel = SectionModel(model: 1, items: issues)
+        self.datasource.value = [newSectionModel]
     }
 }
 

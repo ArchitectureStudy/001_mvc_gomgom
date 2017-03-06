@@ -15,4 +15,11 @@ class GitHubUserInfoInteractor {
     func getUserInfo() -> Observable<JSON> {
         return APIRequest.getUserInfo()
     }
+    
+    func deleteToken() {
+        let userDefaults = UserDefaults.standard
+        userDefaults.removeObject(forKey: "accessToken")
+        userDefaults.synchronize()
+        UserInfoManager.sharedInstance.accessToken = ""
+    }
 }

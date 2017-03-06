@@ -7,3 +7,12 @@
 //
 
 import Foundation
+import RxSwift
+import SwiftyJSON
+
+class IssueListDataService {
+
+    func getIssueItems() -> Observable<[IssueItem]> {
+        return APIRequest.getIssues()
+    }
+}
