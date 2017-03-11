@@ -32,8 +32,12 @@ class IssueListPresenter {
     }
     
     @objc func onIssueListRequestCompletedNotification(_ notification: Notification) {
-        if let issueListData = notification.userInfo?["issueListData"] as? [IssueItem] {
-            self.view.displayIssueList(issues: issueListData)
+//        if let issueListData = notification.userInfo?["issueListData"] as? [IssueItem] {
+//            self.view.displayIssueList(issues: issueListData)
+//        }
+        
+        if let viewModel = notification.object as? IssueListViewModel {
+            self.view.displayIssueList(issues: viewModel.model.issuesVariable.value)
         }
     }
 

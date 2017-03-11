@@ -27,11 +27,11 @@ class IssueListInteractor {
     
     func issueRquest() {
         self.viewModel.model.issuesVariable.asObservable().subscribe(onNext: issueListReload).addDisposableTo(disposeBag)
-        APIRequest.getIssues().bindTo(self.viewModel.model.issuesVariable).addDisposableTo(disposeBag)
+        self.dataService.getIssueItems().bindTo(self.viewModel.model.issuesVariable).addDisposableTo(disposeBag)
     }
     
     func issueListReload(issues: [IssueItem]) {
         let issueListDataDict:[String: [Any]] = ["issueListData": issues]
-        NotificationCenter.default.post(name: .IssueListRequestCompletedNotification, object: nil, userInfo: issueListDataDict)
+        NotificationCenter.default.post(name: .IssueListRequestCompletedNotification, object: self.viewModel, userInfo: issueListDataDict)
     }
 }
