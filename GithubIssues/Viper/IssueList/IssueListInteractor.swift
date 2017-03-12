@@ -23,6 +23,7 @@ class IssueListInteractor {
     
     init(user: String, repo: String) {
         viewModel = IssueListViewModel(user: user, repo: repo)
+        dataService = IssueListDataService()
     }
     
     func issueRquest() {

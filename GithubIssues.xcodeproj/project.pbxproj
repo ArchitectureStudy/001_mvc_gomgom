@@ -60,6 +60,8 @@
 		56C35B4E1E2F3D6F0035D407 /* IssueDetailCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C35B4D1E2F3D6F0035D407 /* IssueDetailCollectionReusableView.swift */; };
 		56C35B501E2F3D8C0035D407 /* IssueCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C35B4F1E2F3D8C0035D407 /* IssueCommentCollectionViewCell.swift */; };
 		56EFAA4E1E2F4E3900B615BD /* IssueCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EFAA4D1E2F4E3900B615BD /* IssueCommentModel.swift */; };
+		7D75C4571E758FDE00CBAD90 /* IssueDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D75C4561E758FDE00CBAD90 /* IssueDetailRouter.swift */; };
+		7D75C4591E75900F00CBAD90 /* IssueDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D75C4581E75900F00CBAD90 /* IssueDetailPresenter.swift */; };
 		E4D525BE9CEE6FFB65A4C6D5 /* Pods_GithubIssuesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E7820116DCEDFAE1354FD8C /* Pods_GithubIssuesTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -140,6 +142,8 @@
 		56EFAA4D1E2F4E3900B615BD /* IssueCommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueCommentModel.swift; path = Models/IssueCommentModel.swift; sourceTree = "<group>"; };
 		587C3FAB1CF5CC2CA72378FF /* Pods-GithubIssues.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubIssues.release.xcconfig"; path = "Pods/Target Support Files/Pods-GithubIssues/Pods-GithubIssues.release.xcconfig"; sourceTree = "<group>"; };
 		695CCC328FF7CA3A35EE5B39 /* Pods-GithubIssuesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubIssuesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GithubIssuesTests/Pods-GithubIssuesTests.release.xcconfig"; sourceTree = "<group>"; };
+		7D75C4561E758FDE00CBAD90 /* IssueDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailRouter.swift; path = Viper/IssueDetail/IssueDetailRouter.swift; sourceTree = "<group>"; };
+		7D75C4581E75900F00CBAD90 /* IssueDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailPresenter.swift; path = Viper/IssueDetailPresenter.swift; sourceTree = "<group>"; };
 		87C6111AC1E228E0F7952A9F /* Pods_GithubIssues.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GithubIssues.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E7820116DCEDFAE1354FD8C /* Pods_GithubIssuesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GithubIssuesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D72853D6E8AEA891700710 /* Pods-GithubIssuesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubIssuesUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GithubIssuesUITests/Pods-GithubIssuesUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 				561D6B041E6C4E77004B8161 /* GitHubRouterProtocol.swift */,
 				5648250B1E686CDF008AA433 /* GithubUserInfo */,
 				564825041E6826D9008AA433 /* IssueList */,
+				7D75C4551E758F4100CBAD90 /* IssueDetail */,
 			);
 			name = Viper;
 			sourceTree = "<group>";
@@ -360,6 +365,15 @@
 				2221AEA11E50BA21007903C4 /* IssueCommentCellViewModel.swift */,
 			);
 			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		7D75C4551E758F4100CBAD90 /* IssueDetail */ = {
+			isa = PBXGroup;
+			children = (
+				7D75C4561E758FDE00CBAD90 /* IssueDetailRouter.swift */,
+				7D75C4581E75900F00CBAD90 /* IssueDetailPresenter.swift */,
+			);
+			name = IssueDetail;
 			sourceTree = "<group>";
 		};
 		B2D173F767BAB8B36FEC2E1F /* Pods */ = {
@@ -691,8 +705,10 @@
 				22DEBF171E44C6E5006BAD79 /* UserInfoManager.swift in Sources */,
 				22EC40181E2FC7C9007A2B0C /* NumberSection.swift in Sources */,
 				56959B241E2A007F0030ED00 /* IssueWriteViewController.swift in Sources */,
+				7D75C4571E758FDE00CBAD90 /* IssueDetailRouter.swift in Sources */,
 				561D6B071E6C548D004B8161 /* GitHubUserInfoInteractor.swift in Sources */,
 				2221AEA01E50B6E9007903C4 /* IssueCommentItem.swift in Sources */,
+				7D75C4591E75900F00CBAD90 /* IssueDetailPresenter.swift in Sources */,
 				56EFAA4E1E2F4E3900B615BD /* IssueCommentModel.swift in Sources */,
 				56C35B471E2F18EE0035D407 /* UINavigationExtension.swift in Sources */,
 				56C35B441E2F18EE0035D407 /* StringExtension.swift in Sources */,

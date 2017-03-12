@@ -47,7 +47,7 @@ class IssueListViewController: UIViewController {
         
 //        viewModel.issuesReloadSubject.subscribe(onNext: displayIssues).addDisposableTo(disposeBag)
 //        viewModel.issueReloadDrive.drive(onNext: displayIssues, onCompleted: nil, onDisposed: nil).addDisposableTo(disposeBag)
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,15 +105,12 @@ class IssueListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showIssueDetailViewController", let destination = segue.destination as? IssueDetailViewController {
-            
             if let cell = sender as? IssueCollectionViewCell, let indexPath = issueCollectionView.indexPath(for: cell) {
                 let affiliation = datasource.value.first?.items[indexPath.row]
                 destination.issueSelectedItem = affiliation!
             }
         }
     }
-    
-    
 }
 
 

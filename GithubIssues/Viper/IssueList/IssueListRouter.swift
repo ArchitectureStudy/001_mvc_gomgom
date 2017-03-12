@@ -22,3 +22,12 @@ class IssueListRouter: NSObject, GitHubRouterProtocol {
         }
     }    
 }
+
+class IssueDatailSegue: UIStoryboardSegue {
+    override func perform() {
+        guard let listViewController = source as? IssueListViewController else { return; }
+        guard let detailViewController = destination as? IssueDetailViewController else { return; }
+        
+        listViewController.navigationController?.pushViewController(detailViewController, animated: true)
+    }
+}
