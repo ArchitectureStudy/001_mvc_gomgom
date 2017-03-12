@@ -29,7 +29,7 @@ class IssueDetailViewController: UIViewController {
     //리스트에서 선택한 아이템
     var issueSelectedItem:IssueItem!
     
-    var viewModel: IssueDetailViewModel!
+//    var viewModel: IssueDetailViewModel!
     
     var datasource: Variable<[SectionModel<Int,IssueCommentItem>]> = Variable([SectionModel(model: 1, items:[])])
     let disposeBag = DisposeBag()
@@ -44,15 +44,18 @@ class IssueDetailViewController: UIViewController {
     @IBOutlet weak var issueUserNameLabel: UILabel!
     @IBOutlet weak var issueCommentCountLabel: UILabel!
     
+    var presenter: IssueDetailPresenter!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        viewModel = IssueDetailViewModel(user: manager.user, repo: manager.repo, selectedItem: issueSelectedItem)
-        viewModel.issuesRequest()
-        
+        self.presenter = IssueDetailPresenter(view: self, selectedItem: issueSelectedItem)
+        self.presenter.router = IssueDetailRouter(viewController: self, navigationController: self.navigationController)
+        self.presenter.getDetailInfo()
+                
         // collectionView bind Data
         self.bindDataSource()
         self.rxAction()
@@ -66,9 +69,9 @@ class IssueDetailViewController: UIViewController {
         
         self.issueTitleLabel.text = self.issueSelectedItem.title
         self.issueUserNameLabel.text = self.issueSelectedItem.user.login
-        self.issueCommentCountLabel.text = "0 comments"
+        self.issueCommentCountLabel.text = "\(self.issueSelectedItem.comments) comments"
         
-        viewModel.issuesCommentReloadSubject.subscribe(onNext: displayIssueDetailComments).addDisposableTo(disposeBag)
+//        viewModel.issuesCommentReloadSubject.subscribe(onNext: displayIssueDetailComments).addDisposableTo(disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,7 +84,6 @@ class IssueDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation
@@ -233,7 +235,7 @@ extension IssueDetailViewController {
         
         self.saveButton.rx.tap.asObservable().subscribe(onNext: { [weak self] _ in
             guard let weakSelf = self else { return }
-                weakSelf.viewModel.writeComment(comment: weakSelf.writeCommentTextField.text!)
+//                weakSelf.viewModel.writeComment(comment: weakSelf.writeCommentTextField.text!)
             }
             ).addDisposableTo(disposeBag)
     }
@@ -275,5 +277,63 @@ extension IssueDetailViewController {
     func addCell(text: String) {
         
     }
+}
+
+
+extension IssueDetailViewController: IssueDetailPresenterProtocol {
+    func displayDeatailIssue(issues: IssueItem) {
+        //self.detailCollectionView.reloadData()
+    }
     
+    func displayCommentIssues(commentItems: [IssueCommentItem]) {
+        
+        if commentItems.count > 0 {
+            self.issueCommentCountLabel.text = "\(commentItems.count) comments"
+            
+            let newSectionModel = SectionModel(model: 1, items: commentItems)
+            self.datasource.value = [newSectionModel]
+        } else {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "YYYY-MM-dd"
+            
+            let dict:Dictionary = ["url" : "aaaa",
+                                   "id" : 5450,
+                                   "created_at" : "2017-02-13",
+                                   "body" : "코멘트가 없습니다.",
+                                   "user" : ["login" : "",
+                                             "id" : 5450,
+                                             "avatar_url" : "bb",
+                                             "type" : "aa"]] as [String : Any]
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
+                // here "jsonData" is the dictionary encoded in JSON data
+                
+                let decoded = try JSONSerialization.jsonObject(with: jsonData, options: [])
+                // here "decoded" is of type `Any`, decoded from JSON data
+                
+                // you can now cast it with the right type
+                if let dictFromJSON = decoded as? [String:Any] {
+                    // use dictFromJSON
+                    let comment = try IssueCommentItem(JSON: dictFromJSON)
+                    let newSectionModel = SectionModel(model: 1, items: [comment])
+                    self.datasource.value = [newSectionModel]
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+        }
+        
+        DispatchQueue.main.async {
+            self.writeCommentTextField.text = ""
+            
+            if self.detailCollectionView.contentSize.height > self.detailCollectionView.frame.size.height {
+                let size:CGSize = self.detailCollectionView.contentSize
+                let newOffSet =  CGPoint(x: 0, y: (size.height) - (self.detailCollectionView.frame.height))
+                self.detailCollectionView.setContentOffset(newOffSet, animated: true)
+            }
+            
+            NotificationCenter.default.post(name: .IssueWriteCommentsRequestCompletedNotification, object: nil)
+        }
+    }
 }

@@ -62,6 +62,7 @@
 		56EFAA4E1E2F4E3900B615BD /* IssueCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EFAA4D1E2F4E3900B615BD /* IssueCommentModel.swift */; };
 		7D75C4571E758FDE00CBAD90 /* IssueDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D75C4561E758FDE00CBAD90 /* IssueDetailRouter.swift */; };
 		7D75C4591E75900F00CBAD90 /* IssueDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D75C4581E75900F00CBAD90 /* IssueDetailPresenter.swift */; };
+		7D75C45C1E75AADE00CBAD90 /* IssueDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D75C45B1E75AADE00CBAD90 /* IssueDetailInteractor.swift */; };
 		E4D525BE9CEE6FFB65A4C6D5 /* Pods_GithubIssuesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E7820116DCEDFAE1354FD8C /* Pods_GithubIssuesTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -144,6 +145,7 @@
 		695CCC328FF7CA3A35EE5B39 /* Pods-GithubIssuesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubIssuesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GithubIssuesTests/Pods-GithubIssuesTests.release.xcconfig"; sourceTree = "<group>"; };
 		7D75C4561E758FDE00CBAD90 /* IssueDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailRouter.swift; path = Viper/IssueDetail/IssueDetailRouter.swift; sourceTree = "<group>"; };
 		7D75C4581E75900F00CBAD90 /* IssueDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailPresenter.swift; path = Viper/IssueDetailPresenter.swift; sourceTree = "<group>"; };
+		7D75C45B1E75AADE00CBAD90 /* IssueDetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssueDetailInteractor.swift; path = Viper/IssueDetailInteractor.swift; sourceTree = "<group>"; };
 		87C6111AC1E228E0F7952A9F /* Pods_GithubIssues.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GithubIssues.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E7820116DCEDFAE1354FD8C /* Pods_GithubIssuesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GithubIssuesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D72853D6E8AEA891700710 /* Pods-GithubIssuesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubIssuesUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GithubIssuesUITests/Pods-GithubIssuesUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 			children = (
 				7D75C4561E758FDE00CBAD90 /* IssueDetailRouter.swift */,
 				7D75C4581E75900F00CBAD90 /* IssueDetailPresenter.swift */,
+				7D75C45B1E75AADE00CBAD90 /* IssueDetailInteractor.swift */,
 			);
 			name = IssueDetail;
 			sourceTree = "<group>";
@@ -714,6 +717,7 @@
 				56C35B441E2F18EE0035D407 /* StringExtension.swift in Sources */,
 				22093E531E4E0475004072E3 /* ViewModel.swift in Sources */,
 				5612FA9C1E237B4C001C1BA2 /* NotificationExtension.swift in Sources */,
+				7D75C45C1E75AADE00CBAD90 /* IssueDetailInteractor.swift in Sources */,
 				56959B251E2A007F0030ED00 /* IssueCollectionViewCell.swift in Sources */,
 				56959B2F1E2A1BBA0030ED00 /* GithubUserInfoViewController.swift in Sources */,
 				5648250A1E682758008AA433 /* IssueListDataService.swift in Sources */,
