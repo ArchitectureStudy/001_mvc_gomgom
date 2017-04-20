@@ -33,6 +33,10 @@ class IssueDetailModel {
 //        }
     }
     
+    func request2() -> Bool {
+        return true
+    }
+    
     init(user: String, repo: String, number:Int, issueDetail: IssueItem) {
         self.user = user
         self.repo = repo

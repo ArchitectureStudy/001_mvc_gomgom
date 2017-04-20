@@ -92,22 +92,24 @@ extension APIManager {
         
         return Observable.create { observer in
             
-            let request = APIManager.requestManager.request(self.url,
-                                                            method: self.method,
-                                                            parameters: parameters,
-                                                            encoding: JSONEncoding.default,
-                                                            headers: self.DefaultHeaders()).responseSwiftyJSON(
-                                                                completionHandler: { response in
-                                                                    switch (response.result, response.response?.statusCode) {
-                                                                    case let (.success(json), statusCode) where statusCode! >= 200 && statusCode! < 300:
-                                                                        observer.onNext(json )
-                                                                        observer.onCompleted()
-                                                                    case let (.success(_), statusCode):
-                                                                        observer.onError(NSError(domain: "Error", code: statusCode ?? 500, userInfo: ["":""]))
-                                                                    case let (.failure(error) , _ ):
-                                                                        observer.onError( error)
-                                                                    }
-                                                            })
+            let request = APIManager
+                .requestManager
+                .request(self.url,
+                         method: self.method,
+                         parameters: parameters,
+                         encoding: JSONEncoding.default,
+                         headers: self.DefaultHeaders()).responseSwiftyJSON(
+                            completionHandler: { response in
+                                switch (response.result, response.response?.statusCode) {
+                                case let (.success(json), statusCode) where statusCode! >= 200 && statusCode! < 300:
+                                    observer.onNext(json )
+                                    observer.onCompleted()
+                                case let (.success(_), statusCode):
+                                    observer.onError(NSError(domain: "Error", code: statusCode ?? 500, userInfo: ["":""]))
+                                case let (.failure(error) , _ ):
+                                    observer.onError( error)
+                                }
+                         })
             return Disposables.create {
                 request.cancel()
             }
